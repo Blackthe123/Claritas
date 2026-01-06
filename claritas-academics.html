@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claritas Academics - Clarity. Confidence. Results.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --gold: #c9a961;
+            --text: #2d2d2d;
+            --light-text: #666;
+            --bg: #fafafa;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(15, 76, 117, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--light-text);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: var(--light-text);
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Problem Context Section */
+        .problem-context {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 5rem 4rem;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.08);
+        }
+
+        .problem-text {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            line-height: 1.8;
+            color: var(--text);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .problem-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Impact Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease, transform 0.3s ease;
+        }
+
+        .metric-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        .metric-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            letter-spacing: 1px;
+        }
+
+        /* Philosophy Flow */
+        .philosophy-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text);
+            border-radius: 20px;
+            padding: 6rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-flow {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 2rem 0;
+        }
+
+        /* SVG Arrow Path */
+        .arrow-path-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 200px;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .arrow-path {
+            width: 100%;
+            height: 100%;
+        }
+
+        .arrow-line {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 3;
+            stroke-dasharray: 1200;
+            stroke-dashoffset: 1200;
+            filter: drop-shadow(0 0 8px rgba(15, 76, 117, 0.4));
+        }
+
+        .arrow-line.animate {
+            animation: drawArrow 3s ease-in-out forwards;
+        }
+
+        @keyframes drawArrow {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .arrow-head {
+            fill: var(--accent);
+            opacity: 0;
+            filter: drop-shadow(0 0 8px rgba(15, 76, 117, 0.4));
+        }
+
+        .arrow-head.animate {
+            animation: fadeInArrowHead 0.5s ease-in 2.8s forwards;
+        }
+
+        @keyframes fadeInArrowHead {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Philosophy Stages */
+        .philosophy-stage {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .philosophy-stage.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-circle {
+            width: 220px;
+            height: 220px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-circle::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .philosophy-stage:hover .stage-circle::before {
+            opacity: 1;
+        }
+
+        .philosophy-stage:hover .stage-circle {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .stage-image {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Replace this with actual images */
+        .stage-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .stage-content {
+            text-align: center;
+            max-width: 220px;
+        }
+
+        .stage-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .stage-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .subject-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .subject-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .subject-description {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card.recommended {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.recommended::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.recommended:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .plan-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+        }
+
+        .plan-duration {
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%);
+            border-radius: 20px;
+            padding: 5rem 4rem;
+            text-align: center;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .cal-embed {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .philosophy-flow {
+                flex-direction: column;
+                gap: 3rem;
+                padding: 2rem 0;
+            }
+
+            .arrow-path-container {
+                display: none; /* Hide arrow on mobile for cleaner look */
+            }
+
+            .stage-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .stage-image {
+                width: 120px;
+                height: 120px;
+                font-size: 4rem;
+            }
+
+            .metrics-grid,
+            .subjects-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-context {
+                padding: 3rem 2rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">CLARITAS</div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>CLARITAS<br>ACADEMICS</h1>
+            <p class="tagline">Clarity. Confidence. Results.</p>
+        </div>
+        <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+    </section>
+
+    <!-- Problem Context Section -->
+    <section id="problem">
+        <div class="problem-context">
+            <p class="problem-text scroll-reveal">
+                In today's demanding academic landscape, students face overwhelming information without structure or guidance. 
+                They struggle with clarity in understanding complex concepts, confidence in applying their knowledge, 
+                and achieving the results they deserve. At Claritas Academics, we transform this chaos into a clear, 
+                structured path to academic excellence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Impact Metrics -->
+    <section id="metrics">
+        <h2 class="section-title scroll-reveal">Our Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-card scroll-reveal">
+                <div class="metric-number" data-target="50">0</div>
+                <div class="metric-label">Expert Tutors</div>
+            </div>
+            <div class="metric-card scroll-reveal" style="transition-delay: 0.1s">
+                <div class="metric-number" data-target="1200">0</div>
+                <div class="metric-label">Students Taught</div>
+            </div>
+            <div class="metric-card scroll-reveal" style="transition-delay: 0.2s">
+                <div class="metric-number" data-target="98">0</div>
+                <div class="metric-label">Success Rate %</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy">
+        <div class="philosophy-section">
+            <h2 class="section-title scroll-reveal">Our Philosophy</h2>
+            <div class="philosophy-flow">
+                <!-- Animated Arrow Path (SVG) -->
+                <div class="arrow-path-container">
+                    <svg class="arrow-path" viewBox="0 0 1000 200" preserveAspectRatio="none">
+                        <!-- Curved arrow path -->
+                        <path class="arrow-line scroll-trigger-arrow" 
+                              d="M 80 100 Q 250 40, 420 100 T 920 100" />
+                        <!-- Arrow head -->
+                        <polygon class="arrow-head scroll-trigger-arrow" 
+                                 points="920,100 905,90 905,110" />
+                    </svg>
+                </div>
+
+                <!-- Stage 1: Clarity -->
+                <div class="philosophy-stage scroll-reveal" data-stage="1">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="confusedbg.png" alt="Clarity" onerror="this.parentElement.innerHTML='🤔'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Clarity</h3>
+                        <p class="stage-description">
+                            Breaking down complex concepts into clear, understandable components
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Confidence -->
+                <div class="philosophy-stage scroll-reveal" data-stage="2" style="transition-delay: 0.2s">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="confidentbg.png" alt="Confidence" onerror="this.parentElement.innerHTML='📚'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Confidence</h3>
+                        <p class="stage-description">
+                            Building self-assurance through personalized guidance and practice
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Results -->
+                <div class="philosophy-stage scroll-reveal" data-stage="3" style="transition-delay: 0.4s">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="resultsbg.png" alt="Results" onerror="this.parentElement.innerHTML='🎉'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Results</h3>
+                        <p class="stage-description">
+                            Achieving outstanding academic outcomes that exceed expectations
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects">
+        <h2 class="section-title scroll-reveal">Subjects We Cover</h2>
+        <div class="subjects-grid">
+            <div class="subject-card scroll-reveal">
+                <div class="subject-icon">📐</div>
+                <h3 class="subject-title">Mathematics</h3>
+                <p class="subject-description">
+                    From foundational algebra to advanced calculus, we make numbers make sense.
+                </p>
+            </div>
+            <div class="subject-card scroll-reveal" style="transition-delay: 0.1s">
+                <div class="subject-icon">🔬</div>
+                <h3 class="subject-title">Sciences</h3>
+                <p class="subject-description">
+                    Physics, Chemistry, and Biology taught with clarity and practical application.
+                </p>
+            </div>
+            <div class="subject-card scroll-reveal" style="transition-delay: 0.2s">
+                <div class="subject-icon">📖</div>
+                <h3 class="subject-title">English</h3>
+                <p class="subject-description">
+                    Literature analysis, essay writing, and comprehensive language skills.
+                </p>
+            </div>
+            <div class="subject-card scroll-reveal" style="transition-delay: 0.3s">
+                <div class="subject-icon">🌍</div>
+                <h3 class="subject-title">Humanities</h3>
+                <p class="subject-description">
+                    History, Geography, and Social Sciences with engaging context and analysis.
+                </p>
+            </div>
+            <div class="subject-card scroll-reveal" style="transition-delay: 0.4s">
+                <div class="subject-icon">💻</div>
+                <h3 class="subject-title">Computer Science</h3>
+                <p class="subject-description">
+                    Programming fundamentals, algorithms, and computational thinking.
+                </p>
+            </div>
+            <div class="subject-card scroll-reveal" style="transition-delay: 0.5s">
+                <div class="subject-icon">🎨</div>
+                <h3 class="subject-title">Creative Arts</h3>
+                <p class="subject-description">
+                    Visual arts, music theory, and creative expression with expert guidance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2 class="section-title scroll-reveal">Investment in Excellence</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <h3 class="plan-name">Foundation</h3>
+                <div class="plan-price">$60<span>/hr</span></div>
+                <div class="plan-duration">Single Session</div>
+                <ul class="plan-features">
+                    <li>One-on-one tutoring</li>
+                    <li>Customized lesson plan</li>
+                    <li>Progress tracking</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="#booking" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card recommended scroll-reveal" style="transition-delay: 0.1s">
+                <h3 class="plan-name">Excellence</h3>
+                <div class="plan-price">$220<span>/mo</span></div>
+                <div class="plan-duration">4 Sessions per Month</div>
+                <ul class="plan-features">
+                    <li>Weekly one-on-one sessions</li>
+                    <li>Comprehensive study materials</li>
+                    <li>Priority scheduling</li>
+                    <li>24/7 chat support</li>
+                    <li>Progress reports</li>
+                </ul>
+                <a href="#booking" class="cta-button">Choose Excellence</a>
+            </div>
+            <div class="pricing-card scroll-reveal" style="transition-delay: 0.2s">
+                <h3 class="plan-name">Premium</h3>
+                <div class="plan-price">$400<span>/mo</span></div>
+                <div class="plan-duration">8 Sessions per Month</div>
+                <ul class="plan-features">
+                    <li>Bi-weekly intensive sessions</li>
+                    <li>Multi-subject support</li>
+                    <li>Exam preparation</li>
+                    <li>Custom resource creation</li>
+                    <li>Parent consultations</li>
+                    <li>Unlimited support</li>
+                </ul>
+                <a href="#booking" class="cta-button">Go Premium</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <div class="booking-section">
+            <h2 class="section-title scroll-reveal">Book Your Session</h2>
+            <p class="problem-text scroll-reveal" style="margin-bottom: 2rem;">
+                Ready to begin your journey to academic excellence? Schedule your first session with one of our expert tutors.
+            </p>
+            <div class="booking-container">
+                <div class="cal-embed">
+                    <!-- Cal.com embed code goes here -->
+                    <p>Cal.com booking widget will be embedded here.<br>Replace this with your actual Cal.com embed code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">CLARITAS ACADEMICS</div>
+        <div class="footer-nav">
+            <a href="#home">Home</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#subjects">Subjects</a>
+            <a href="tutors.html">Tutors</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#booking">Book Now</a>
+        </div>
+        <div class="copyright">
+            © 2026 Claritas Academics. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+
+            // Trigger arrow animation
+            const arrowElements = document.querySelectorAll('.scroll-trigger-arrow');
+            if (arrowElements.length > 0) {
+                const arrowContainer = document.querySelector('.arrow-path-container');
+                if (arrowContainer) {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = arrowContainer.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        arrowElements.forEach(el => {
+                            if (!el.classList.contains('animate')) {
+                                el.classList.add('animate');
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        // Counter animation for metrics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.metric-number');
+            
+            counters.forEach(counter => {
+                if (counter.classList.contains('counted')) return;
+                
+                const windowHeight = window.innerHeight;
+                const elementTop = counter.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 150) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+                    
+                    counter.classList.add('counted');
+                    
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                }
+            });
+        }
+
+        // Initialize animations on scroll
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            animateCounters();
+        });
+
+        // Initial check on page load
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            animateCounters();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

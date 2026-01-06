@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Tutors - Claritas Academics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --gold: #c9a961;
+            --text: #2d2d2d;
+            --light-text: #666;
+            --bg: #fafafa;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .page-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--light-text);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        /* Philosophy Section */
+        .philosophy-intro {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 5% 4rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .intro-text strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Tutors Grid */
+        .tutors-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5% 8rem;
+        }
+
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .tutor-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .tutor-card:nth-child(1) { animation-delay: 0.1s; }
+        .tutor-card:nth-child(2) { animation-delay: 0.2s; }
+        .tutor-card:nth-child(3) { animation-delay: 0.3s; }
+        .tutor-card:nth-child(4) { animation-delay: 0.4s; }
+        .tutor-card:nth-child(5) { animation-delay: 0.5s; }
+        .tutor-card:nth-child(6) { animation-delay: 0.6s; }
+        .tutor-card:nth-child(7) { animation-delay: 0.7s; }
+        .tutor-card:nth-child(8) { animation-delay: 0.8s; }
+        .tutor-card:nth-child(9) { animation-delay: 0.9s; }
+
+        .tutor-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .tutor-image {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tutor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .tutor-info {
+            padding: 2rem;
+        }
+
+        .tutor-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .tutor-subjects {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .tutor-preview {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .view-profile {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-profile:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 25px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 350px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px 25px 0 0;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .modal-image {
+            font-size: 8rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-tutor-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .modal-tutor-subjects {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .modal-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .credentials-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .credentials-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .page-header {
+                padding: 10rem 5% 4rem;
+            }
+
+            .tutors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .modal-content {
+                max-height: 95vh;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">CLARITAS</div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="claritas-academics.html#home">Home</a></li>
+            <li><a href="claritas-academics.html#philosophy">Philosophy</a></li>
+            <li><a href="claritas-academics.html#subjects">Subjects</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="claritas-academics.html#pricing">Pricing</a></li>
+            <li><a href="claritas-academics.html#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Meet Our Tutors</h1>
+        <p class="page-subtitle">
+            Every tutor at Claritas Academics is carefully selected for their expertise, 
+            teaching ability, and commitment to student success.
+        </p>
+    </div>
+
+    <!-- Philosophy Intro -->
+    <div class="philosophy-intro">
+        <p class="intro-text">
+            Our tutors are more than subject experts—they are <strong>mentors</strong>, <strong>guides</strong>, 
+            and <strong>partners</strong> in your academic journey. Each brings years of teaching experience, 
+            exceptional qualifications, and a genuine passion for helping students achieve clarity, 
+            build confidence, and deliver outstanding results.
+        </p>
+    </div>
+
+    <!-- Tutors Grid -->
+    <div class="tutors-section">
+        <div class="tutors-grid">
+            <!-- Tutor 1 -->
+            <div class="tutor-card" onclick="openModal('tutor1')">
+                <div class="tutor-image">👨‍🏫</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Dr. James Mitchell</h3>
+                    <p class="tutor-subjects">Mathematics & Physics</p>
+                    <p class="tutor-preview">
+                        PhD in Applied Mathematics with 12 years of teaching experience. 
+                        Specializes in making complex concepts accessible.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 2 -->
+            <div class="tutor-card" onclick="openModal('tutor2')">
+                <div class="tutor-image">👩‍🔬</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Sarah Chen</h3>
+                    <p class="tutor-subjects">Chemistry & Biology</p>
+                    <p class="tutor-preview">
+                        Master's in Biochemistry with a passion for hands-on learning. 
+                        Brings real-world applications to every lesson.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 3 -->
+            <div class="tutor-card" onclick="openModal('tutor3')">
+                <div class="tutor-image">👨‍💻</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Alex Rodriguez</h3>
+                    <p class="tutor-subjects">Computer Science</p>
+                    <p class="tutor-preview">
+                        Software engineer turned educator with expertise in programming 
+                        fundamentals and algorithm design.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 4 -->
+            <div class="tutor-card" onclick="openModal('tutor4')">
+                <div class="tutor-image">👩‍🏫</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Emma Thompson</h3>
+                    <p class="tutor-subjects">English Literature & Writing</p>
+                    <p class="tutor-preview">
+                        Published author and literature specialist. Helps students develop 
+                        critical thinking and exceptional writing skills.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 5 -->
+            <div class="tutor-card" onclick="openModal('tutor5')">
+                <div class="tutor-image">👨‍🎓</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Michael Okonkwo</h3>
+                    <p class="tutor-subjects">History & Social Sciences</p>
+                    <p class="tutor-preview">
+                        MA in International Relations with a gift for making history 
+                        relevant and engaging for modern students.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 6 -->
+            <div class="tutor-card" onclick="openModal('tutor6')">
+                <div class="tutor-image">👩‍🎨</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Sofia Patel</h3>
+                    <p class="tutor-subjects">Mathematics & Statistics</p>
+                    <p class="tutor-preview">
+                        Statistics PhD specializing in data analysis. Makes numbers 
+                        intuitive and problem-solving enjoyable.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 7 -->
+            <div class="tutor-card" onclick="openModal('tutor7')">
+                <div class="tutor-image">👨‍🔬</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Dr. Robert Kim</h3>
+                    <p class="tutor-subjects">Physics & Engineering</p>
+                    <p class="tutor-preview">
+                        Mechanical engineer with a passion for physics education. 
+                        Connects theory to real-world engineering applications.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 8 -->
+            <div class="tutor-card" onclick="openModal('tutor8')">
+                <div class="tutor-image">👩‍💼</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">Isabella Martinez</h3>
+                    <p class="tutor-subjects">Business & Economics</p>
+                    <p class="tutor-preview">
+                        Former financial analyst with an MBA. Teaches economics 
+                        through practical business cases and current events.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+
+            <!-- Tutor 9 -->
+            <div class="tutor-card" onclick="openModal('tutor9')">
+                <div class="tutor-image">👨‍🎨</div>
+                <div class="tutor-info">
+                    <h3 class="tutor-name">David Lee</h3>
+                    <p class="tutor-subjects">Creative Arts & Design</p>
+                    <p class="tutor-preview">
+                        Professional artist and design educator. Nurtures creativity 
+                        while teaching fundamental artistic principles.
+                    </p>
+                    <span class="view-profile">View Full Profile</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="tutorModal" class="modal" onclick="closeModalOnOutside(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-image" id="modalImage">👨‍🏫</div>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">CLARITAS ACADEMICS</div>
+        <div class="footer-nav">
+            <a href="claritas-academics.html#home">Home</a>
+            <a href="claritas-academics.html#philosophy">Philosophy</a>
+            <a href="claritas-academics.html#subjects">Subjects</a>
+            <a href="tutors.html">Tutors</a>
+            <a href="claritas-academics.html#pricing">Pricing</a>
+            <a href="claritas-academics.html#booking">Book Now</a>
+        </div>
+        <div class="copyright">
+            © 2026 Claritas Academics. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Tutor data
+        const tutorData = {
+            tutor1: {
+                icon: '👨‍🏫',
+                name: 'Dr. James Mitchell',
+                subjects: 'Mathematics & Physics',
+                bio: 'Dr. Mitchell brings over 12 years of teaching experience and a PhD in Applied Mathematics from Stanford University. His approach focuses on building deep conceptual understanding rather than rote memorization, helping students see the beauty and logic in mathematical thinking.',
+                approach: 'I believe mathematics is a language that describes our world. My teaching methodology centers on connecting abstract concepts to real-world applications, making even the most complex topics accessible and relevant. Through structured problem-solving and personalized guidance, I help students develop confidence and genuine understanding.',
+                credentials: [
+                    'PhD in Applied Mathematics, Stanford University',
+                    '12+ years teaching experience',
+                    'Published researcher in mathematical modeling',
+                    'Specialized in exam preparation (SAT, ACT, AP)',
+                    'Average student improvement: 2 grade levels'
+                ]
+            },
+            tutor2: {
+                icon: '👩‍🔬',
+                name: 'Sarah Chen',
+                subjects: 'Chemistry & Biology',
+                bio: 'With a Master\'s degree in Biochemistry and 8 years of laboratory and teaching experience, Sarah excels at making science tangible and exciting. Her students consistently report that her lessons transform abstract theories into understandable, memorable concepts.',
+                approach: 'Science comes alive when students can see, touch, and experiment. I use a hands-on approach combined with visual learning techniques to ensure concepts stick. Every session includes practical examples, real-world connections, and interactive problem-solving that makes learning engaging and effective.',
+                credentials: [
+                    'Master\'s in Biochemistry, UC Berkeley',
+                    '8 years teaching experience',
+                    'Former research scientist',
+                    'Expertise in AP Biology and Chemistry',
+                    'Created innovative teaching materials used by 500+ students'
+                ]
+            },
+            tutor3: {
+                icon: '👨‍💻',
+                name: 'Alex Rodriguez',
+                subjects: 'Computer Science',
+                bio: 'Alex transitioned from a successful career as a software engineer at major tech companies to pursue his passion for education. He brings real-world programming experience and industry insights to every lesson, preparing students not just for exams but for careers in technology.',
+                approach: 'Coding is a skill learned by doing. My teaching method emphasizes project-based learning where students build real applications while mastering fundamental concepts. I focus on problem-solving patterns, clean code practices, and debugging strategies that create confident, capable programmers.',
+                credentials: [
+                    'BS in Computer Science, MIT',
+                    '10 years software engineering experience',
+                    'Expert in Python, Java, JavaScript, and C++',
+                    'Specialized in algorithms and data structures',
+                    'Helped 50+ students secure tech internships'
+                ]
+            },
+            tutor4: {
+                icon: '👩‍🏫',
+                name: 'Emma Thompson',
+                subjects: 'English Literature & Writing',
+                bio: 'Emma is a published author and literature specialist with a gift for helping students find their voice in writing. Her expertise spans literary analysis, essay composition, and creative writing, with a track record of helping students achieve top scores in English examinations.',
+                approach: 'Great writing starts with great reading. I teach students to analyze literature deeply, understand authorial techniques, and apply these insights to their own writing. Through personalized feedback and structured practice, students develop critical thinking skills and learn to express complex ideas with clarity and sophistication.',
+                credentials: [
+                    'MA in English Literature, Oxford University',
+                    'Published author (3 novels, numerous articles)',
+                    '9 years teaching experience',
+                    'Specialized in AP English and IB Literature',
+                    '95% of students achieve A grades'
+                ]
+            },
+            tutor5: {
+                icon: '👨‍🎓',
+                name: 'Michael Okonkwo',
+                subjects: 'History & Social Sciences',
+                bio: 'Michael\'s passion for history and international affairs shines through in every lesson. With a Master\'s in International Relations and extensive travel experience, he brings global perspectives and contemporary relevance to historical studies, making the past come alive for his students.',
+                approach: 'History isn\'t just dates and facts—it\'s the story of humanity. I connect historical events to current affairs, helping students understand patterns, causes, and consequences. Through engaging narratives and critical analysis, students develop historical thinking skills that serve them far beyond the classroom.',
+                credentials: [
+                    'MA in International Relations, Georgetown University',
+                    '7 years teaching experience',
+                    'Expert in World History, US History, and Government',
+                    'Model UN coach with award-winning teams',
+                    'Students consistently achieve top exam scores'
+                ]
+            },
+            tutor6: {
+                icon: '👩‍🎨',
+                name: 'Sofia Patel',
+                subjects: 'Mathematics & Statistics',
+                bio: 'Dr. Patel is a statistics PhD who specializes in making quantitative reasoning intuitive and enjoyable. Her unique approach demystifies complex mathematical concepts and helps students develop analytical skills applicable across all STEM fields.',
+                approach: 'Mathematics is about patterns and logic, not memorization. I use visual methods, real data sets, and practical applications to help students understand the "why" behind the formulas. My goal is to build genuine mathematical intuition that enables students to tackle any problem with confidence.',
+                credentials: [
+                    'PhD in Statistics, Columbia University',
+                    '11 years teaching experience',
+                    'Expert in Calculus, Statistics, and Data Analysis',
+                    'Developed innovative teaching methodologies',
+                    'Students average 35% improvement in test scores'
+                ]
+            },
+            tutor7: {
+                icon: '👨‍🔬',
+                name: 'Dr. Robert Kim',
+                subjects: 'Physics & Engineering',
+                bio: 'Dr. Kim is a mechanical engineer with a passion for physics education. His background in both theoretical physics and practical engineering gives him a unique perspective on making complex physical concepts understandable and relevant to real-world applications.',
+                approach: 'Physics explains how our world works. I teach through demonstrations, thought experiments, and problem-solving that connects theory to everyday phenomena. By showing students the engineering applications of physics principles, I make the subject engaging and purposeful.',
+                credentials: [
+                    'PhD in Mechanical Engineering, Caltech',
+                    'Former aerospace engineer',
+                    '8 years teaching experience',
+                    'Specialized in AP Physics and Engineering fundamentals',
+                    'Students achieve 90%+ success rate in physics courses'
+                ]
+            },
+            tutor8: {
+                icon: '👩‍💼',
+                name: 'Isabella Martinez',
+                subjects: 'Business & Economics',
+                bio: 'Isabella brings Wall Street expertise to the classroom with her background as a financial analyst and MBA from Wharton. She teaches economics and business through real cases, current events, and practical applications that prepare students for both academic success and career readiness.',
+                approach: 'Economics and business come alive through real-world examples. I use current events, case studies, and financial simulations to teach economic principles and business strategy. Students learn to think like analysts, understanding markets, finance, and economic policy in depth.',
+                credentials: [
+                    'MBA, Wharton School of Business',
+                    '5 years as financial analyst',
+                    '6 years teaching experience',
+                    'Expert in Economics, Finance, and Business Strategy',
+                    'Students achieve top scores in AP Economics'
+                ]
+            },
+            tutor9: {
+                icon: '👨‍🎨',
+                name: 'David Lee',
+                subjects: 'Creative Arts & Design',
+                bio: 'David is a professional artist and design educator who has exhibited internationally. He combines technical skill instruction with creative exploration, helping students develop their artistic voice while mastering fundamental principles of visual arts and design.',
+                approach: 'Art is about expression and technique working together. I teach foundational skills while encouraging personal creative exploration. Through projects that balance structure and freedom, students gain technical competence and develop their unique artistic identity.',
+                credentials: [
+                    'BFA in Visual Arts, Rhode Island School of Design',
+                    'Professional artist with international exhibitions',
+                    '10 years teaching experience',
+                    'Expert in drawing, painting, digital design',
+                    'Students admitted to top art programs nationwide'
+                ]
+            }
+        };
+
+        function openModal(tutorId) {
+            const tutor = tutorData[tutorId];
+            const modal = document.getElementById('tutorModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalBody = document.getElementById('modalBody');
+
+            modalImage.textContent = tutor.icon;
+            
+            modalBody.innerHTML = `
+                <h2 class="modal-tutor-name">${tutor.name}</h2>
+                <p class="modal-tutor-subjects">${tutor.subjects}</p>
+                
+                <h3 class="section-heading">About</h3>
+                <p class="modal-text">${tutor.bio}</p>
+                
+                <h3 class="section-heading">Teaching Approach</h3>
+                <p class="modal-text">${tutor.approach}</p>
+                
+                <h3 class="section-heading">Credentials & Expertise</h3>
+                <ul class="credentials-list">
+                    ${tutor.credentials.map(cred => `<li>${cred}</li>`).join('')}
+                </ul>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('tutorModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOutside(event) {
+            if (event.target.id === 'tutorModal') {
+                closeModal();
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
