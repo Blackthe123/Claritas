@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claritas Academics - Clarity. Confidence. Results.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --gold: #c9a961;
+            --text: #2d2d2d;
+            --light-text: #666;
+            --bg: #fafafa;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: none; /* Hidden by default, shows if image fails to load */
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(15, 76, 117, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--light-text);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: var(--light-text);
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Problem Context Section */
+        .problem-context {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 5rem 4rem;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.08);
+        }
+
+        .problem-text {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            line-height: 1.8;
+            color: var(--text);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .problem-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Impact Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease, transform 0.3s ease;
+        }
+
+        .metric-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        .metric-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            letter-spacing: 1px;
+        }
+
+        /* Philosophy Flow */
+        .philosophy-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text);
+            border-radius: 20px;
+            padding: 6rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-flow {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 2rem 0;
+        }
+
+        /* SVG Arrow Path */
+        .arrow-path-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 200px;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .arrow-path {
+            width: 100%;
+            height: 100%;
+        }
+
+        .arrow-line {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 3;
+            stroke-dasharray: 1200;
+            stroke-dashoffset: 1200;
+            filter: drop-shadow(0 0 8px rgba(15, 76, 117, 0.4));
+        }
+
+        .arrow-line.animate {
+            animation: drawArrow 3s ease-in-out forwards;
+        }
+
+        @keyframes drawArrow {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .arrow-head {
+            fill: var(--accent);
+            opacity: 0;
+            filter: drop-shadow(0 0 8px rgba(15, 76, 117, 0.4));
+        }
+
+        .arrow-head.animate {
+            animation: fadeInArrowHead 0.5s ease-in 2.8s forwards;
+        }
+
+        @keyframes fadeInArrowHead {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Philosophy Stages */
+        .philosophy-stage {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .philosophy-stage.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-circle {
+            width: 220px;
+            height: 220px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-circle::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .philosophy-stage:hover .stage-circle::before {
+            opacity: 1;
+        }
+
+        .philosophy-stage:hover .stage-circle {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .stage-image {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Replace this with actual images */
+        .stage-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .stage-content {
+            text-align: center;
+            max-width: 220px;
+        }
+
+        .stage-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .stage-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+
+        /* Subject Category Cards */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .subject-category-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .subject-category-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .subject-category-card:hover {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        .category-header {
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .subject-category-card:hover .category-header {
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.02) 0%, rgba(201, 169, 97, 0.02) 100%);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .subject-description {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .expand-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .expand-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-category-card.expanded .expand-arrow {
+            transform: rotate(180deg);
+        }
+
+        .subject-category-card.expanded .expand-text::after {
+            content: '';
+        }
+
+        /* Category Content (Hidden by default) */
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .subject-category-card.expanded .category-content {
+            max-height: 600px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .subject-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-item {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text);
+            border: 1px solid #e9ecef;
+            font-weight: 500;
+        }
+
+        /* Tutors Showcase */
+        .tutors-showcase {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .showcase-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tutor-grid-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tutor-mini-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 1rem;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tutor-mini-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(15, 76, 117, 0.15);
+        }
+
+        .tutor-mini-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .tutor-mini-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .tutor-mini-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .tutor-mini-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            justify-content: center;
+        }
+
+        .mini-subject-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.08) 0%, rgba(201, 169, 97, 0.08) 100%);
+            color: var(--accent);
+            border-radius: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .find-tutor-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .find-tutor-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card.recommended {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.recommended::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.recommended:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .plan-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+        }
+
+        .plan-duration {
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%);
+            border-radius: 20px;
+            padding: 5rem 4rem;
+            text-align: center;
+        }
+
+        .booking-cta-container {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .booking-instruction {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .browse-tutors-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .browse-tutors-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(15, 76, 117, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-tagline {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .contact-item strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .philosophy-flow {
+                flex-direction: column;
+                gap: 3rem;
+                padding: 2rem 0;
+            }
+
+            .arrow-path-container {
+                display: none; /* Hide arrow on mobile for cleaner look */
+            }
+
+            .stage-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .stage-image {
+                width: 120px;
+                height: 120px;
+                font-size: 4rem;
+            }
+
+            .metrics-grid,
+            .subjects-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-context {
+                padding: 3rem 2rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="logo-2.png" alt="Claritas Academics" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">CLARITAS</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>CLARITAS<br>ACADEMICS</h1>
+            <p class="tagline">Clarity. Confidence. Results.</p>
+        </div>
+        <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+    </section>
+
+    <!-- Problem Context Section -->
+    <section id="problem">
+        <div class="problem-context">
+            <p class="problem-text scroll-reveal">
+                In today's demanding academic landscape, students face overwhelming information without structure or guidance. 
+                They struggle with clarity in understanding complex concepts, confidence in applying their knowledge, 
+                and achieving the results they deserve. At Claritas Academics, we transform this chaos into a clear, 
+                structured path to academic excellence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Impact Metrics -->
+    <section id="metrics">
+        <h2 class="section-title scroll-reveal">Our Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-card scroll-reveal">
+                <div class="metric-number" data-target="50">0</div>
+                <div class="metric-label">Expert Tutors</div>
+            </div>
+            <div class="metric-card scroll-reveal" style="transition-delay: 0.1s">
+                <div class="metric-number" data-target="1200">0</div>
+                <div class="metric-label">Students Taught</div>
+            </div>
+            <div class="metric-card scroll-reveal" style="transition-delay: 0.2s">
+                <div class="metric-number" data-target="98">0</div>
+                <div class="metric-label">Success Rate %</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy">
+        <div class="philosophy-section">
+            <h2 class="section-title scroll-reveal">Our Philosophy</h2>
+            <div class="philosophy-flow">
+                <!-- Animated Arrow Path (SVG) -->
+                <div class="arrow-path-container">
+                    <svg class="arrow-path" viewBox="0 0 1000 200" preserveAspectRatio="none">
+                        <!-- Curved arrow path -->
+                        <path class="arrow-line scroll-trigger-arrow" 
+                              d="M 80 100 Q 250 40, 420 100 T 920 100" />
+                        <!-- Arrow head -->
+                        <polygon class="arrow-head scroll-trigger-arrow" 
+                                 points="920,100 905,90 905,110" />
+                    </svg>
+                </div>
+
+                <!-- Stage 1: Clarity -->
+                <div class="philosophy-stage scroll-reveal" data-stage="1">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="clarity-stickman.png" alt="Clarity" onerror="this.parentElement.innerHTML='🤔'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Clarity</h3>
+                        <p class="stage-description">
+                            Breaking down complex concepts into clear, understandable components
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Confidence -->
+                <div class="philosophy-stage scroll-reveal" data-stage="2" style="transition-delay: 0.2s">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="confidence-stickman.png" alt="Confidence" onerror="this.parentElement.innerHTML='📚'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Confidence</h3>
+                        <p class="stage-description">
+                            Building self-assurance through personalized guidance and practice
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Results -->
+                <div class="philosophy-stage scroll-reveal" data-stage="3" style="transition-delay: 0.4s">
+                    <div class="stage-circle">
+                        <div class="stage-image">
+                            <!-- Replace emoji with your stick figure image -->
+                            <img src="results-stickman.png" alt="Results" onerror="this.parentElement.innerHTML='🎉'">
+                        </div>
+                    </div>
+                    <div class="stage-content">
+                        <h3 class="stage-title">Results</h3>
+                        <p class="stage-description">
+                            Achieving outstanding academic outcomes that exceed expectations
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects">
+        <h2 class="section-title scroll-reveal">Subjects We Cover</h2>
+        <div class="subjects-grid">
+            <!-- Mathematics -->
+            <div class="subject-category-card scroll-reveal">
+                <div class="category-header">
+                    <div class="subject-icon">📐</div>
+                    <h3 class="subject-title">Mathematics</h3>
+                    <p class="subject-description">
+                        Advanced mathematical concepts from standard to extension levels
+                    </p>
+                    <div class="subject-list">
+                        <div class="subject-item">Math Advanced</div>
+                        <div class="subject-item">Math Extension 1</div>
+                        <div class="subject-item">Math Extension 2</div>
+                    </div>
+                    <div class="expand-indicator" onclick="toggleCategory('math')">
+                        <span class="expand-text">View Tutors</span>
+                        <span class="expand-arrow">↓</span>
+                    </div>
+                </div>
+                <div class="category-content" id="math-content">
+                    <div class="tutors-showcase">
+                        <h4 class="showcase-title">Our Mathematics Tutors</h4>
+                        <div class="tutor-grid-mini">
+                            <a href="tutors.html#tutor1" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👨‍🏫</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Dr. James Mitchell</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Math Advanced</span>
+                                        <span class="mini-subject-tag">Math Ext 1</span>
+                                        <span class="mini-subject-tag">Math Ext 2</span>
+                                        <span class="mini-subject-tag">Physics</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor6" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👩‍🎨</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Sofia Patel</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Math Advanced</span>
+                                        <span class="mini-subject-tag">Math Ext 1</span>
+                                        <span class="mini-subject-tag">Math Ext 2</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="tutors.html" class="find-tutor-btn">View All Math Tutors →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Science -->
+            <div class="subject-category-card scroll-reveal" style="transition-delay: 0.1s">
+                <div class="category-header">
+                    <div class="subject-icon">🔬</div>
+                    <h3 class="subject-title">Science</h3>
+                    <p class="subject-description">
+                        Physics and Chemistry taught with clarity and practical application
+                    </p>
+                    <div class="subject-list">
+                        <div class="subject-item">Physics</div>
+                        <div class="subject-item">Chemistry</div>
+                    </div>
+                    <div class="expand-indicator" onclick="toggleCategory('science')">
+                        <span class="expand-text">View Tutors</span>
+                        <span class="expand-arrow">↓</span>
+                    </div>
+                </div>
+                <div class="category-content" id="science-content">
+                    <div class="tutors-showcase">
+                        <h4 class="showcase-title">Our Science Tutors</h4>
+                        <div class="tutor-grid-mini">
+                            <a href="tutors.html#tutor1" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👨‍🏫</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Dr. James Mitchell</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Physics</span>
+                                        <span class="mini-subject-tag">Math Advanced</span>
+                                        <span class="mini-subject-tag">Math Ext 1</span>
+                                        <span class="mini-subject-tag">Math Ext 2</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor2" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👩‍🔬</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Sarah Chen</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Chemistry</span>
+                                        <span class="mini-subject-tag">Physics</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor7" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👨‍🔬</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Dr. Robert Kim</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Physics</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="tutors.html" class="find-tutor-btn">View All Science Tutors →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English -->
+            <div class="subject-category-card scroll-reveal" style="transition-delay: 0.2s">
+                <div class="category-header">
+                    <div class="subject-icon">📖</div>
+                    <h3 class="subject-title">English</h3>
+                    <p class="subject-description">
+                        Literature analysis and essay writing at standard and advanced levels
+                    </p>
+                    <div class="subject-list">
+                        <div class="subject-item">English Standard</div>
+                        <div class="subject-item">English Advanced</div>
+                    </div>
+                    <div class="expand-indicator" onclick="toggleCategory('english')">
+                        <span class="expand-text">View Tutors</span>
+                        <span class="expand-arrow">↓</span>
+                    </div>
+                </div>
+                <div class="category-content" id="english-content">
+                    <div class="tutors-showcase">
+                        <h4 class="showcase-title">Our English Tutors</h4>
+                        <div class="tutor-grid-mini">
+                            <a href="tutors.html#tutor4" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👩‍🏫</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Emma Thompson</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">English Standard</span>
+                                        <span class="mini-subject-tag">English Advanced</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="tutors.html" class="find-tutor-btn">View All English Tutors →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Humanities -->
+            <div class="subject-category-card scroll-reveal" style="transition-delay: 0.3s">
+                <div class="category-header">
+                    <div class="subject-icon">🌍</div>
+                    <h3 class="subject-title">Humanities</h3>
+                    <p class="subject-description">
+                        Legal Studies and History with engaging context and analysis
+                    </p>
+                    <div class="subject-list">
+                        <div class="subject-item">Legal Studies</div>
+                        <div class="subject-item">Modern History</div>
+                        <div class="subject-item">Ancient History</div>
+                    </div>
+                    <div class="expand-indicator" onclick="toggleCategory('humanities')">
+                        <span class="expand-text">View Tutors</span>
+                        <span class="expand-arrow">↓</span>
+                    </div>
+                </div>
+                <div class="category-content" id="humanities-content">
+                    <div class="tutors-showcase">
+                        <h4 class="showcase-title">Our Humanities Tutors</h4>
+                        <div class="tutor-grid-mini">
+                            <a href="tutors.html#tutor5" class="tutor-mini-card">
+                                <div class="tutor-mini-photo">👨‍🎓</div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Michael Okonkwo</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Legal Studies</span>
+                                        <span class="mini-subject-tag">Modern History</span>
+                                        <span class="mini-subject-tag">Ancient History</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="tutors.html" class="find-tutor-btn">View All Humanities Tutors →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2 class="section-title scroll-reveal">Investment in Excellence</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <h3 class="plan-name">Foundation</h3>
+                <div class="plan-price">$60<span>/hr</span></div>
+                <div class="plan-duration">Single Session</div>
+                <ul class="plan-features">
+                    <li>One-on-one tutoring</li>
+                    <li>Customized lesson plan</li>
+                    <li>Progress tracking</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="#booking" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card recommended scroll-reveal" style="transition-delay: 0.1s">
+                <h3 class="plan-name">Excellence</h3>
+                <div class="plan-price">$220<span>/mo</span></div>
+                <div class="plan-duration">4 Sessions per Month</div>
+                <ul class="plan-features">
+                    <li>Weekly one-on-one sessions</li>
+                    <li>Comprehensive study materials</li>
+                    <li>Priority scheduling</li>
+                    <li>24/7 chat support</li>
+                    <li>Progress reports</li>
+                </ul>
+                <a href="#booking" class="cta-button">Choose Excellence</a>
+            </div>
+            <div class="pricing-card scroll-reveal" style="transition-delay: 0.2s">
+                <h3 class="plan-name">Premium</h3>
+                <div class="plan-price">$400<span>/mo</span></div>
+                <div class="plan-duration">8 Sessions per Month</div>
+                <ul class="plan-features">
+                    <li>Bi-weekly intensive sessions</li>
+                    <li>Multi-subject support</li>
+                    <li>Exam preparation</li>
+                    <li>Custom resource creation</li>
+                    <li>Parent consultations</li>
+                    <li>Unlimited support</li>
+                </ul>
+                <a href="#booking" class="cta-button">Go Premium</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <div class="booking-section">
+            <h2 class="section-title scroll-reveal">Book a Free Consultation</h2>
+            <p class="problem-text scroll-reveal" style="margin-bottom: 2rem;">
+                Ready to get started? Book a free consultation with one of our expert tutors to discuss your goals, 
+                availability, and the best path forward. We'll exchange contact information and create a personalized 
+                learning plan tailored to your needs.
+            </p>
+            <div class="booking-cta-container scroll-reveal">
+                <p class="booking-instruction">
+                    Choose your ideal tutor, then book a free 15-minute consultation to discuss how we can help you achieve academic excellence.
+                </p>
+                <a href="tutors.html" class="browse-tutors-btn">Browse Our Tutors →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">CLARITAS ACADEMICS</div>
+        <div class="footer-tagline">Clarity. Confidence. Results.</div>
+    <!--Removed    
+        <div class="footer-nav">
+            <a href="#home">Home</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#subjects">Subjects</a>
+            <a href="tutors.html">Tutors</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#booking">Book Now</a>
+        </div>
+    -->
+        <div class="footer-contact">
+            <div class="contact-item">
+                <strong>ABN:</strong> 12 345 678 910
+            </div>
+            <div class="contact-item">
+                <strong>Email:</strong> <a href="mailto:info@claritasacademics.com">info@claritasacademics.com</a>
+            </div>
+            <div class="contact-item">
+                <strong>Phone:</strong> <a href="tel:+61412345678">+61 412 345 678</a>
+            </div>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter/X" class="social-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="copyright">
+            © 2026 Claritas Academics. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Toggle subject category expansion
+        function toggleCategory(categoryId) {
+            event.stopPropagation(); // Prevent event bubbling
+            const expandIndicator = event.currentTarget;
+            const card = expandIndicator.closest('.subject-category-card');
+            
+            // Close all other categories
+            document.querySelectorAll('.subject-category-card').forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current category
+            card.classList.toggle('expanded');
+        }
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+
+            // Trigger arrow animation
+            const arrowElements = document.querySelectorAll('.scroll-trigger-arrow');
+            if (arrowElements.length > 0) {
+                const arrowContainer = document.querySelector('.arrow-path-container');
+                if (arrowContainer) {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = arrowContainer.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        arrowElements.forEach(el => {
+                            if (!el.classList.contains('animate')) {
+                                el.classList.add('animate');
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        // Counter animation for metrics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.metric-number');
+            
+            counters.forEach(counter => {
+                if (counter.classList.contains('counted')) return;
+                
+                const windowHeight = window.innerHeight;
+                const elementTop = counter.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 150) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+                    
+                    counter.classList.add('counted');
+                    
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                }
+            });
+        }
+
+        // Initialize animations on scroll
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            animateCounters();
+        });
+
+        // Initial check on page load
+        window.addEventListener('load', () => {
+            revealOnScroll();
+            animateCounters();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
