@@ -668,12 +668,12 @@
         </div>
         <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
         <ul id="nav-menu">
-            <li><a href="claritas-academics.html#home">Home</a></li>
-            <li><a href="claritas-academics.html#philosophy">Philosophy</a></li>
-            <li><a href="claritas-academics.html#subjects">Subjects</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#philosophy">Philosophy</a></li>
+            <li><a href="index.html#subjects">Subjects</a></li>
             <li><a href="tutors.html">Tutors</a></li>
-            <li><a href="claritas-academics.html#pricing">Pricing</a></li>
-            <li><a href="claritas-academics.html#booking">Book Now</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#booking">Book Now</a></li>
         </ul>
     </nav>
 
@@ -721,7 +721,7 @@
 
             <!-- Tutor 2 -->
             <div class="tutor-card" id="tutor2" onclick="openModal('tutor2')">
-                <div class="tutor-image"><img src="ned-resize.png" alt="Ayush Image"></div>
+                <div class="tutor-image"><img src="ned-resize.png" alt="Ned Image"></div>
                 <div class="tutor-info">
                     <h3 class="tutor-name">Ned Reside</h3>
                     <div class="tutor-subjects-tags">
@@ -768,7 +768,7 @@
                 <strong>Email:</strong> <a href="mailto:info@claritasacademics.com">info@claritasacademics.com</a>
             </div>
             <div class="contact-item">
-                <strong>Phone:</strong> <a href="tel:+61412345678">+61 412 345 678</a>
+                <strong>Phone:</strong> <a href="tel:+61406227992">+61 406 227 992</a>
             </div>
         </div>
 
@@ -820,7 +820,8 @@
                     'Published researcher in sarcasm detection',
                     'Arthur Phillip High School Dux',
                     'B Advanced Computer Science (Honours), UNSW'
-                ]
+                ],
+                meeting: "https://cal.com/ayush-yajaman-jxfpvh"
             },
             tutor2: {
                 image: 'banner.png',
@@ -834,7 +835,8 @@
                     'Former research scientist',
                     'Expertise in AP Biology and Chemistry',
                     'Created innovative teaching materials used by 500+ students'
-                ]
+                ],
+                meeting: "https://cal.com/ayush-yajaman-jxfpvh"
             },
             
         };
@@ -866,7 +868,7 @@
                     ${tutor.credentials.map(cred => `<li>${cred}</li>`).join('')}
                 </ul>
 
-                <a href="claritas-academics.html#booking" class="book-session-btn">Book Free Consultation with ${tutor.name.split(' ')[0]}</a>
+                <a href="${tutor.meeting}" class="book-session-btn" target="_blank" rel="noopener noreferrer">Book Free Consultation with ${tutor.name.split(' ')[0]}</a>
             `;
 
             modal.classList.add('active');
