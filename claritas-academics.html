@@ -21,6 +21,7 @@
             --light-text: #666;
             --bg: #fafafa;
             --white: #ffffff;
+            --purple: #2F0A61;
         }
 
         html {
@@ -578,17 +579,25 @@
         }
 
         .tutor-mini-photo {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            flex-shrink: 0;
-        }
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* IMAGE */
+.tutor-mini-photo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 
         .tutor-mini-info {
             display: flex;
@@ -691,6 +700,30 @@
         }
 
         .pricing-card.recommended:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .pricing-card.elite {
+            border: 2px solid var(--purple);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.elite::before {
+            content: 'TOP BANDS GUARANTEED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--purple);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .pricing-card.elite:hover {
             transform: translateY(-10px) scale(1.07);
         }
 
@@ -1064,10 +1097,7 @@
     <section id="problem">
         <div class="problem-context">
             <p class="problem-text scroll-reveal">
-                In today's demanding academic landscape, students face overwhelming information without structure or guidance. 
-                They struggle with clarity in understanding complex concepts, confidence in applying their knowledge, 
-                and achieving the results they deserve. At Claritas Academics, we transform this chaos into a clear, 
-                structured path to academic excellence.
+                WE KNOW! The HSC is demanding. Especially in Years 11 and 12. With overwhelming content and little strategic guidance, students often lose clarity and confidence. At Claritas Academics, we provide Year 11 and 12 students with a structured, results-driven pathway that helps them perform at their best when it matters most.
             </p>
         </div>
     </section>
@@ -1135,7 +1165,7 @@
                     <div class="stage-content">
                         <h3 class="stage-title">Confidence</h3>
                         <p class="stage-description">
-                            Building self-assurance through personalized guidance and practice
+                            Building self-assurance through personalised guidance and practice
                         </p>
                     </div>
                 </div>
@@ -1186,21 +1216,9 @@
                         <h4 class="showcase-title">Our Mathematics Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor1" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👨‍🏫</div>
+                                <div class="tutor-mini-photo"><img src="ayush-shoulder.png"></img></div>
                                 <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Dr. James Mitchell</div>
-                                    <div class="tutor-mini-subjects">
-                                        <span class="mini-subject-tag">Math Advanced</span>
-                                        <span class="mini-subject-tag">Math Ext 1</span>
-                                        <span class="mini-subject-tag">Math Ext 2</span>
-                                        <span class="mini-subject-tag">Physics</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="tutors.html#tutor6" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👩‍🎨</div>
-                                <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Sofia Patel</div>
+                                    <div class="tutor-mini-name">Ayush Yajaman</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Math Advanced</span>
                                         <span class="mini-subject-tag">Math Ext 1</span>
@@ -1236,33 +1254,12 @@
                         <h4 class="showcase-title">Our Science Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor1" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👨‍🏫</div>
+                                <div class="tutor-mini-photo"><img src="ayush-shoulder.png"></img></div>
                                 <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Dr. James Mitchell</div>
+                                    <div class="tutor-mini-name">Ayush Yajaman</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Physics</span>
-                                        <span class="mini-subject-tag">Math Advanced</span>
-                                        <span class="mini-subject-tag">Math Ext 1</span>
-                                        <span class="mini-subject-tag">Math Ext 2</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="tutors.html#tutor2" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👩‍🔬</div>
-                                <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Sarah Chen</div>
-                                    <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Chemistry</span>
-                                        <span class="mini-subject-tag">Physics</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="tutors.html#tutor7" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👨‍🔬</div>
-                                <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Dr. Robert Kim</div>
-                                    <div class="tutor-mini-subjects">
-                                        <span class="mini-subject-tag">Physics</span>
                                     </div>
                                 </div>
                             </a>
@@ -1293,10 +1290,10 @@
                     <div class="tutors-showcase">
                         <h4 class="showcase-title">Our English Tutors</h4>
                         <div class="tutor-grid-mini">
-                            <a href="tutors.html#tutor4" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👩‍🏫</div>
+                            <a href="tutors.html#tutor2" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="ned-shoulder.png"></img></div>
                                 <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Emma Thompson</div>
+                                    <div class="tutor-mini-name">Ned Reside</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">English Standard</span>
                                         <span class="mini-subject-tag">English Advanced</span>
@@ -1331,10 +1328,10 @@
                     <div class="tutors-showcase">
                         <h4 class="showcase-title">Our Humanities Tutors</h4>
                         <div class="tutor-grid-mini">
-                            <a href="tutors.html#tutor5" class="tutor-mini-card">
-                                <div class="tutor-mini-photo">👨‍🎓</div>
+                            <a href="tutors.html#tutor2" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="ned-shoulder.png"></img></div>
                                 <div class="tutor-mini-info">
-                                    <div class="tutor-mini-name">Michael Okonkwo</div>
+                                    <div class="tutor-mini-name">Ned Reside</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Legal Studies</span>
                                         <span class="mini-subject-tag">Modern History</span>
@@ -1352,46 +1349,57 @@
 
     <!-- Pricing Section -->
     <section id="pricing">
-        <h2 class="section-title scroll-reveal">Investment in Excellence</h2>
+        <h2 class="section-title scroll-reveal">Invest In The Best</h2>
         <div class="pricing-grid">
             <div class="pricing-card scroll-reveal">
                 <h3 class="plan-name">Foundation</h3>
-                <div class="plan-price">$60<span>/hr</span></div>
-                <div class="plan-duration">Single Session</div>
+                <div class="plan-price">$40<span>/hr</span></div>
+                <div class="plan-duration">Offline Group Session</div>
                 <ul class="plan-features">
-                    <li>One-on-one tutoring</li>
-                    <li>Customized lesson plan</li>
-                    <li>Progress tracking</li>
-                    <li>Email support</li>
+                    <li>Technique driven teaching</li>
+                    <li>Immediate Marking & Feedback</li>
+                    <li>Syllabus aligned content</li>
+                    <li>Exam writing tips</li>
                 </ul>
                 <a href="#booking" class="cta-button">Get Started</a>
             </div>
             <div class="pricing-card recommended scroll-reveal" style="transition-delay: 0.1s">
                 <h3 class="plan-name">Excellence</h3>
-                <div class="plan-price">$220<span>/mo</span></div>
-                <div class="plan-duration">4 Sessions per Month</div>
+                <div class="plan-price">$60<span>/hr</span></div>
+                <div class="plan-duration">1:1 Online Session</div>
                 <ul class="plan-features">
-                    <li>Weekly one-on-one sessions</li>
-                    <li>Comprehensive study materials</li>
-                    <li>Priority scheduling</li>
-                    <li>24/7 chat support</li>
+                    <li>Personalised teaching</li>
+                    <li>Flexible scheduling</li>
+                    <li>No Physical Commitment</li>
+                    <li>Greater Availability</li>
                     <li>Progress reports</li>
                 </ul>
                 <a href="#booking" class="cta-button">Choose Excellence</a>
             </div>
             <div class="pricing-card scroll-reveal" style="transition-delay: 0.2s">
                 <h3 class="plan-name">Premium</h3>
-                <div class="plan-price">$400<span>/mo</span></div>
-                <div class="plan-duration">8 Sessions per Month</div>
+                <div class="plan-price">$70<span>/hr</span></div>
+                <div class="plan-duration">1:1 Offline Session</div>
                 <ul class="plan-features">
-                    <li>Bi-weekly intensive sessions</li>
-                    <li>Multi-subject support</li>
-                    <li>Exam preparation</li>
-                    <li>Custom resource creation</li>
-                    <li>Parent consultations</li>
-                    <li>Unlimited support</li>
+                    <li>Personalised Teaching</li>
+                    <li>Impactful Feedback & Correction</li>
+                    <li>At Home or Library</li>
+                    <li>Progress Reports</li>
                 </ul>
                 <a href="#booking" class="cta-button">Go Premium</a>
+            </div>
+            <div class="pricing-card elite scroll-reveal" style="transition-delay: 0.2s">
+                <h3 class="plan-name">Elite</h3>
+                <div class="plan-price">$100<span>/hr</span></div>
+                <div class="plan-duration">Everything in Premium and more!</div>
+                <ul class="plan-features">
+                    <li>Customised Resources</li>
+                    <li>Multi-subject support</li>
+                    <li>Exam preparation</li>
+                    <li>Priority Feedback & Scheduling</li>
+                    <li>Unlimited support</li>
+                </ul>
+                <a href="#booking" class="cta-button">Become Elite</a>
             </div>
         </div>
     </section>
