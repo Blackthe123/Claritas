@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMNDRJT0NB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMNDRJT0NB');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Tutors - Claritas Academics</title>
+    <title>Our HSC Tutors - Claritas Academics</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="Claritas Academics has the best HSC tutors - dux, band 6, all rounder, 99+ ATAR? You name it!" />
     <style>
         * {
             margin: 0;
@@ -702,7 +712,7 @@
         <div class="tutors-grid">
             <!-- Tutor 1 -->
             <div class="tutor-card" id="tutor1" onclick="openModal('tutor1')">
-                <div class="tutor-image"><img src="ayush-resize.png" alt="Ayush Image"></div>
+                <div class="tutor-image"><img src="ayush-resize.png" alt="Claritas Academics HSC Tutor: Ayush Yajaman"></div>
                 <div class="tutor-info">
                     <h3 class="tutor-name">Ayush Yajaman</h3>
                     <div class="tutor-subjects-tags">
@@ -722,7 +732,7 @@
 
             <!-- Tutor 2 -->
             <div class="tutor-card" id="tutor2" onclick="openModal('tutor2')">
-                <div class="tutor-image"><img src="ned-resize.png" alt="Ned Image"></div>
+                <div class="tutor-image"><img src="ned-resize.png" alt="Claritas Academics HSC Tutor: Ned Reside"></div>
                 <div class="tutor-info">
                     <h3 class="tutor-name">Ned Reside</h3>
                     <div class="tutor-subjects-tags">
@@ -745,7 +755,7 @@
     <div id="tutorModal" class="modal" onclick="closeModalOnOutside(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
-                <div class="modal-image"><img id="modalImage" alt=""></div>
+                <div class="modal-image"><img id="modalImage" alt="Claritas Academics Banner"></div>
                 <button class="close-modal" onclick="closeModal()">×</button>
             </div>
             <div class="modal-body" id="modalBody">
