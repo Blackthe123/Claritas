@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMNDRJT0NB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMNDRJT0NB');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Claritas Academics</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --gold: #c9a961;
+            --text: #2d2d2d;
+            --light-text: #666;
+            --bg: #fafafa;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(15, 76, 117, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .logo-image {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        .error-code {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(6rem, 15vw, 12rem);
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            opacity: 0.9;
+        }
+
+        .error-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(15, 76, 117, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .helpful-links {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .helpful-links h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-item {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .link-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            color: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .links-grid {
+                flex-direction: column;
+            }
+
+            .link-item {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="logo">
+            <img src="logo-2.png" alt="Claritas Academics" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">CLARITAS</span>
+        </div>
+
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-message">
+            Oops! The page you're looking for seems to have wandered off. 
+            Don't worry—clarity is just a click away.
+        </p>
+
+        <div class="action-buttons">
+            <a href="index.html" class="btn btn-primary">Return Home</a>
+            <a href="tutors.html" class="btn btn-secondary">Meet Our Tutors</a>
+        </div>
+
+        <div class="helpful-links">
+            <h3>Quick Links</h3>
+            <div class="links-grid">
+                <a href="index.html#philosophy" class="link-item">Our Philosophy</a>
+                <a href="index.html#subjects" class="link-item">Subjects</a>
+                <a href="index.html#pricing" class="link-item">Pricing</a>
+                <a href="index.html#booking" class="link-item">Book a Session</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
