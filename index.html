@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMNDRJT0NB"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FMNDRJT0NB');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FMNDRJT0NB');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claritas Academics | HSC Tutoring</title>
     <link rel="icon" href="favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <meta name="description" content="Claritas Academics offers expert tutoring for HSC students, with personalised lessons and tutors with 97-99+ ATARs" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <meta name="description"
+        content="Claritas Academics offers expert tutoring for HSC students, with personalised lessons and tutors with 99+ ATARs and distinguished high achievers." />
     <style>
         * {
             margin: 0;
@@ -63,7 +67,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             opacity: 0;
             animation: fadeInDown 0.8s ease forwards;
         }
@@ -211,7 +215,7 @@
             background: var(--white);
             border-radius: 20px;
             padding: 5rem 4rem;
-            box-shadow: 0 10px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
         }
 
         .problem-text {
@@ -244,7 +248,7 @@
             padding: 3rem 2rem;
             background: var(--white);
             border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease, transform 0.3s ease;
@@ -257,7 +261,7 @@
 
         .metric-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
         }
 
         .metric-number {
@@ -281,7 +285,8 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
             padding: 4rem 2rem;
-            min-height: auto; /* Changed from 120vh to fit content */
+            min-height: auto;
+            /* Changed from 120vh to fit content */
             position: relative;
         }
 
@@ -304,12 +309,14 @@
 
         .philosophy-arrow-path {
             fill: none;
-            stroke: var(--accent); /* Matches your theme */
+            stroke: var(--accent);
+            /* Matches your theme */
             stroke-width: 3;
             stroke-dasharray: 2000;
             stroke-dashoffset: 2000;
             filter: drop-shadow(0 0 8px rgba(15, 76, 117, 0.4));
-            transition: stroke-dashoffset 0.1s linear; /* Smooth linear draw */
+            transition: stroke-dashoffset 0.1s linear;
+            /* Smooth linear draw */
         }
 
         .philosophy-arrow-head {
@@ -336,7 +343,7 @@
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
-        
+
         .philosophy-stage.visible {
             opacity: 1;
             transform: translateY(0);
@@ -346,9 +353,10 @@
            Layout for Clarity (1st) and Results (3rd) 
            We swap columns to: Text Left, Circle Right 
         */
-        .philosophy-stage:nth-child(2), /* 2 because 1 is the SVG */
+        .philosophy-stage:nth-child(2),
+        /* 2 because 1 is the SVG */
         .philosophy-stage:nth-child(4) {
-            grid-template-columns: 1fr 280px; 
+            grid-template-columns: 1fr 280px;
         }
 
         /* Move Circle to the Right for Clarity and Results */
@@ -382,7 +390,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .stage-circle::before {
             content: '';
             position: absolute;
@@ -401,7 +409,7 @@
             transform: scale(1.05);
             box-shadow: 0 15px 50px rgba(15, 76, 117, 0.25);
         }
-        
+
         .philosophy-stage:hover .stage-circle::before {
             opacity: 1;
         }
@@ -421,22 +429,24 @@
         }
 
         .stage-content {
-    /* New styling for the underlay/card */
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Soft shadow to lift it */
-    border: 1px solid rgba(0,0,0,0.03); /* Very subtle border definition */
-    
-    /* Ensure it sits above the arrow line */
-    position: relative;
-    z-index: 2;
-    
-    /* Existing text color */
-    color: var(--text);
-}
+            /* New styling for the underlay/card */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            /* Soft shadow to lift it */
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            /* Very subtle border definition */
+
+            /* Ensure it sits above the arrow line */
+            position: relative;
+            z-index: 2;
+
+            /* Existing text color */
+            color: var(--text);
+        }
 
         .stage-title {
             font-family: 'Cormorant Garamond', serif;
@@ -467,7 +477,7 @@
         .subject-category-card {
             background: var(--white);
             border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             opacity: 0;
             transform: translateY(30px);
@@ -481,7 +491,7 @@
         }
 
         .subject-category-card:hover {
-            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
         }
 
         .category-header {
@@ -688,7 +698,7 @@
             background: var(--white);
             padding: 3rem 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06);
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
@@ -723,7 +733,7 @@
 
         .pricing-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
 
         .pricing-card.recommended:hover {
@@ -913,9 +923,17 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .value-card:nth-child(1) { animation-delay: 0.3s; }
-        .value-card:nth-child(2) { animation-delay: 0.4s; }
-        .value-card:nth-child(3) { animation-delay: 0.5s; }
+        .value-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
 
         .value-card:hover {
             transform: translateY(-10px);
@@ -983,7 +1001,7 @@
             background: white;
             padding: 3rem 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         }
 
         .booking-instruction {
@@ -1122,6 +1140,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1133,6 +1152,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1143,24 +1163,31 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateX(-50%) translateY(0);
             }
+
             50% {
                 transform: translateX(-50%) translateY(-10px);
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-30px) scale(1.05);
             }
@@ -1187,7 +1214,7 @@
                 background: white;
                 flex-direction: column;
                 padding: 2rem;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             }
 
             nav ul.active {
@@ -1201,7 +1228,7 @@
             section {
                 padding: 4rem 5%;
             }
-            
+
             /* Logic to hide complex arrow on mobile and stack items */
             .philosophy-arrow-svg {
                 display: none;
@@ -1229,9 +1256,11 @@
             }
 
             .stage-content {
-        padding: 1.5rem; /* Smaller padding on mobile */
-        text-align: center; /* Ensures text is centered inside the card on mobile */
-    }
+                padding: 1.5rem;
+                /* Smaller padding on mobile */
+                text-align: center;
+                /* Ensures text is centered inside the card on mobile */
+            }
 
             .stage-circle {
                 width: 200px;
@@ -1268,11 +1297,13 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <img src="logo-2.png" alt="Claritas Academics" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="logo-2.png" alt="Claritas Academics" class="logo-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <span class="logo-text">CLARITAS</span>
         </div>
         <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
@@ -1299,7 +1330,10 @@
     <section id="problem">
         <div class="problem-context">
             <p class="problem-text scroll-reveal">
-                WE KNOW! The HSC is demanding, especially in Years 11 and 12. With overwhelming content and little strategic guidance, students often lose clarity and confidence. At Claritas Academics, we provide Year 11 and 12 students with a structured, results-driven pathway that helps them perform at their best when it matters most.
+                WE KNOW! The HSC is demanding, especially in Years 11 and 12. With overwhelming content and little
+                strategic guidance, students often lose clarity and confidence. At Claritas Academics, we provide Year
+                11 and 12 students with a structured, results-driven pathway that helps them perform at their best when
+                it matters most.
             </p>
         </div>
     </section>
@@ -1349,9 +1383,14 @@
                 <div class="stage-content">
                     <h3 class="stage-title">Clarity</h3>
                     <p class="stage-description">
-                        Many students don’t struggle because they aren’t working hard. They struggle because concepts were never explained in a way that truly clicked. You can reread a textbook or do endless questions and still feel stuck, only to realise later that the issue was a small but fundamental misunderstanding.
+                        Many students don’t struggle because they aren’t working hard. They struggle because concepts
+                        were never explained in a way that truly clicked. You can reread a textbook or do endless
+                        questions and still feel stuck, only to realise later that the issue was a small but fundamental
+                        misunderstanding.
                         <br><br>
-                        At Claritas Academics, we focus on clear, intuitive explanations that resolve confusion early. By breaking concepts down the right way, often in just one or two explanations, we save students countless hours of frustration and help them move forward with confidence and direction.
+                        At Claritas Academics, we focus on clear, intuitive explanations that resolve confusion early.
+                        By breaking concepts down the right way, often in just one or two explanations, we save students
+                        countless hours of frustration and help them move forward with confidence and direction.
                     </p>
                 </div>
             </div>
@@ -1361,16 +1400,21 @@
                 <div class="stage-circle-wrapper">
                     <div class="stage-circle">
                         <div class="stage-image">
-                            <img src="confidence-stickman.png" alt="Confidence" onerror="this.parentElement.innerHTML='💪'">
+                            <img src="confidence-stickman.png" alt="Confidence"
+                                onerror="this.parentElement.innerHTML='💪'">
                         </div>
                     </div>
                 </div>
                 <div class="stage-content">
                     <h3 class="stage-title">Confidence</h3>
                     <p class="stage-description">
-                        Understanding content is only the first step. Real confidence comes from knowing you can handle both standard and unfamiliar questions under pressure.
+                        Understanding content is only the first step. Real confidence comes from knowing you can handle
+                        both standard and unfamiliar questions under pressure.
                         <br><br>
-                        Over the past two years, we’ve worked through extensive HSC and trial papers, identifying the questions students consistently find challenging. We draw from this experience to provide targeted practice, along with original resources - notes, quote tables, formula sheets, and frameworks - created specifically to help students master what actually matters.
+                        Over the past two years, we’ve worked through extensive HSC and trial papers, identifying the
+                        questions students consistently find challenging. We draw from this experience to provide
+                        targeted practice, along with original resources - notes, quote tables, formula sheets, and
+                        frameworks - created specifically to help students master what actually matters.
                     </p>
                 </div>
             </div>
@@ -1387,9 +1431,12 @@
                 <div class="stage-content">
                     <h3 class="stage-title">Results</h3>
                     <p class="stage-description">
-                        Results aren’t determined by effort alone. They’re determined by how well students can apply their knowledge in an exam setting.
+                        Results aren’t determined by effort alone. They’re determined by how well students can apply
+                        their knowledge in an exam setting.
                         <br><br>
-                        We help students understand how exams are structured, how responses are marked, and how to manage time, pressure, and decision-making on the day. With a clear exam strategy and a plan for prioritising subjects and questions, students learn to turn their preparation into performance.
+                        We help students understand how exams are structured, how responses are marked, and how to
+                        manage time, pressure, and decision-making on the day. With a clear exam strategy and a plan for
+                        prioritising subjects and questions, students learn to turn their preparation into performance.
                     </p>
                 </div>
             </div>
@@ -1406,7 +1453,8 @@
                     <div class="subject-icon">📐</div>
                     <h3 class="subject-title">Mathematics</h3>
                     <p class="subject-description">
-                        Specialised support for the most demanding HSC mathematics content, including proof-based and abstract questions. Lessons prioritise precision, logical structure, and time management.
+                        Specialised support for the most demanding HSC mathematics content, including proof-based and
+                        abstract questions. Lessons prioritise precision, logical structure, and time management.
                     </p>
                     <div class="subject-list">
                         <div class="subject-item">Math Advanced</div>
@@ -1433,6 +1481,16 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="tutors.html#tutor3" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="tarun-shoulder.jpg" alt="Tarun"></div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Tarun Vakkalagadda</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Math Ext 1</span>
+                                        <span class="mini-subject-tag">Math Ext 2</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <a href="tutors.html" class="find-tutor-btn">View All Math Tutors →</a>
                     </div>
@@ -1445,7 +1503,9 @@
                     <div class="subject-icon">🔬</div>
                     <h3 class="subject-title">Science</h3>
                     <p class="subject-description">
-                        Thorough teaching of theory paired with worked examples and exam-style problem solving. Students develop strong mathematical application skills and clear scientific reasoning for written responses.
+                        Thorough teaching of theory paired with worked examples and exam-style problem solving. Students
+                        develop strong mathematical application skills and clear scientific reasoning for written
+                        responses.
                     </p>
                     <div class="subject-list">
                         <div class="subject-item">Physics</div>
@@ -1470,6 +1530,15 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="tutors.html#tutor3" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="tarun-shoulder.jpg" alt="Tarun"></div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Tarun Vakkalagadda</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Chemistry</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <a href="tutors.html" class="find-tutor-btn">View All Science Tutors →</a>
                     </div>
@@ -1482,7 +1551,9 @@
                     <div class="subject-icon">📖</div>
                     <h3 class="subject-title">English</h3>
                     <p class="subject-description">
-                        Comprehensive coverage of HSC texts, modules, and syllabus requirements, with a strong focus on analytical writing and argument structure. Students receive detailed feedback on essays, scaffolded model responses, and exam-ready strategies to maximise marks.
+                        Comprehensive coverage of HSC texts, modules, and syllabus requirements, with a strong focus on
+                        analytical writing and argument structure. Students receive detailed feedback on essays,
+                        scaffolded model responses, and exam-ready strategies to maximise marks.
                     </p>
                     <div class="subject-list">
                         <div class="subject-item">English Standard</div>
@@ -1519,7 +1590,9 @@
                     <div class="subject-icon">🌍</div>
                     <h3 class="subject-title">Humanities</h3>
                     <p class="subject-description">
-                        In-depth teaching of core topics and option modules, aligned closely with the syllabus and current HSC trends. Students develop strong case analysis, essay structure, and evaluative skills required for top-band responses.
+                        In-depth teaching of core topics and option modules, aligned closely with the syllabus and
+                        current HSC trends. Students develop strong case analysis, essay structure, and evaluative
+                        skills required for top-band responses.
                     </p>
                     <div class="subject-list">
                         <div class="subject-item">Legal Studies</div>
@@ -1560,7 +1633,7 @@
         <div class="pricing-grid">
             <div class="pricing-card scroll-reveal">
                 <h3 class="plan-name">Foundation</h3>
-                <div class="plan-price">$40<span>/hr</span></div>
+                <div class="plan-price">$45<span>/hr</span></div>
                 <div class="plan-duration">Offline Group Session</div>
                 <ul class="plan-features">
                     <li>Technique driven teaching</li>
@@ -1619,7 +1692,7 @@
                     <div class="value-badge">Our Competitive Advantage</div>
                     <h2 class="value-title scroll-reveal">Premium Quality, Accessible Pricing</h2>
                     <p class="value-subtitle scroll-reveal">
-                        How do we offer tutors with 97-99+ ATARs at rates lower than most tutoring centres? 
+                        How do we offer tutors with 97-99+ ATARs at rates lower than most tutoring centres?
                         It's simple: we're a passionate, student-founded startup without the overhead.
                     </p>
                 </div>
@@ -1629,7 +1702,9 @@
                         <span class="value-icon">🎯</span>
                         <h3 class="value-card-title">Transparency</h3>
                         <p class="value-card-text">
-                            We believe families deserve clarity, not fine print. Our pricing is clear and upfront, with <strong> no upselling, no hidden fees, and no long-term lock-ins.</strong> You’re free to pause or leave at any time. We’d rather earn your trust than trap it.
+                            We believe families deserve clarity, not fine print. Our pricing is clear and upfront, with
+                            <strong> no upselling, no hidden fees, and no long-term lock-ins.</strong> You’re free to
+                            pause or leave at any time. We’d rather earn your trust than trap it.
                         </p>
                     </div>
 
@@ -1637,8 +1712,10 @@
                         <span class="value-icon">💡</span>
                         <h3 class="value-card-title">No Corporate Overhead</h3>
                         <p class="value-card-text">
-                            As a <strong>small, growing business</strong>, we don't have expensive facilities, large marketing budgets, 
-                            or layers of management. This means <strong>lower costs for you</strong>, without compromising quality.
+                            As a <strong>small, growing business</strong>, we don't have expensive facilities, large
+                            marketing budgets,
+                            or layers of management. This means <strong>lower costs for you</strong>, without
+                            compromising quality.
                         </p>
                     </div>
 
@@ -1646,17 +1723,21 @@
                         <span class="value-icon">🌱</span>
                         <h3 class="value-card-title">Student-First Mission</h3>
                         <p class="value-card-text">
-                            We're building Claritas from the ground up with one goal: <strong>helping students succeed</strong>. 
-                            Every dollar you invest goes directly into <strong>exceptional tutoring and resources</strong>, not profit margins.
+                            We're building Claritas from the ground up with one goal: <strong>helping students
+                                succeed</strong>.
+                            Every dollar you invest goes directly into <strong>exceptional tutoring and
+                                resources</strong>, not profit margins.
                         </p>
                     </div>
                 </div>
 
                 <div class="value-highlight scroll-reveal">
                     <p class="value-highlight-text">
-                        <strong>The bottom line:</strong> You get tutors who would typically charge $100-150/hour at large centres, 
-                        but at prices that reflect our lean operation and commitment to accessibility. 
-                        As we grow, we'll maintain this philosophy. <strong>Premium education shouldn't break the bank</strong>.
+                        <strong>The bottom line:</strong> You get tutors who would typically charge $100-150/hour at
+                        large centres,
+                        but at prices that reflect our lean operation and commitment to accessibility.
+                        As we grow, we'll maintain this philosophy. <strong>Premium education shouldn't break the
+                            bank</strong>.
                     </p>
                 </div>
             </div>
@@ -1668,13 +1749,15 @@
         <div class="booking-section">
             <h2 class="section-title scroll-reveal">Book a Free Session</h2>
             <p class="problem-text scroll-reveal" style="margin-bottom: 2rem;">
-                Ready to get started? Book a free session with one of our expert tutors to discuss your goals, 
-                availability, and the best path forward. We'll exchange contact information and create a personalised 
-                learning plan tailored to your needs. You can choose to take a short <b>sample lesson</b> to get a taste of our approach!
+                Ready to get started? Book a free session with one of our expert tutors to discuss your goals,
+                availability, and the best path forward. We'll exchange contact information and create a personalised
+                learning plan tailored to your needs. You can choose to take a short <b>sample lesson</b> to get a taste
+                of our approach!
             </p>
             <div class="booking-cta-container scroll-reveal">
                 <p class="booking-instruction">
-                    Choose your ideal tutor, then book a free session to discuss how we can help you achieve academic excellence.
+                    Choose your ideal tutor, then book a free session to discuss how we can help you achieve academic
+                    excellence.
                 </p>
                 <a href="tutors.html" class="browse-tutors-btn">Browse Our Tutors →</a>
             </div>
@@ -1700,26 +1783,30 @@
         <div class="footer-socials">
             <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
             </a>
             <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
             </a>
             <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
             </a>
             <a href="https://twitter.com" target="_blank" aria-label="Twitter/X" class="social-link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
             </a>
         </div>
-        
+
         <div class="copyright">
             © 2026 Claritas Academics. All rights reserved.
         </div>
@@ -1736,14 +1823,14 @@
             event.stopPropagation(); // Prevent event bubbling
             const expandIndicator = event.currentTarget;
             const card = expandIndicator.closest('.subject-category-card');
-            
+
             // Close all other categories
             document.querySelectorAll('.subject-category-card').forEach(otherCard => {
                 if (otherCard !== card && otherCard.classList.contains('expanded')) {
                     otherCard.classList.remove('expanded');
                 }
             });
-            
+
             // Toggle current category
             card.classList.toggle('expanded');
         }
@@ -1751,12 +1838,12 @@
         // Scroll reveal animation
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.scroll-reveal');
-            
+
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < windowHeight - elementVisible) {
                     element.classList.add('visible');
                 }
@@ -1766,21 +1853,21 @@
         // Counter animation for metrics
         function animateCounters() {
             const counters = document.querySelectorAll('.metric-number');
-            
+
             counters.forEach(counter => {
                 if (counter.classList.contains('counted')) return;
-                
+
                 const windowHeight = window.innerHeight;
                 const elementTop = counter.getBoundingClientRect().top;
-                
+
                 if (elementTop < windowHeight - 150) {
                     const target = parseInt(counter.getAttribute('data-target'));
                     const duration = 2000;
                     const increment = target / (duration / 16);
                     let current = 0;
-                    
+
                     counter.classList.add('counted');
-                    
+
                     const updateCounter = () => {
                         current += increment;
                         if (current < target) {
@@ -1790,7 +1877,7 @@
                             counter.textContent = target;
                         }
                     };
-                    
+
                     updateCounter();
                 }
             });
@@ -1801,7 +1888,7 @@
             const philosophyFlow = document.getElementById('philosophyFlow');
             const arrowPath = document.getElementById('philosophyArrowPath');
             const arrowHead = document.querySelector('.philosophy-arrow-head');
-            
+
             if (!philosophyFlow || !arrowPath) return;
 
             function updateArrowPath() {
@@ -1811,10 +1898,10 @@
                 const circles = Array.from(stages).map(stage => {
                     const circle = stage.querySelector('.stage-circle');
                     if (!circle) return null;
-                    
+
                     const rect = circle.getBoundingClientRect();
                     const flowRect = philosophyFlow.getBoundingClientRect();
-                    
+
                     return {
                         x: rect.left - flowRect.left + rect.width / 2,
                         y: rect.top - flowRect.top + rect.height / 2
@@ -1824,17 +1911,17 @@
                 if (circles.length < 3) return;
 
                 const [p1, p2, p3] = circles;
-                
+
                 // Create smooth S-curve through all three points
                 const cp1x = p1.x + (p2.x - p1.x) * 0.5;
                 const cp1y = p1.y;
-                
+
                 const cp2x = p2.x - (p2.x - p1.x) * 0.3;
                 const cp2y = p2.y;
-                
+
                 const cp3x = p2.x + (p3.x - p2.x) * 0.3;
                 const cp3y = p2.y;
-                
+
                 const cp4x = p3.x - (p3.x - p2.x) * 0.5;
                 const cp4y = p3.y;
 
@@ -1857,11 +1944,11 @@
 
                 const rect = philosophySection.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                
+
                 const sectionTop = rect.top;
                 const sectionBottom = rect.bottom;
                 const sectionHeight = rect.height;
-                
+
                 // Start drawing when section enters viewport, finish when it's about to leave
                 // Adjusted for the specific height of this section in your layout
                 const startPoint = windowHeight * 0.8;
@@ -1890,7 +1977,7 @@
 
             // Run update once on load to set initial coordinates
             updateArrowPath();
-            
+
             // Handle resizing
             let resizeTimeout;
             window.addEventListener('resize', () => {
@@ -1934,4 +2021,5 @@
         });
     </script>
 </body>
+
 </html>
