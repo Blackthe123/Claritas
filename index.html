@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claritas Academics | HSC Tutoring</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
@@ -556,8 +556,9 @@
         }
 
         .subject-category-card.expanded .category-content {
-            max-height: 600px;
+            max-height: 800px;
             border-top: 1px solid #e9ecef;
+            overflow-y: auto;
         }
 
         .subject-list {
@@ -1302,7 +1303,7 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <img src="logo-2.png" alt="Claritas Academics" class="logo-image"
+            <img src="images/logo-2.png" alt="Claritas Academics" class="logo-image"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <span class="logo-text">CLARITAS</span>
         </div>
@@ -1343,15 +1344,15 @@
         <h2 class="section-title scroll-reveal">Our Impact</h2>
         <div class="metrics-grid">
             <div class="metric-card scroll-reveal">
-                <div class="metric-number" data-target="3">0</div>
+                <div class="metric-number" data-target="4">0</div>
                 <div class="metric-label">Expert Tutors</div>
             </div>
             <div class="metric-card scroll-reveal" style="transition-delay: 0.1s">
-                <div class="metric-number" data-target="10">0</div>
+                <div class="metric-number" data-target="14">0</div>
                 <div class="metric-label">Courses Taught</div>
             </div>
             <div class="metric-card scroll-reveal" style="transition-delay: 0.2s">
-                <div class="metric-number" data-target="14">0</div>
+                <div class="metric-number" data-target="18">0</div>
                 <div class="metric-label">Band 6 Achieved</div>
             </div>
         </div>
@@ -1376,7 +1377,8 @@
                 <div class="stage-circle-wrapper">
                     <div class="stage-circle">
                         <div class="stage-image">
-                            <img src="clarity-stickman.png" alt="Clarity" onerror="this.parentElement.innerHTML='🤔'">
+                            <img src="images/clarity-stickman.png" alt="Clarity"
+                                onerror="this.parentElement.innerHTML='🤔'">
                         </div>
                     </div>
                 </div>
@@ -1400,7 +1402,7 @@
                 <div class="stage-circle-wrapper">
                     <div class="stage-circle">
                         <div class="stage-image">
-                            <img src="confidence-stickman.png" alt="Confidence"
+                            <img src="images/confidence-stickman.png" alt="Confidence"
                                 onerror="this.parentElement.innerHTML='💪'">
                         </div>
                     </div>
@@ -1424,7 +1426,8 @@
                 <div class="stage-circle-wrapper">
                     <div class="stage-circle">
                         <div class="stage-image">
-                            <img src="results-stickman.png" alt="Results" onerror="this.parentElement.innerHTML='🏆'">
+                            <img src="images/results-stickman.png" alt="Results"
+                                onerror="this.parentElement.innerHTML='🏆'">
                         </div>
                     </div>
                 </div>
@@ -1457,6 +1460,7 @@
                         abstract questions. Lessons prioritise precision, logical structure, and time management.
                     </p>
                     <div class="subject-list">
+                        <div class="subject-item">Math Standard</div>
                         <div class="subject-item">Math Advanced</div>
                         <div class="subject-item">Math Extension 1</div>
                         <div class="subject-item">Math Extension 2</div>
@@ -1471,7 +1475,7 @@
                         <h4 class="showcase-title">Our Mathematics Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor1" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="ayush-shoulder.png" alt="Ayush"></div>
+                                <div class="tutor-mini-photo"><img src="images/ayush-shoulder.png" alt="Ayush"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Ayush Yajaman</div>
                                     <div class="tutor-mini-subjects">
@@ -1482,12 +1486,22 @@
                                 </div>
                             </a>
                             <a href="tutors.html#tutor3" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="tarun-shoulder.jpg" alt="Tarun"></div>
+                                <div class="tutor-mini-photo"><img src="images/tarun-shoulder.jpg" alt="Tarun"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Tarun Vakkalagadda</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Math Ext 1</span>
                                         <span class="mini-subject-tag">Math Ext 2</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor4" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="images/aditya-shoulder.jpeg" alt="Aditya"></div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Aditya Shivakumar</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Math Advanced</span>
+                                        <span class="mini-subject-tag">Math Standard</span>
                                     </div>
                                 </div>
                             </a>
@@ -1510,6 +1524,7 @@
                     <div class="subject-list">
                         <div class="subject-item">Physics</div>
                         <div class="subject-item">Chemistry</div>
+                        <div class="subject-item">Biology</div>
                     </div>
                     <div class="expand-indicator" onclick="toggleCategory('science')">
                         <span class="expand-text">View Tutors</span>
@@ -1521,7 +1536,7 @@
                         <h4 class="showcase-title">Our Science Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor1" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="ayush-shoulder.png" alt="Ayush"></div>
+                                <div class="tutor-mini-photo"><img src="images/ayush-shoulder.png" alt="Ayush"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Ayush Yajaman</div>
                                     <div class="tutor-mini-subjects">
@@ -1531,11 +1546,20 @@
                                 </div>
                             </a>
                             <a href="tutors.html#tutor3" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="tarun-shoulder.jpg" alt="Tarun"></div>
+                                <div class="tutor-mini-photo"><img src="images/tarun-shoulder.jpg" alt="Tarun"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Tarun Vakkalagadda</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Chemistry</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor4" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="images/aditya-shoulder.jpeg" alt="Aditya"></div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Aditya Shivakumar</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Biology</span>
                                     </div>
                                 </div>
                             </a>
@@ -1569,7 +1593,7 @@
                         <h4 class="showcase-title">Our English Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor2" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="ned-shoulder.png" alt="Ned"></div>
+                                <div class="tutor-mini-photo"><img src="images/ned-shoulder.png" alt="Ned"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Ned Reside</div>
                                     <div class="tutor-mini-subjects">
@@ -1598,6 +1622,7 @@
                         <div class="subject-item">Legal Studies</div>
                         <div class="subject-item">Modern History</div>
                         <div class="subject-item">Ancient History</div>
+                        <div class="subject-item">Business Studies</div>
                     </div>
                     <div class="expand-indicator" onclick="toggleCategory('humanities')">
                         <span class="expand-text">View Tutors</span>
@@ -1609,13 +1634,22 @@
                         <h4 class="showcase-title">Our Humanities Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor2" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="ned-shoulder.png" alt="Ned"></div>
+                                <div class="tutor-mini-photo"><img src="images/ned-shoulder.png" alt="Ned"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Ned Reside</div>
                                     <div class="tutor-mini-subjects">
                                         <span class="mini-subject-tag">Legal Studies</span>
                                         <span class="mini-subject-tag">Modern History</span>
                                         <span class="mini-subject-tag">Ancient History</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="tutors.html#tutor4" class="tutor-mini-card">
+                                <div class="tutor-mini-photo"><img src="images/aditya-shoulder.jpeg" alt="Aditya"></div>
+                                <div class="tutor-mini-info">
+                                    <div class="tutor-mini-name">Aditya Shivakumar</div>
+                                    <div class="tutor-mini-subjects">
+                                        <span class="mini-subject-tag">Business Studies</span>
                                     </div>
                                 </div>
                             </a>
@@ -1648,7 +1682,7 @@
                         <h4 class="showcase-title">Our Technology Tutors</h4>
                         <div class="tutor-grid-mini">
                             <a href="tutors.html#tutor1" class="tutor-mini-card">
-                                <div class="tutor-mini-photo"><img src="ayush-shoulder.png" alt="Ayush"></div>
+                                <div class="tutor-mini-photo"><img src="images/ayush-shoulder.png" alt="Ayush"></div>
                                 <div class="tutor-mini-info">
                                     <div class="tutor-mini-name">Ayush Yajaman</div>
                                     <div class="tutor-mini-subjects">
