@@ -1331,6 +1331,12 @@
             transform: translateX(-50%) translateZ(0) scale(1) rotateY(0deg);
             z-index: 10;
             opacity: 1;
+            pointer-events: auto;
+            cursor: default;
+            transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1),
+                opacity 0.4s ease,
+                box-shadow 0.3s ease,
+                outline 0.3s ease;
         }
 
         .testimonial-card.pos-left {
@@ -1343,6 +1349,11 @@
             transform: translateX(-12%) translateZ(-130px) scale(0.87) rotateY(-20deg);
             z-index: 5;
             opacity: 0.5;
+        }
+
+        .testimonial-card.pos-center:hover {
+            box-shadow: 0 8px 40px rgba(15, 76, 117, 0.5),
+                0 0 0 2px rgba(15, 76, 117, 0.5);
         }
 
         .testimonial-card.pos-hidden-left,
@@ -2311,7 +2322,7 @@
                     name: "Leon",
                     subject: "Physics, Math Advanced",
                     stars: 5,
-                    quote: "I enjoy learning math and physics concepts through the help of Ayush as he gives an in-depth explanation backed up with real world examples. This makes tutoring with Ayush extremely helpful to understand complex concepts."
+                    quote: "I enjoy learning math and physics with Ayush as he gives an in-depth explanation backed up with real world examples. This makes tutoring with Ayush extremely helpful to understand complex concepts."
                 },
                 {
                     name: "Vedant",
