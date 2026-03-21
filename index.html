@@ -1297,6 +1297,193 @@
                 text-align: center;
             }
         }
+
+        /* ---- Testimonials Section ---- */
+        .testimonials-section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-stage-wrap {
+            perspective: 1400px;
+            position: relative;
+            height: 360px;
+            margin: 4rem 0 3rem;
+        }
+
+        .testimonial-card {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 520px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.09);
+            padding: 2.5rem 2.5rem 2rem;
+            box-sizing: border-box;
+            transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1),
+                opacity 0.4s ease;
+            cursor: pointer;
+        }
+
+        .testimonial-card.pos-center {
+            transform: translateX(-50%) translateZ(0) scale(1) rotateY(0deg);
+            z-index: 10;
+            opacity: 1;
+        }
+
+        .testimonial-card.pos-left {
+            transform: translateX(-88%) translateZ(-130px) scale(0.87) rotateY(20deg);
+            z-index: 5;
+            opacity: 0.5;
+        }
+
+        .testimonial-card.pos-right {
+            transform: translateX(-12%) translateZ(-130px) scale(0.87) rotateY(-20deg);
+            z-index: 5;
+            opacity: 0.5;
+        }
+
+        .testimonial-card.pos-hidden-left,
+        .testimonial-card.pos-hidden-right {
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateZ(-250px) scale(0.7);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-stars span {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            line-height: 0.5;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .testimonial-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-subject-tag {
+            font-size: 0.78rem;
+            padding: 0.35rem 0.9rem;
+            background: linear-gradient(135deg, rgba(15, 76, 117, 0.08) 0%, rgba(201, 169, 97, 0.08) 100%);
+            color: var(--accent);
+            border-radius: 15px;
+            font-weight: 500;
+            border: 1px solid rgba(15, 76, 117, 0.15);
+        }
+
+        .testimonials-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .testimonials-nav-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(15, 76, 117, 0.25);
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .testimonials-nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.08);
+        }
+
+        .testimonials-dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .testimonials-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d0d0d0;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .testimonials-dot.active {
+            background: var(--gold);
+            width: 22px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-stage-wrap {
+                height: auto;
+                perspective: none;
+            }
+
+            .testimonial-card {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                transform: none !important;
+                opacity: 0;
+                display: none;
+                box-sizing: border-box;
+            }
+
+            .testimonial-card.pos-center {
+                display: block;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -1356,6 +1543,19 @@
                 <div class="metric-number" data-target="18">0</div>
                 <div class="metric-label">Band 6 Achieved</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title scroll-reveal">What Our Students Say</h2>
+
+        <div class="testimonials-stage-wrap" id="testimonialsStage"></div>
+
+        <div class="testimonials-nav">
+            <button class="testimonials-nav-btn" id="testimonialsPrev" aria-label="Previous review">&#8592;</button>
+            <div class="testimonials-dots" id="testimonialsDots"></div>
+            <button class="testimonials-nav-btn" id="testimonialsNext" aria-label="Next review">&#8594;</button>
         </div>
     </section>
 
@@ -2094,6 +2294,112 @@
                 document.getElementById('nav-menu').classList.remove('active');
             });
         });
+    </script>
+
+    <!-- Testimonials Script -->
+    <script>
+        (function () {
+            // ── EDIT YOUR REVIEWS HERE ──────────────────────────────────────────
+            const reviews = [
+                {
+                    name: "Ganesha",
+                    subject: "Legal Studies",
+                    stars: 5,
+                    quote: "Ned's teachings have further enhanced my comprehension for legal studies, improving my ability to have better knowledge input and output."
+                },
+                {
+                    name: "Leon",
+                    subject: "Physics, Math Advanced",
+                    stars: 5,
+                    quote: "I enjoy learning math and physics concepts through the help of Ayush as he gives an in-depth explanation backed up with real world examples. This makes tutoring with Ayush extremely helpful to understand complex concepts."
+                },
+                {
+                    name: "Vedant",
+                    subject: "English Advanced",
+                    stars: 5,
+                    quote: "Ayush goes beyond basic teaching by ensuring I have a solid grasp of my English fundamentals, while also explaining more complex concepts in a clear and compelling way."
+                },
+                {
+                    name: "Leon",
+                    subject: "English Advanced",
+                    stars: 5,
+                    quote: "I really enjoy getting tutored by Ned. He makes English less confusing and complicated. English used to be my worst subject, now it's my favourite thanks to Ned."
+                },
+            ];
+            // ───────────────────────────────────────────────────────────────────
+
+            const stage = document.getElementById('testimonialsStage');
+            const dotsEl = document.getElementById('testimonialsDots');
+            const n = reviews.length;
+            let current = 0;
+            let autoTimer;
+
+            function starHTML(count) {
+                return Array(count).fill('<span>&#9733;</span>').join('');
+            }
+
+            function getPos(i) {
+                const diff = (i - current + n) % n;
+                if (diff === 0) return 'pos-center';
+                if (diff === 1) return 'pos-right';
+                if (diff === n - 1) return 'pos-left';
+                return diff <= Math.floor(n / 2) ? 'pos-hidden-right' : 'pos-hidden-left';
+            }
+
+            // Build cards
+            const cards = reviews.map((r, i) => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-card';
+                card.innerHTML = `
+                    <div class="testimonial-stars">${starHTML(r.stars)}</div>
+                    <span class="testimonial-quote-mark">&ldquo;</span>
+                    <p class="testimonial-quote">${r.quote}</p>
+                    <div class="testimonial-divider"></div>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-name">${r.name}</span>
+                        <span class="testimonial-subject-tag">${r.subject}</span>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    const diff = (i - current + n) % n;
+                    if (diff === 1) goTo(current + 1);
+                    if (diff === n - 1) goTo(current - 1);
+                });
+                stage.appendChild(card);
+                return card;
+            });
+
+            // Build dots
+            const dots = reviews.map((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'testimonials-dot';
+                dot.addEventListener('click', () => goTo(i));
+                dotsEl.appendChild(dot);
+                return dot;
+            });
+
+            function goTo(idx) {
+                current = ((idx % n) + n) % n;
+                cards.forEach((c, i) => { c.className = 'testimonial-card ' + getPos(i); });
+                dots.forEach((d, i) => { d.className = 'testimonials-dot' + (i === current ? ' active' : ''); });
+            }
+
+            function startAuto() {
+                autoTimer = setInterval(() => goTo(current + 1), 5000);
+            }
+
+            function stopAuto() {
+                clearInterval(autoTimer);
+            }
+
+            document.getElementById('testimonialsPrev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+            document.getElementById('testimonialsNext').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+            stage.addEventListener('mouseenter', stopAuto);
+            stage.addEventListener('mouseleave', startAuto);
+
+            goTo(0);
+            startAuto();
+        })();
     </script>
 </body>
 
