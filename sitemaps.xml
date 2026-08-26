@@ -2,11 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://claritasacademics.com/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://claritasacademics.com/tutors.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claritasacademics.com/blogs.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://claritasacademics.com/blog/hsc-moderation-explained.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://claritasacademics.com/blog/ext2-related-rates-mistakes.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://claritasacademics.com/404.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.1</priority>
   </url>
 </urlset>
