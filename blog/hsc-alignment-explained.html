@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMNDRJT0NB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FMNDRJT0NB');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How HSC Alignment Works: Raw Marks vs Exam Marks Explained | Claritas Academics</title>
+    <meta name="description"
+        content="Understand how NESA HSC alignment transforms your raw exam marks into reported HSC marks. Learn about HSC Judges, band cutoffs, rawmarks.info data, and test our interactive simulator.">
+    <link rel="canonical" href="https://claritasacademics.com/blog/hsc-alignment-explained.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How HSC Alignment Works: Raw Marks vs Exam Marks Explained">
+    <meta property="og:description"
+        content="Why your raw mark is NOT your HSC mark. Discover how HSC Judges determine band cutoffs, how alignment protects you on hard exams, and try our live alignment calculator.">
+    <meta property="og:url" content="https://claritasacademics.com/blog/hsc-alignment-explained.html">
+    <meta property="og:image" content="https://claritasacademics.com/images/banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/blog.css">
+    <style>
+        /* Alignment Simulator & Visual Styles */
+        .interactive-section {
+            background: #ffffff;
+            border: 1px solid rgba(15, 76, 117, 0.12);
+            border-radius: 20px;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .interactive-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f4f8;
+            padding-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .interactive-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .interactive-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .difficulty-presets {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            background: #f1f5f9;
+            border: 1.5px solid #cbd5e1;
+            color: var(--primary);
+            padding: 0.55rem 1rem;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--accent);
+            background: #e2e8f0;
+        }
+
+        .preset-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(15, 76, 117, 0.25);
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sim-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.25rem;
+        }
+
+        .sim-card h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sim-input-row {
+            margin-bottom: 1rem;
+        }
+
+        .sim-input-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .sim-input-row label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-text);
+            margin-bottom: 0.35rem;
+        }
+
+        .sim-input-row label span.val-label {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .sim-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .sim-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease;
+        }
+
+        .sim-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        /* Result display box */
+        .result-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(26, 26, 46, 0.2);
+        }
+
+        .result-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .result-score {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .result-band-badge {
+            display: inline-block;
+            background: rgba(201, 169, 97, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .result-subtext {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Band Spectrum Visualizer */
+        .band-spectrum {
+            margin-top: 1.5rem;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .band-spectrum-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .band-bar-container {
+            position: relative;
+            height: 28px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .band-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .band-seg-b2 {
+            background: #94a3b8;
+        }
+
+        .band-seg-b3 {
+            background: #64748b;
+        }
+
+        .band-seg-b4 {
+            background: #0284c7;
+        }
+
+        .band-seg-b5 {
+            background: #0f4c75;
+        }
+
+        .band-seg-b6 {
+            background: #c9a961;
+        }
+
+        .spectrum-marker {
+            position: absolute;
+            top: -4px;
+            bottom: -4px;
+            width: 4px;
+            background: #ef4444;
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+            transition: left 0.2s ease;
+            z-index: 5;
+        }
+
+        /* Trinity comparison table */
+        .trinity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .trinity-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+        }
+
+        .trinity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .trinity-card.highlight {
+            border: 2px solid var(--accent);
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .trinity-card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            align-self: flex-start;
+        }
+
+        .tag-moderation {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .tag-alignment {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .tag-scaling {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
+
+        .trinity-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .trinity-card p {
+            font-size: 0.92rem;
+            color: #475569;
+            margin-bottom: 0.8rem;
+            line-height: 1.55;
+        }
+
+        .trinity-who {
+            margin-top: auto;
+            padding-top: 0.8rem;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--light-text);
+        }
+
+        /* Myth Buster Box */
+        .myth-buster-box {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #fecaca;
+            overflow: hidden;
+            margin: 2.5rem 0;
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.06);
+        }
+
+        .myth-header {
+            background: #fee2e2;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .myth-body {
+            padding: 1.5rem;
+        }
+
+        .myth-text {
+            color: #991b1b;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .truth-text {
+            color: #065f46;
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 1rem 1.25rem;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .truth-text strong {
+            color: #047857;
+        }
+
+        /* Key Takeaway and Callouts */
+        .key-takeaway {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid var(--gold);
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.8rem 0;
+        }
+
+        .key-takeaway h4 {
+            color: #92400e;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .key-takeaway p {
+            color: #78350f;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            margin: 1.8rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.9rem 1.1rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .comparison-table td {
+            padding: 1rem 1.1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .source-callout {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .source-callout-text h4 {
+            color: #0369a1;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .source-callout-text p {
+            color: #0c4a6e;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .source-btn {
+            background: #0284c7;
+            color: #ffffff !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .source-btn:hover {
+            background: #0369a1;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How HSC Alignment Works: Raw Marks vs Exam Marks Explained",
+        "description": "Understand how NESA HSC alignment transforms your raw exam marks into reported HSC marks. Learn about HSC Judges, band cutoffs, rawmarks.info data, and test our interactive simulator.",
+        "image": "https://claritasacademics.com/images/banner.png",
+        "author": { "@type": "Person", "name": "Ayush Yajaman" },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claritas Academics",
+            "logo": { "@type": "ImageObject", "url": "https://claritasacademics.com/images/logo-2.png" }
+        },
+        "datePublished": "2026-09-01",
+        "mainEntityOfPage": "https://claritasacademics.com/blog/hsc-alignment-explained.html"
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="../images/logo-2.png" alt="Claritas Academics" class="logo-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">CLARITAS</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#philosophy">Philosophy</a></li>
+            <li><a href="../index.html#subjects">Subjects</a></li>
+            <li><a href="../tutors.html">Tutors</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="../blogs.html">Blogs</a></li>
+            <li><a href="../index.html#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <div class="post-top-space"></div>
+
+    <div id="post-content">
+        <article class="post-article">
+            <a href="../blogs.html" class="breadcrumb-back">← Back to Blog</a>
+
+            <header class="post-article-header">
+                <span class="post-article-tag">Exam Strategy</span>
+                <h1 class="post-article-title">How HSC Alignment Works: Why Your Raw Marks Are Not What You Think</h1>
+                <div class="post-article-byline">
+                    <div class="byline-avatar"><img src="../images/ayush-shoulder.png" alt="Ayush Yajaman"></div>
+                    <div>
+                        <div class="byline-text-name">Ayush Yajaman</div>
+                        <div class="byline-text-meta">99.30 ATAR · 6 min read · Published September 2026</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-article-body">
+                <p>You walk out of the HSC examination room, your head spinning. You just sat an excruciatingly tough
+                    Mathematics Extension 2 or Physics exam. You frantically compare answers with your friends, do some
+                    back-of-the-envelope calculations, and realize you might only get <strong>75 out of 100</strong>.
+                </p>
+
+                <p>Panic sets in. <em>"Is my Band 6 gone? Did I just destroy my ATAR?"</em></p>
+
+                <p>The short answer is <strong>absolutely not</strong>. In fact, on a brutally difficult exam paper, a
+                    raw mark of 75/100 might turn into an aligned HSC mark of <strong>90 (Band 6)</strong>.</p>
+
+                <p>Welcome to <strong>HSC Alignment</strong> — the process NESA uses to ensure you are never unfairly
+                    penalized for sitting a harder exam paper than students in previous years. In this guide, we will
+                    unpack who the HSC Judges are, how raw marks convert to exam marks, why NESA does not use a bell
+                    curve, and provide an interactive simulator to test your own marks.</p>
+
+                <h2>What Exactly is HSC Alignment?</h2>
+                <p>When your HSC exam papers are marked, examiners mark every question according to a strict rubric. The
+                    sum of all those marks is your <strong>Raw Examination Mark</strong>.</p>
+
+                <p>However, <strong>your Raw Mark is NOT your reported HSC Exam Mark</strong>. NESA never publishes your
+                    raw marks on your official HSC results notice. Instead, NESA runs a process called
+                    <strong>alignment</strong> to convert your raw marks into <strong>Aligned HSC Examination
+                        Marks</strong> mapped to NSW Performance Bands (Band 1 through Band 6, or E1 through E4 for
+                    Extension courses).</p>
+
+                <div class="post-pullquote">
+                    Raw Mark (e.g. 75/100) &rarr; [ NESA Alignment Mapping ] &rarr; HSC Exam Mark (e.g. 90/100)
+                </div>
+
+                <h2>Who Are the HSC Judges?</h2>
+                <p>How does NESA decide what raw mark deserves a Band 6? They don't guess, and they don't leave it to an
+                    automated algorithm. They use <strong>HSC Judges</strong>.</p>
+
+                <p>HSC Judges are panels of highly experienced senior teachers, head teachers, and exam committee
+                    members with deep mastery of the syllabus. Their sole responsibility is to maintain consistent
+                    academic standards across different years.</p>
+
+                <p>Here is what the HSC Judges do for every single subject:</p>
+                <ul>
+                    <li><strong>Review the Performance Band Descriptors:</strong> NESA defines clear, qualitative
+                        descriptors for what a "borderline" Band 6, Band 5, Band 4, Band 3, and Band 2 student should
+                        know and be able to do.</li>
+                    <li><strong>Inspect the Specific Exam Paper:</strong> The judges review the actual questions and
+                        sample student scripts from that year's exam.</li>
+                    <li><strong>Determine the Raw Cutoff Marks:</strong> The judges ask: <em>"On this specific paper,
+                            what raw mark would a minimally competent Band 6 student score?"</em> If Question 15 and 16
+                        were unusually brutal, that threshold drops. If the paper was straightforward and accessible,
+                        that threshold rises.</li>
+                </ul>
+
+                <h2>How Raw Marks Become HSC Marks (The Mapping Mechanics)</h2>
+                <p>Once the HSC Judges establish the raw cutoffs for each band descriptor for that year's paper, NESA
+                    maps those cutoff points directly to the reporting scale:</p>
+
+                <ul>
+                    <li><strong>Band 6 Cutoff (Borderline Band 6):</strong> Maps exactly to <strong>90 / 100</strong>
+                    </li>
+                    <li><strong>Band 5 Cutoff (Borderline Band 5):</strong> Maps exactly to <strong>80 / 100</strong>
+                    </li>
+                    <li><strong>Band 4 Cutoff (Borderline Band 4):</strong> Maps exactly to <strong>70 / 100</strong>
+                    </li>
+                    <li><strong>Band 3 Cutoff (Borderline Band 3):</strong> Maps exactly to <strong>60 / 100</strong>
+                    </li>
+                    <li><strong>Band 2 Cutoff (Borderline Band 2):</strong> Maps exactly to <strong>50 / 100</strong>
+                    </li>
+                </ul>
+
+                <p>Any raw marks in between the cutoffs are converted using <strong>linear interpolation</strong> (a
+                    smooth mathematical mapping between anchor points). This ensures that every student's relative
+                    spacing is preserved while aligning everyone fairly to the performance standards.</p>
+
+                <h2>A Tale of Two Years: An Example Scenario</h2>
+                <p>To see how this protects you, consider the same subject across two different HSC exam years:</p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Year & Exam Type</th>
+                                <th>Paper Difficulty</th>
+                                <th>Judges' Band 6 Cutoff (Raw)</th>
+                                <th>Your Raw Mark</th>
+                                <th>Final Aligned Exam Mark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Year A</strong> (e.g. 2020)</td>
+                                <td>🔥 Brutally Hard Paper</td>
+                                <td><strong>75 / 100</strong></td>
+                                <td>75 / 100</td>
+                                <td><strong style="color: var(--accent);">90 (Band 6)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Year B</strong> (e.g. 2022)</td>
+                                <td>✨ Accessible / Standard Paper</td>
+                                <td><strong>88 / 100</strong></td>
+                                <td>88 / 100</td>
+                                <td><strong style="color: var(--accent);">90 (Band 6)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="key-takeaway">
+                    <h4>💡 Key Takeaway on Exam Difficulty</h4>
+                    <p><strong>Alignment ensures you are not penalized for a brutally difficult exam paper.</strong> If
+                        an exam is hard, the raw cutoff for Band 6 drops, meaning you need fewer marks to achieve a 90+
+                        aligned mark.</p>
+                </div>
+
+                <h2>Real-World Proof: Tracking Raw Mark Cutoffs</h2>
+                <p>Because NESA does not publish raw marks on results slips, many students assume raw marks and aligned
+                    marks are identical. However, through Freedom of Information (GIPA) requests and student surveys
+                    over the years, historical raw mark mapping data has been collected and verified.</p>
+
+                <div class="source-callout">
+                    <div class="source-callout-text">
+                        <h4>📊 Explore Historical HSC Raw Marks Data</h4>
+                        <p>Curious what raw marks were needed for Band 6 / E4 across past years? Check out
+                            <strong>rawmarks.info</strong> for historical data across Extension 2 Mathematics and other
+                            HSC subjects.</p>
+                    </div>
+                    <a href="https://rawmarks.info/mathematics/mathematics-extension-2/" target="_blank"
+                        rel="noopener noreferrer" class="source-btn">
+                        View Rawmarks.info &rarr;
+                    </a>
+                </div>
+
+                <p>For courses like Mathematics Extension 2, historical data reveals that the E4 cutoff (aligned mark of
+                    45/50, equivalent to 90/100) has hovered between <strong>68% and 84%</strong> depending on the
+                    paper's difficulty!</p>
+
+                <h2>Alignment vs. Scaling vs. Moderation: The Differences</h2>
+                <p>HSC students frequently mix up <em>Moderation</em>, <em>Alignment</em>, and <em>Scaling</em>. While
+                    they all play a role in your final results, they serve three completely different purposes:</p>
+
+                <div class="trinity-grid">
+                    <!-- Moderation Card -->
+                    <div class="trinity-card">
+                        <span class="trinity-card-tag tag-moderation">Step 1: Moderation</span>
+                        <h3>Moderation</h3>
+                        <p>Adjusts your <strong>school internal assessment marks</strong> against your school cohort's
+                            external HSC exam performance.</p>
+                        <p><strong>Goal:</strong> Level the playing field between schools that mark easily vs. schools
+                            that mark harshly.</p>
+                        <div class="trinity-who">Done by: NESA (School Level)</div>
+                    </div>
+
+                    <!-- Alignment Card -->
+                    <div class="trinity-card highlight">
+                        <span class="trinity-card-tag tag-alignment">Step 2: Alignment</span>
+                        <h3>Alignment</h3>
+                        <p>Converts your <strong>raw exam mark</strong> into an aligned <strong>HSC Exam Mark</strong>
+                            using criteria set by HSC Judges.</p>
+                        <p><strong>Goal:</strong> Level the playing field across different years so exam difficulty
+                            doesn't penalize you.</p>
+                        <div class="trinity-who">Done by: NESA (Subject Level)</div>
+                    </div>
+
+                    <!-- Scaling Card -->
+                    <div class="trinity-card">
+                        <span class="trinity-card-tag tag-scaling">Step 3: Scaling</span>
+                        <h3>Scaling</h3>
+                        <p>Converts your aligned HSC marks into <strong>Scaled Marks</strong> across all different
+                            subjects to generate your ATAR aggregate.</p>
+                        <p><strong>Goal:</strong> Level the playing field between different subjects of varying academic
+                            competition.</p>
+                        <div class="trinity-who">Done by: UAC (Statewide / ATAR)</div>
+                    </div>
+                </div>
+
+                <!-- Myth Buster Section -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth Buster</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "NESA forces all HSC results onto a fixed bell curve with a strict
+                            quota on Band 6s."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> NESA uses <strong>Standards-Referenced Assessment</strong>,
+                            NOT a fixed bell curve or quota.
+                            <br><br>
+                            There is <em>zero cap</em> on how many students can receive Band 6. If 40% of students
+                            demonstrate knowledge meeting the Band 6 performance descriptor in a subject (which
+                            frequently happens in Extension 2 Mathematics and Music 2), then <strong>all 40% receive
+                                Band 6</strong>. You are competing against the objective standard, never against a fixed
+                            quota!
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Try It Yourself: Interactive HSC Alignment Simulator</h2>
+                <p>Use our simulator below to see how changes in exam difficulty shift the Band 6 cutoff and dynamically
+                    convert your raw mark into an aligned HSC mark:</p>
+
+                <!-- Interactive Alignment Calculator -->
+                <div class="interactive-section">
+                    <div class="interactive-header">
+                        <div class="interactive-title">
+                            <span>HSC Alignment Live Simulator</span>
+                        </div>
+                        <span class="interactive-badge">Interactive Tool</span>
+                    </div>
+
+                    <!-- Difficulty Presets -->
+                    <div style="margin-bottom: 0.6rem; font-size: 0.88rem; font-weight: 600; color: var(--light-text);">
+                        Select an Exam Difficulty Preset:
+                    </div>
+                    <div class="difficulty-presets">
+                        <button class="preset-btn active" onclick="applyPreset('hard', this)">🔥 Brutally Hard Exam
+                            (Cutoff: 74)</button>
+                        <button class="preset-btn" onclick="applyPreset('standard', this)">⚖️ Standard / Balanced Exam
+                            (Cutoff: 82)</button>
+                        <button class="preset-btn" onclick="applyPreset('easy', this)">📝 Accessible Exam (Cutoff:
+                            88)</button>
+                    </div>
+
+                    <div class="sim-grid">
+                        <!-- Inputs Card -->
+                        <div class="sim-card">
+                            <h3>⚙️ Configure Exam Parameters</h3>
+
+                            <div class="sim-input-row">
+                                <label for="rawInput">
+                                    <span>Your Raw Exam Mark:</span>
+                                    <span class="val-label" id="rawInputVal">75 / 100</span>
+                                </label>
+                                <input type="range" id="rawInput" class="sim-slider" min="0" max="100" value="75"
+                                    oninput="updateAlignmentSim()">
+                            </div>
+
+                            <div class="sim-input-row">
+                                <label for="b6Cutoff">
+                                    <span>Judges' Band 6 Cutoff (Raw):</span>
+                                    <span class="val-label" id="b6CutoffVal">74 / 100</span>
+                                </label>
+                                <input type="range" id="b6Cutoff" class="sim-slider" min="65" max="92" value="74"
+                                    oninput="updateCustomCutoff()">
+                            </div>
+
+                            <div class="sim-input-row">
+                                <label for="b5Cutoff">
+                                    <span>Judges' Band 5 Cutoff (Raw):</span>
+                                    <span class="val-label" id="b5CutoffVal">60 / 100</span>
+                                </label>
+                                <input type="range" id="b5Cutoff" class="sim-slider" min="45" max="75" value="60"
+                                    oninput="updateCustomCutoff()">
+                            </div>
+                        </div>
+
+                        <!-- Results Card -->
+                        <div class="result-box">
+                            <div class="result-title">Estimated Aligned HSC Mark</div>
+                            <div class="result-score" id="alignedResult">91</div>
+                            <div class="result-band-badge" id="bandResult">Band 6 (E4)</div>
+                            <div class="result-subtext" id="resultExplanation">
+                                Your raw score of 75 exceeds the Band 6 cutoff of 74, achieving an aligned mark of 91!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Band Spectrum Visualization -->
+                    <div class="band-spectrum">
+                        <div class="band-spectrum-title">
+                            <span>Raw Mark Spectrum & Cutoffs</span>
+                            <span id="spectrumRawIndicator" style="color: var(--accent);">Your Mark: 75/100</span>
+                        </div>
+                        <div class="band-bar-container" id="spectrumBar">
+                            <div class="band-segment band-seg-b2" id="segB2" style="width: 35%;">Band 2</div>
+                            <div class="band-segment band-seg-b3" id="segB3" style="width: 15%;">B3</div>
+                            <div class="band-segment band-seg-b4" id="segB4" style="width: 15%;">B4</div>
+                            <div class="band-segment band-seg-b5" id="segB5" style="width: 15%;">B5</div>
+                            <div class="band-segment band-seg-b6" id="segB6" style="width: 20%;">Band 6 (90+)</div>
+                            <div class="spectrum-marker" id="spectrumMarker" style="left: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Key Advice for HSC Students</h2>
+                <ul>
+                    <li><strong>Never Surrender Marks During the Exam:</strong> Because alignment stretches difficult
+                        exams, every single raw mark you scavenge is worth significant aligned value. A single raw mark
+                        on a hard paper could boost your aligned mark by 1.5 to 2 whole points!</li>
+                    <li><strong>Don't Be Discouraged by Low Raw Marks:</strong> Scoring 70% in your trial exam or HSC
+                        exam does not mean you have a Credit or Band 4. Assess your results against historical alignment
+                        trends.</li>
+                    <li><strong>Focus on Mastery Over Cohort Paranoia:</strong> Since NESA operates on performance
+                        standards rather than a fixed curve, helping your study group succeed never diminishes your own
+                        opportunity to score Band 6.</li>
+                </ul>
+            </div>
+
+            <div class="post-cta-box">
+                <p>Want 1-on-1 mentorship to master HSC exam strategy, question technique, and high-band writing?</p>
+                <a href="https://cal.com/ayush-yajaman-bf5qw6" class="post-cta-btn" target="_blank"
+                    rel="noopener noreferrer">Book a Free Strategy Consultation</a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-posts">
+        <h2 class="related-posts-title">Related Articles</h2>
+        <div class="related-grid">
+            <a href="hsc-moderation-explained.html" class="blog-card">
+                <div class="blog-card-image gold-bg">
+                    <span class="blog-card-tag">Exam Strategy</span>
+                    <img src="../images/nesa.png" alt="HSC Moderation" class="blog-card-icon-img">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-card-meta">
+                        <span>5 min read</span><span class="dot"></span><span>HSC Strategy</span>
+                    </div>
+                    <h3 class="blog-card-title">How HSC Moderation Works: Demystifying School Marks & Ranks</h3>
+                    <p class="blog-card-excerpt">Why your raw internal marks don't matter, how ranks assign exam marks, and how your final HSC mark is calculated. Interactive model included!</p>
+                    <div class="blog-card-byline">
+                        <div class="byline-avatar"><img src="../images/ayush-shoulder.png" alt="Ayush Yajaman"></div>
+                        <span class="byline-name">Ayush Yajaman</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">CLARITAS ACADEMICS</div>
+        <div class="footer-tagline">Clarity. Confidence. Results.</div>
+        <div class="footer-contact">
+            <div class="contact-item"><strong>ABN:</strong> 91426380524</div>
+            <div class="contact-item"><strong>Email:</strong> <a
+                    href="mailto:info@claritasacademics.com">info@claritasacademics.com</a></div>
+            <div class="contact-item"><strong>Phone:</strong> <a href="tel:+61406227992">+61 406 227 992</a></div>
+        </div>
+        <div class="copyright">© 2026 Claritas Academics. All rights reserved.</div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Preset configurations
+        const presets = {
+            hard: { b6: 74, b5: 58, b4: 45, b3: 35, b2: 25 },
+            standard: { b6: 82, b5: 68, b4: 55, b3: 42, b2: 30 },
+            easy: { b6: 88, b5: 76, b4: 64, b3: 50, b2: 35 }
+        };
+
+        let currentCutoffs = { ...presets.hard };
+
+        function applyPreset(type, btn) {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            currentCutoffs = { ...presets[type] };
+            document.getElementById('b6Cutoff').value = currentCutoffs.b6;
+            document.getElementById('b5Cutoff').value = currentCutoffs.b5;
+
+            document.getElementById('b6CutoffVal').innerText = `${currentCutoffs.b6} / 100`;
+            document.getElementById('b5CutoffVal').innerText = `${currentCutoffs.b5} / 100`;
+
+            updateAlignmentSim();
+        }
+
+        function updateCustomCutoff() {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            const b6 = parseInt(document.getElementById('b6Cutoff').value);
+            let b5 = parseInt(document.getElementById('b5Cutoff').value);
+
+            if (b5 >= b6) {
+                b5 = b6 - 5;
+                document.getElementById('b5Cutoff').value = b5;
+            }
+
+            document.getElementById('b6CutoffVal').innerText = `${b6} / 100`;
+            document.getElementById('b5CutoffVal').innerText = `${b5} / 100`;
+
+            currentCutoffs.b6 = b6;
+            currentCutoffs.b5 = b5;
+            // Proportionally adjust lower bands
+            currentCutoffs.b4 = Math.round(b5 * 0.78);
+            currentCutoffs.b3 = Math.round(b5 * 0.58);
+            currentCutoffs.b2 = Math.round(b5 * 0.40);
+
+            updateAlignmentSim();
+        }
+
+        function calculateAlignedMark(raw, cutoffs) {
+            // Cutoffs:
+            // raw >= cutoffs.b6 => maps from 90 to 100 (raw cutoffs.b6 -> 90, 100 -> 100)
+            // raw >= cutoffs.b5 => maps from 80 to 90
+            // raw >= cutoffs.b4 => maps from 70 to 80
+            // raw >= cutoffs.b3 => maps from 60 to 70
+            // raw >= cutoffs.b2 => maps from 50 to 60
+            // raw < cutoffs.b2  => maps from 0 to 50
+            if (raw >= 100) return 100;
+            if (raw >= cutoffs.b6) {
+                const fraction = (raw - cutoffs.b6) / (100 - cutoffs.b6);
+                return Math.round(90 + fraction * 10);
+            }
+            if (raw >= cutoffs.b5) {
+                const fraction = (raw - cutoffs.b5) / (cutoffs.b6 - cutoffs.b5);
+                return Math.round(80 + fraction * 10);
+            }
+            if (raw >= cutoffs.b4) {
+                const fraction = (raw - cutoffs.b4) / (cutoffs.b5 - cutoffs.b4);
+                return Math.round(70 + fraction * 10);
+            }
+            if (raw >= cutoffs.b3) {
+                const fraction = (raw - cutoffs.b3) / (cutoffs.b4 - cutoffs.b3);
+                return Math.round(60 + fraction * 10);
+            }
+            if (raw >= cutoffs.b2) {
+                const fraction = (raw - cutoffs.b2) / (cutoffs.b3 - cutoffs.b2);
+                return Math.round(50 + fraction * 10);
+            }
+            const fraction = raw / cutoffs.b2;
+            return Math.round(fraction * 50);
+        }
+
+        function updateAlignmentSim() {
+            const raw = parseInt(document.getElementById('rawInput').value);
+            document.getElementById('rawInputVal').innerText = `${raw} / 100`;
+
+            const aligned = calculateAlignedMark(raw, currentCutoffs);
+            document.getElementById('alignedResult').innerText = aligned;
+
+            let bandText = "Band 1";
+            let bandBadgeColor = "#64748b";
+            if (aligned >= 90) {
+                bandText = "Band 6 (E4)";
+            } else if (aligned >= 80) {
+                bandText = "Band 5 (E3)";
+            } else if (aligned >= 70) {
+                bandText = "Band 4 (E2)";
+            } else if (aligned >= 60) {
+                bandText = "Band 3 (E1)";
+            } else if (aligned >= 50) {
+                bandText = "Band 2";
+            }
+
+            document.getElementById('bandResult').innerText = bandText;
+
+            let explanation = "";
+            if (aligned >= 90) {
+                explanation = `Your raw score of ${raw} reaches the Band 6 cutoff (${currentCutoffs.b6}), giving you an aligned mark of ${aligned}!`;
+            } else if (aligned >= 80) {
+                explanation = `Your raw score of ${raw} is within the Band 5 bracket (${currentCutoffs.b5} to ${currentCutoffs.b6 - 1}), aligning to ${aligned}.`;
+            } else {
+                explanation = `Your raw score of ${raw} maps to an aligned mark of ${aligned} (${bandText}).`;
+            }
+            document.getElementById('resultExplanation').innerText = explanation;
+
+            // Update spectrum bar
+            const b6Width = 100 - currentCutoffs.b6;
+            const b5Width = currentCutoffs.b6 - currentCutoffs.b5;
+            const b4Width = currentCutoffs.b5 - currentCutoffs.b4;
+            const b3Width = currentCutoffs.b4 - currentCutoffs.b3;
+            const b2Width = currentCutoffs.b3;
+
+            document.getElementById('segB6').style.width = `${b6Width}%`;
+            document.getElementById('segB5').style.width = `${b5Width}%`;
+            document.getElementById('segB4').style.width = `${b4Width}%`;
+            document.getElementById('segB3').style.width = `${b3Width}%`;
+            document.getElementById('segB2').style.width = `${b2Width}%`;
+
+            document.getElementById('spectrumMarker').style.left = `${raw}%`;
+            document.getElementById('spectrumRawIndicator').innerText = `Your Raw Mark: ${raw}/100`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAlignmentSim();
+        });
+    </script>
+</body>
+
+</html>
