@@ -1,0 +1,427 @@
+/* ============================================================
+   Claritas Academics — Tutors Page Styles
+   ============================================================ */
+
+/* ---------------- Page Header ---------------- */
+.page-header {
+    padding: 12rem 5% 6rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.page-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--light-text);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+/* ---------------- Philosophy Section ---------------- */
+.philosophy-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 5% 4rem;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.6s forwards;
+}
+
+.intro-text strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ---------------- Tutors Grid ---------------- */
+.tutors-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 5% 8rem;
+}
+
+.tutors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.tutor-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.tutor-card:nth-child(1) { animation-delay: 0.1s; }
+.tutor-card:nth-child(2) { animation-delay: 0.2s; }
+.tutor-card:nth-child(3) { animation-delay: 0.3s; }
+.tutor-card:nth-child(4) { animation-delay: 0.4s; }
+.tutor-card:nth-child(5) { animation-delay: 0.5s; }
+.tutor-card:nth-child(6) { animation-delay: 0.6s; }
+.tutor-card:nth-child(7) { animation-delay: 0.7s; }
+.tutor-card:nth-child(8) { animation-delay: 0.8s; }
+.tutor-card:nth-child(9) { animation-delay: 0.9s; }
+
+.tutor-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.tutor-image {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tutor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tutor-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+}
+
+.tutor-info {
+    padding: 2rem;
+}
+
+.tutor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.tutor-subjects-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.subject-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.9rem;
+    background: linear-gradient(135deg, rgba(15, 76, 117, 0.1) 0%, rgba(201, 169, 97, 0.1) 100%);
+    color: var(--accent);
+    border-radius: 15px;
+    font-weight: 500;
+    border: 1px solid rgba(15, 76, 117, 0.15);
+}
+
+.tutor-subjects {
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.tutor-preview {
+    color: var(--light-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.view-profile {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.view-profile:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+}
+
+.tutor-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.book-now-small {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--gold);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+}
+
+.book-now-small:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------- Modal Popup ---------------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    padding: 2rem;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--white);
+    border-radius: 25px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    position: relative;
+    height: 260px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px 25px 0 0;
+    overflow: hidden;
+}
+
+.modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+}
+
+.modal-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 3rem;
+}
+
+.modal-tutor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.modal-tutor-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+
+.modal-subject-tag {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.1rem;
+    background: linear-gradient(135deg, rgba(15, 76, 117, 0.1) 0%, rgba(201, 169, 97, 0.1) 100%);
+    color: var(--accent);
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid rgba(15, 76, 117, 0.15);
+}
+
+.section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    color: var(--primary);
+    border-left: 4px solid var(--gold);
+    padding-left: 1rem;
+}
+
+.modal-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.credentials-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.credentials-list li {
+    padding: 0.8rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text);
+}
+
+.credentials-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.book-session-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1.2rem 3rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-top: 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+.book-session-btn:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(15, 76, 117, 0.3);
+}
+
+/* ---------------- Responsive Styles (Tutors) ---------------- */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 10rem 5% 4rem;
+    }
+
+    .tutors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-body {
+        padding: 2rem;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+}

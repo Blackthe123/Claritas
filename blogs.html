@@ -26,6 +26,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav-footer.css">
     <link rel="stylesheet" href="css/blog.css">
 </head>
 
@@ -158,60 +160,8 @@
         <div class="copyright">© 2026 Claritas Academics. All rights reserved.</div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        }
-
-        // ---------------- Tag Filtering ----------------
-        const filterBar = document.getElementById('filterBar');
-        const cards = Array.from(document.querySelectorAll('.blog-card'));
-        const emptyState = document.getElementById('emptyState');
-
-        filterBar.addEventListener('click', (e) => {
-            const btn = e.target.closest('.filter-pill');
-            if (!btn) return;
-
-            filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                const tags = card.dataset.tags.split(' ');
-                const show = filter === 'all' || tags.includes(filter);
-                card.classList.toggle('is-hidden', !show);
-                if (show) visibleCount++;
-            });
-
-            emptyState.classList.toggle('visible', visibleCount === 0);
-
-            // Reflect filter in the URL for shareable filtered views, without a reload
-            try {
-                const url = new URL(window.location);
-                if (filter === 'all') url.searchParams.delete('tag');
-                else url.searchParams.set('tag', filter);
-                history.replaceState(null, '', url);
-            } catch (err) {
-                // Ignore in environments that block replaceState (e.g. file://)
-            }
-        });
-
-        // Apply filter from URL on load (e.g. blogs.html?tag=mathematics)
-        (function initFilterFromURL() {
-            const tag = new URL(window.location).searchParams.get('tag');
-            if (!tag) return;
-            const btn = filterBar.querySelector(`[data-filter="${tag}"]`);
-            if (btn) btn.click();
-        })();
-
-        // Blog cards are plain <a href="blog/xyz.html"> links — clicking one just
-        // navigates to the real, standalone post page (same as opening it in a new
-        // tab). Each post page is fully self-contained with its own nav, footer,
-        // and SEO meta tags, so nothing further needs to happen here.
-    </script>
+    <script src="js/main.js" defer></script>
+    <script src="js/blog-filter.js" defer></script>
 </body>
 
 </html>
