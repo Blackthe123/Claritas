@@ -1,0 +1,42 @@
+# Claritas Academics
+
+> Claritas Academics is a premier Australian HSC tutoring service founded and run by 97–99+ ATAR high achievers. We provide personalised 1-on-1 online and in-person tutoring for Year 11 and Year 12 HSC students across New South Wales (NSW), covering Mathematics (Standard, Advanced, Extension 1, Extension 2), Sciences (Physics, Chemistry, Biology), English (Standard, Advanced), and Humanities (Legal Studies, Modern History, Ancient History, Business Studies, Software Engineering).
+
+## About Claritas Academics
+
+- **Tagline:** Clarity. Confidence. Results.
+- **Mission:** Democratise elite HSC tutoring by offering top-tier tutors (97–99+ ATARs, State Rankers, Dux recipients) at accessible rates without corporate overhead, lock-in contracts, or hidden fees.
+- **Teaching Philosophy:** Structured, results-driven 3-stage framework:
+  1. *Clarity:* Deep first-principles conceptual understanding over rote memorisation.
+  2. *Confidence:* Targeted exam strategy, active recall, and structured problem-solving.
+  3. *Results:* Past paper mastery, marking criteria breakdown, and feedback.
+- **Contact Email:** info@claritasacademics.com
+- **Phone:** +61 406 227 992
+- **Website:** https://claritasacademics.com/
+- **ABN:** 91426380524
+
+## Tutors
+
+- **Ayush Yajaman (99.30 ATAR):** Arthur Phillip High School Dux, B Advanced Computer Science (Honours) at UNSW, Published AI Researcher. Specialises in Mathematics Advanced, Extension 1, Extension 2, Physics, Chemistry, and Software Engineering.
+- **Ned Reside (97.00 ATAR):** All-Rounder (Band 6 in all 6 subjects), B Politics, Philosophy and Economics at USYD, Published author in academic journal Overland. Specialises in English Standard, English Advanced, Legal Studies, Modern History, and Ancient History.
+- **Tarun Vakkalagadda (99.05 ATAR):** Double degree in Actuarial Studies & Computer Science at UNSW, Frank Doyle Shield for Economics, Band 6 in 4U Maths, Chemistry, Physics. Specialises in Mathematics Extension 1, Mathematics Extension 2, and Chemistry.
+- **Aditya Shivakumar (98.35 ATAR):** B Commerce & B Information Systems at UNSW, Band 6 in Maths, Biology, and Business Studies. Specialises in Mathematics Standard, Mathematics Advanced, Biology, and Business Studies.
+
+## Core Pages
+
+- [Home](https://claritasacademics.com/): Main overview of philosophy, tutors, subject categories, pricing plans, and booking.
+- [Meet Our Tutors](https://claritasacademics.com/tutors.html): In-depth tutor profiles, subject specialisations, ATAR credentials, teaching approaches, and booking links.
+- [HSC Study Blog](https://claritasacademics.com/blogs.html): Free HSC guides, subject breakdowns, interactive calculators, and exam strategies.
+
+## HSC Guides & Interactive Tools
+
+- [How HSC Alignment Works: Raw Marks vs Exam Marks Explained](https://claritasacademics.com/blog/hsc-alignment-explained.html): Comprehensive guide explaining NESA HSC exam alignment, band descriptors, HSC Judges, and rawmarks.info historical data, including an interactive piecewise alignment simulator.
+- [How HSC Moderation Works: Demystifying School Marks & Ranks](https://claritasacademics.com/blog/hsc-moderation-explained.html): Breakdown of NESA internal assessment moderation, rank matching, and final HSC mark calculation with an interactive Alice, Bob & Charlie model calculator.
+- [5 Mistakes That Sink Ext 2 Related Rates Questions](https://claritasacademics.com/blog/ext2-related-rates-mistakes.html): Step-by-step mathematical guide on tackling related rates problems in HSC Mathematics Extension 2 without common setup traps.
+
+## Pricing Plans
+
+- **Foundation ($40/hr):** Group Classes, Technique driven teaching, Exam writing tips.
+- **Excellence ($60/hr - Most Popular):** 1-on-1 online tutoring, Flexible scheduling, Greater Availability.
+- **Premium ($70/hr):** 1-on-1 face-to-face tutoring, Impactful Feedback & Correction, At home or Library.
+- **Free Trial Session:** Prospective students can book a free initial consultation and sample lesson with any tutor.

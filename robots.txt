@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://claritasacademics.com/sitemaps.xml
+# LLM Context: https://claritasacademics.com/llms.txt
