@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMNDRJT0NB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FMNDRJT0NB');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How HSC Scaling Works: UAC Algorithm, 2025 Data & ATARs Explained | Claritas Academics</title>
+    <meta name="description"
+        content="Demystify how UAC scales HSC marks to calculate your ATAR aggregate. Explore the mathematical scaling algorithm, analyze real 2025 scaling report tables, test our live interactive simulator, and bust common scaling myths.">
+    <link rel="canonical" href="https://claritasacademics.com/blog/hsc-scaling-explained.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How HSC Scaling Works: UAC Algorithm, 2025 Data & ATARs Explained">
+    <meta property="og:description"
+        content="Why your HSC marks don't just add up to your ATAR. Discover how UAC scales courses, test our live 2025 scaling simulator, and learn what scaling really means for your subject selection.">
+    <meta property="og:url" content="https://claritasacademics.com/blog/hsc-scaling-explained.html">
+    <meta property="og:image" content="https://claritasacademics.com/images/banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav-footer.css">
+    <link rel="stylesheet" href="../css/blog.css?v=2">
+    <link rel="stylesheet" href="../css/blog-simulators.css?v=2">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How HSC Scaling Works: UAC Algorithm, 2025 Data & ATARs Explained",
+        "description": "Demystify how UAC scales HSC marks to calculate your ATAR aggregate. Explore the mathematical scaling algorithm, analyze real 2025 scaling report tables, test our live interactive simulator, and bust common scaling myths.",
+        "image": "https://claritasacademics.com/images/banner.png",
+        "author": { "@type": "Person", "name": "Ayush Yajaman" },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claritas Academics",
+            "logo": { "@type": "ImageObject", "url": "https://claritasacademics.com/images/logo-2.png" }
+        },
+        "datePublished": "2026-09-06",
+        "mainEntityOfPage": "https://claritasacademics.com/blog/hsc-scaling-explained.html"
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="../images/logo-2.png" alt="Claritas Academics" class="logo-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">CLARITAS</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#philosophy">Philosophy</a></li>
+            <li><a href="../index.html#subjects">Subjects</a></li>
+            <li><a href="../tutors.html">Tutors</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="../blogs.html">Blogs</a></li>
+            <li><a href="../index.html#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <div class="post-top-space"></div>
+
+    <div id="post-content">
+        <article class="post-article">
+            <a href="../blogs.html" class="breadcrumb-back">← Back to Blog</a>
+
+            <header class="post-article-header">
+                <span class="post-article-tag">Exam Strategy</span>
+                <h1 class="post-article-title">How HSC Scaling Works: UAC Algorithm, 2025 Data & What It Means for Your ATAR</h1>
+                <div class="post-article-byline">
+                    <div class="byline-avatar"><img src="../images/ayush-shoulder.png" alt="Ayush Yajaman"></div>
+                    <div>
+                        <div class="byline-text-name">Ayush Yajaman</div>
+                        <div class="byline-text-meta">99.30 ATAR · Arthur Phillip Dux · 8 min read · Published September 2026</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-article-body">
+                <p>On results morning in mid-December, thousands of NSW Year 12 students log into their student portals and experience a strange mixture of relief, triumph, and confusion.</p>
+
+                <p>Student A looks at their NESA results: five Band 5s and an average HSC mark of <strong>82/100</strong>. Their ATAR comes out at <strong>85.50</strong>. Meanwhile, Student B receives an average HSC mark of <strong>80/100</strong>, yet their ATAR lands at <strong>92.10</strong>.</p>
+
+                <p><em>"How can someone with lower reported HSC marks end up with a significantly higher ATAR?"</em></p>
+
+                <p>The answer lies in <strong>HSC Scaling</strong> — the mathematical process carried out by the <strong>Universities Admissions Centre (UAC)</strong>. In this guide, we will unpack what scaling is, why it is essential, the iterative mathematical algorithm UAC uses, examine the official data from the <strong>2025 UAC Scaling Report</strong>, provide an <strong>interactive scaling simulator</strong>, and bust the most dangerous myths that trap HSC students every year.</p>
+
+                <h2>The HSC Results Trinity: Step 1, 2, and 3</h2>
+                <p>To understand scaling, you must first distinguish it from the other two processes that happen beforehand:</p>
+
+                <div class="trinity-grid">
+                    <!-- Moderation Card -->
+                    <div class="trinity-card">
+                        <span class="trinity-card-tag tag-moderation">Step 1: Moderation</span>
+                        <h3>Moderation</h3>
+                        <p>Adjusts your <strong>school internal assessment marks</strong> against your school cohort's external HSC exam performance.</p>
+                        <p><strong>Goal:</strong> Level the playing field between schools that mark harshly vs. easily.</p>
+                        <div class="trinity-who">Done by: NESA (School Level)</div>
+                    </div>
+
+                    <!-- Alignment Card -->
+                    <div class="trinity-card">
+                        <span class="trinity-card-tag tag-alignment">Step 2: Alignment</span>
+                        <h3>Alignment</h3>
+                        <p>Converts your <strong>raw exam mark</strong> into an aligned <strong>HSC Exam Mark</strong> using criteria set by HSC Judges.</p>
+                        <p><strong>Goal:</strong> Level the playing field across different exam years so exam difficulty doesn't penalize you.</p>
+                        <div class="trinity-who">Done by: NESA (Subject Level)</div>
+                    </div>
+
+                    <!-- Scaling Card -->
+                    <div class="trinity-card highlight">
+                        <span class="trinity-card-tag tag-scaling">Step 3: Scaling</span>
+                        <h3>Scaling</h3>
+                        <p>Converts your HSC marks into <strong>Scaled Marks</strong> across all 100+ subjects to generate your ATAR aggregate.</p>
+                        <p><strong>Goal:</strong> Level the playing field between different subjects with varying academic competition.</p>
+                        <div class="trinity-who">Done by: UAC (Statewide / ATAR)</div>
+                    </div>
+                </div>
+
+                <div class="disclaimer-callout">
+                    <h4>🔗 Master the Preceding Steps</h4>
+                    <p>Before scaling happens, your school internal marks are moderated and your exam papers are aligned. Read our companion guides: <a href="hsc-moderation-explained.html" style="color: var(--accent); font-weight: 700; text-decoration: underline;">How HSC Moderation Works</a> and <a href="hsc-alignment-explained.html" style="color: var(--accent); font-weight: 700; text-decoration: underline;">How HSC Alignment Works</a>.</p>
+                </div>
+
+                <h2>What Exactly is HSC Scaling and Why Is It Necessary?</h2>
+                <p>Every year, over <strong>77,000 students</strong> complete the NSW Higher School Certificate, choosing from more than <strong>110 different courses</strong>. Students sit entirely different subject combinations: one student takes Mathematics Extension 2, Physics, Chemistry, and English Advanced; another takes Mathematics Standard 2, Business Studies, Visual Arts, and PDHPE.</p>
+
+                <p>The fundamental challenge UAC faces is: <strong>How do you fairly compare the academic achievement of students who studied completely different subjects?</strong></p>
+
+                <p>If UAC simply added up everyone's reported HSC marks raw, students taking courses with exceptionally fierce competition (like Extension 2 Mathematics or Latin) would be at an immense disadvantage compared to subjects with different marking distributions.</p>
+
+                <div class="post-pullquote">
+                    "A scaled mark indicates a student’s position in a course if all 77,693 HSC students had completed that course."
+                    <br><small style="font-size: 0.9rem; color: var(--light-text); font-style: normal; margin-top: 0.5rem; display: block;">— UAC Technical Committee on Scaling (2025 Report)</small>
+                </div>
+
+                <p>In other words: <strong>Scaling answers the question: <em>"If every single HSC student across the entire state had sat Mathematics Extension 2, or Business Studies, or Visual Arts, what mark would you have achieved?"</em></strong></p>
+
+                <h2>How Scaling Works: The Mathematical Engine</h2>
+                <p>Many students mistakenly believe scaling is arbitrary or decided by a committee voting on which subjects are "hard". In reality, UAC uses a strictly defined mathematical algorithm based on <strong>simultaneous linear transformations</strong>.</p>
+
+                <h3>1. Marks are Scaled on a 1-Unit Basis (Out of 50)</h3>
+                <p>All courses are converted to a <strong>one-unit basis</strong> (scores out of 50). A 2-unit course (like Mathematics Advanced or Chemistry) is treated as two 1-unit contributions of equal value.</p>
+
+                <h3>2. The Benchmark: Academic Ability Across Other Courses</h3>
+                <p>How does UAC determine the "academic quality" of a subject's cohort? They measure how the students taking that subject performed across <strong>all their other subjects</strong>.</p>
+                <ul>
+                    <li>If the students enrolled in <em>Course X</em> consistently achieve top marks across all their other subjects (English, Sciences, Humanities), then the candidature of Course X has a high general academic ability.</li>
+                    <li>Therefore, the <strong>mean of the scaled marks</strong> awarded in Course X will be set higher, reflecting that academic strength.</li>
+                </ul>
+
+                <h3>3. The Iterative Simultaneous Equation Algorithm</h3>
+                <p>Because every subject's scaling depends on the performance of its students in their <em>other</em> subjects, and those other subjects depend on others in turn, UAC uses an <strong>iterative numerical algorithm</strong>:</p>
+                <ol>
+                    <li>UAC begins with an initial estimate of scaled marks for all students in all courses.</li>
+                    <li>For each course, linear transformations adjust the mean and standard deviation of scaled marks to match the average ability of its candidates across all courses.</li>
+                    <li>This process is repeated iteratively across thousands of simultaneous equations until the marks <strong>converge to a stable equilibrium</strong>.</li>
+                </ol>
+
+                <h3>4. Calculating the Aggregate & The Major 2025 Rule Change</h3>
+                <p>Once all scaled marks are finalised, UAC computes your <strong>ATAR Aggregate out of 500</strong>:</p>
+
+                <div class="post-pullquote">
+                    ATAR Aggregate (out of 500) = Best 2 Units of English + Best 8 Remaining Scaled Units
+                </div>
+
+                <div class="key-takeaway">
+                    <h4>🚀 Important Update: The 2025 Aggregation Rule</h4>
+                    <p>Starting from 2025, <strong>UAC has abolished the Category A and Category B distinction!</strong> Students are no longer limited to counting a maximum of 2 units of Category B vocational courses. As long as you complete 2 units of English and 8 best remaining units of ATAR courses, all units count freely towards your aggregate.</p>
+                </div>
+
+                <h2>Inside the 2025 UAC Scaling Report: The Real Data</h2>
+                <p>Let's look at the actual statistics released in the <em>Preliminary Report on the Scaling of the 2025 NSW Higher School Certificate</em> (authored by Assoc Prof Rod Yager, Chair of the Technical Committee on Scaling):</p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Units</th>
+                                <th>2025 Candidature</th>
+                                <th>HSC Mark Mean (1U)</th>
+                                <th>Scaled Mean (1U)</th>
+                                <th>Top 10% (P90) Scaled (1U)</th>
+                                <th>Max Scaled Mark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mathematics Extension 2</strong></td>
+                                <td>1U</td>
+                                <td>3,844</td>
+                                <td>41.5 / 50 (83%)</td>
+                                <td><strong style="color: var(--accent);">43.4 / 50 (86.8%)</strong></td>
+                                <td>48.3 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mathematics Extension 1</strong></td>
+                                <td>1U</td>
+                                <td>9,279</td>
+                                <td>39.7 / 50 (79.4%)</td>
+                                <td><strong style="color: var(--accent);">39.7 / 50 (79.4%)</strong></td>
+                                <td>47.2 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>English Extension 1</strong></td>
+                                <td>1U</td>
+                                <td>3,691</td>
+                                <td>42.8 / 50 (85.6%)</td>
+                                <td><strong style="color: var(--accent);">36.1 / 50 (72.2%)</strong></td>
+                                <td>43.9 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>English Advanced</strong></td>
+                                <td>2U</td>
+                                <td>26,292</td>
+                                <td>41.1 / 50 (82.2%)</td>
+                                <td><strong style="color: var(--accent);">32.8 / 50 (65.6%)</strong></td>
+                                <td>42.6 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chemistry</strong></td>
+                                <td>2U</td>
+                                <td>10,369</td>
+                                <td>37.6 / 50 (75.2%)</td>
+                                <td><strong style="color: var(--accent);">32.0 / 50 (64.0%)</strong></td>
+                                <td>43.6 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mathematics Advanced</strong></td>
+                                <td>2U</td>
+                                <td>16,809</td>
+                                <td>39.6 / 50 (79.2%)</td>
+                                <td><strong style="color: var(--accent);">31.9 / 50 (63.8%)</strong></td>
+                                <td>42.9 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Physics</strong></td>
+                                <td>2U</td>
+                                <td>8,817</td>
+                                <td>37.0 / 50 (74.0%)</td>
+                                <td><strong style="color: var(--accent);">31.0 / 50 (62.0%)</strong></td>
+                                <td>43.0 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Economics</strong></td>
+                                <td>2U</td>
+                                <td>5,741</td>
+                                <td>39.0 / 50 (78.0%)</td>
+                                <td><strong style="color: var(--accent);">31.4 / 50 (62.8%)</strong></td>
+                                <td>43.0 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Software Engineering</strong></td>
+                                <td>2U</td>
+                                <td>1,768</td>
+                                <td>37.6 / 50 (75.2%)</td>
+                                <td><strong style="color: var(--accent);">26.7 / 50 (53.4%)</strong></td>
+                                <td>40.5 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Biology</strong></td>
+                                <td>2U</td>
+                                <td>20,710</td>
+                                <td>36.7 / 50 (73.4%)</td>
+                                <td><strong style="color: var(--accent);">26.2 / 50 (52.4%)</strong></td>
+                                <td>39.9 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Legal Studies</strong></td>
+                                <td>2U</td>
+                                <td>10,080</td>
+                                <td>37.8 / 50 (75.6%)</td>
+                                <td><strong style="color: var(--accent);">25.3 / 50 (50.6%)</strong></td>
+                                <td>39.9 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Modern History</strong></td>
+                                <td>2U</td>
+                                <td>10,953</td>
+                                <td>37.1 / 50 (74.2%)</td>
+                                <td><strong style="color: var(--accent);">25.0 / 50 (50.0%)</strong></td>
+                                <td>39.2 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Studies</strong></td>
+                                <td>2U</td>
+                                <td>20,452</td>
+                                <td>37.4 / 50 (74.8%)</td>
+                                <td><strong style="color: var(--accent);">23.9 / 50 (47.8%)</strong></td>
+                                <td>39.2 / 50</td>
+                                <td>50.0 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mathematics Standard 2</strong></td>
+                                <td>2U</td>
+                                <td>31,762</td>
+                                <td>36.0 / 50 (72.0%)</td>
+                                <td><strong style="color: var(--accent);">23.3 / 50 (46.6%)</strong></td>
+                                <td>37.3 / 50</td>
+                                <td>47.1 / 50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>English Standard</strong></td>
+                                <td>2U</td>
+                                <td>33,651</td>
+                                <td>36.0 / 50 (72.0%)</td>
+                                <td><strong style="color: var(--accent);">20.4 / 50 (40.8%)</strong></td>
+                                <td>31.5 / 50</td>
+                                <td>49.3 / 50</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="source-callout">
+                    <div class="source-callout-text">
+                        <h4>📄 Official UAC Scaling Documentation</h4>
+                        <p>Access the official <em>Preliminary Report on the Scaling of the 2025 NSW HSC</em> directly from UAC archives or download the PDF copy.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                        <a href="preliminary-report-on-the-scaling-of-the-hsc.pdf" download class="source-btn" style="background: var(--accent);">
+                            ⬇️ Download 2025 PDF
+                        </a>
+                        <a href="https://uac.edu.au/assets/documents/scaling-reports/preliminary-report-on-the-scaling-of-the-hsc.pdf" target="_blank" rel="noopener noreferrer" class="source-btn">
+                            Official UAC Link &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <h2>Try It Yourself: Interactive 2025 HSC Scaling Simulator</h2>
+                <p>Use our interactive tool below to select any HSC course, input your expected HSC mark, and see its exact estimated <strong>2025 Scaled Mark</strong>, cohort percentile, and equivalent ATAR trajectory:</p>
+
+                <!-- Interactive Scaling Simulator -->
+                <div class="interactive-section">
+                    <div class="interactive-header">
+                        <div class="interactive-title">
+                            <span>2025 HSC Scaling Simulator</span>
+                        </div>
+                        <span class="interactive-badge">UAC 2025 Data</span>
+                    </div>
+
+                    <!-- Preset Mark Quick Buttons -->
+                    <div style="margin-bottom: 0.6rem; font-size: 0.88rem; font-weight: 600; color: var(--light-text);">
+                        Select an HSC Mark Benchmark:
+                    </div>
+                    <div class="difficulty-presets">
+                        <button class="preset-btn" onclick="setScalingPreset(95)">⭐ State Rank / High Band 6 (95)</button>
+                        <button class="preset-btn active" onclick="setScalingPreset(90)">🎯 Solid Band 6 (90)</button>
+                        <button class="preset-btn" onclick="setScalingPreset(85)">🔥 High Band 5 (85)</button>
+                        <button class="preset-btn" onclick="setScalingPreset(80)">📈 Solid Band 5 (80)</button>
+                        <button class="preset-btn" onclick="setScalingPreset(75)">📝 Band 4 Benchmark (75)</button>
+                    </div>
+
+                    <div class="sim-grid">
+                        <!-- Inputs Card -->
+                        <div class="sim-card">
+                            <h3>⚙️ Choose Course & Mark</h3>
+
+                            <div class="sim-input-row">
+                                <label for="scalingSubjectSelect">
+                                    <span>HSC Course:</span>
+                                </label>
+                                <select id="scalingSubjectSelect" class="sim-select-custom" onchange="updateScalingSim()">
+                                    <!-- Populated by JS -->
+                                </select>
+                            </div>
+
+                            <div class="sim-input-row">
+                                <label for="scalingHscSlider">
+                                    <span>Your HSC Reported Mark:</span>
+                                    <span class="val-label" id="scalingHscVal">90 / 100</span>
+                                </label>
+                                <input type="range" id="scalingHscSlider" class="sim-slider" min="0" max="100" value="90" oninput="updateScalingSim()">
+                            </div>
+
+                            <!-- Quick Stats for Selected Subject -->
+                            <div class="stats-grid-3">
+                                <div class="stat-mini-card">
+                                    <div class="stat-mini-label">Course Scaled Mean</div>
+                                    <div class="stat-mini-val" id="statScaledMean">63.8 / 100</div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <div class="stat-mini-label">2025 Candidature</div>
+                                    <div class="stat-mini-val" id="statCandidature">16,809</div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <div class="stat-mini-label">Max Scaled Mark</div>
+                                    <div class="stat-mini-val" id="statMaxScaled">100 / 100</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results Card -->
+                        <div class="result-box">
+                            <div class="result-title">Estimated Scaled Score</div>
+                            <div class="result-score" id="scalingResultScore">77.8</div>
+                            <div class="result-band-badge" id="scalingResultSubScore">(38.9 / 50 per unit)</div>
+                            <div class="atar-badge" id="scalingResultPercentile">Top ~10% of cohort (P90)</div>
+                            
+                            <div style="margin-top: 1rem; font-size: 0.85rem; color: #cbd5e1;">
+                                If all 10 units scaled at this pace: <strong id="scalingAtarTrajectory" style="color: var(--gold); font-size: 1.05rem;">~94.20 ATAR</strong>
+                            </div>
+
+                            <div class="result-subtext" id="scalingResultExplanation" style="margin-top: 0.8rem; font-size: 0.82rem; line-height: 1.5;">
+                                Calculation loaded from 2025 UAC Table A3.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject Comparison Tool -->
+                    <div style="margin-top: 2rem; border-top: 2px solid #f0f4f8; padding-top: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem;">⚖️ Side-by-Side Subject Comparison</h3>
+                        <p style="font-size: 0.9rem; color: var(--light-text); margin-bottom: 1rem;">See what mark you need in Course B to equal your scaled score in Course A:</p>
+
+                        <!-- Comparison Quick Presets -->
+                        <div class="difficulty-presets" style="margin-bottom: 1.2rem;">
+                            <button class="preset-btn" onclick="setComparisonPreset('English Advanced', 'English Standard', 85)">📖 English Adv vs Standard (85)</button>
+                            <button class="preset-btn" onclick="setComparisonPreset('Mathematics Advanced', 'Mathematics Standard 2', 80)">📐 Maths Adv vs Std 2 (80)</button>
+                            <button class="preset-btn" onclick="setComparisonPreset('Mathematics Extension 2', 'Mathematics Advanced', 45)">🔥 4U Maths vs 2U Maths (45)</button>
+                            <button class="preset-btn" onclick="setComparisonPreset('Physics', 'Biology', 85)">🔬 Physics vs Biology (85)</button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="font-size: 0.82rem; font-weight: 700; color: var(--light-text); display: block; margin-bottom: 0.3rem;">Subject A:</label>
+                                <select id="compSubA" class="sim-select-custom" onchange="updateComparisonSim()"></select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.82rem; font-weight: 700; color: var(--light-text); display: block; margin-bottom: 0.3rem;">Subject B:</label>
+                                <select id="compSubB" class="sim-select-custom" onchange="updateComparisonSim()"></select>
+                            </div>
+                        </div>
+
+                        <div class="sim-input-row" style="margin-bottom: 1.2rem;">
+                            <label for="compMarkA">
+                                <span>Subject A HSC Mark:</span>
+                                <span class="val-label" id="compMarkAVal">85 / 100</span>
+                            </label>
+                            <input type="range" id="compMarkA" class="sim-slider" min="0" max="100" value="85" oninput="updateComparisonSim()">
+                        </div>
+
+                        <div class="comp-split-box">
+                            <div class="comp-card-col" id="compResA"></div>
+                            <div class="comp-card-col" id="compResB"></div>
+                        </div>
+
+                        <p id="compSummaryText" style="font-size: 0.88rem; color: var(--text); background: #f8fafc; padding: 0.8rem 1rem; border-radius: 8px; border-left: 3px solid var(--accent); margin: 0;"></p>
+                    </div>
+                </div>
+
+                <h2>Case Study: English Advanced vs. English Standard Scaling</h2>
+                <p>One of the most frequently asked questions in the entire HSC is: <em>"Should I do English Advanced or English Standard?"</em></p>
+
+                <p>Many students look at the scaling tables, see that an <strong>85 in English Standard</strong> and an <strong>85 in English Advanced</strong> produce similar scaled scores (~73/100), and conclude: <em>"They scale the same, so I might as well do Standard!"</em></p>
+
+                <p><strong>This is a critical misunderstanding of HSC statistics.</strong> Here is why:</p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Student Achievement Level</th>
+                                <th>English Advanced HSC Mark</th>
+                                <th>English Advanced Scaled (2U)</th>
+                                <th>English Standard HSC Mark</th>
+                                <th>English Standard Scaled (2U)</th>
+                                <th>Scaled Score Advantage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Top 1% of Course (P99)</strong></td>
+                                <td>95 / 100</td>
+                                <td><strong>93.8 / 100</strong></td>
+                                <td>88 / 100</td>
+                                <td><strong>79.4 / 100</strong></td>
+                                <td><strong style="color: var(--accent);">+14.4 Marks (Advanced)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Top 10% of Course (P90)</strong></td>
+                                <td>91 / 100</td>
+                                <td><strong>85.2 / 100</strong></td>
+                                <td>80 / 100</td>
+                                <td><strong>63.0 / 100</strong></td>
+                                <td><strong style="color: var(--accent);">+22.2 Marks (Advanced)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Top 25% of Course (P75)</strong></td>
+                                <td>87 / 100</td>
+                                <td><strong>77.8 / 100</strong></td>
+                                <td>77 / 100</td>
+                                <td><strong>52.2 / 100</strong></td>
+                                <td><strong style="color: var(--accent);">+25.6 Marks (Advanced)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Median Student (P50)</strong></td>
+                                <td>82 / 100</td>
+                                <td><strong>67.4 / 100</strong></td>
+                                <td>73 / 100</td>
+                                <td><strong>40.0 / 100</strong></td>
+                                <td><strong style="color: var(--accent);">+27.4 Marks (Advanced)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bottom 25% (P25)</strong></td>
+                                <td>78 / 100</td>
+                                <td><strong>55.4 / 100</strong></td>
+                                <td>68 / 100</td>
+                                <td><strong>29.0 / 100</strong></td>
+                                <td><strong style="color: var(--accent);">+26.4 Marks (Advanced)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="key-takeaway">
+                    <h4>💡 The Golden Rule of English Selection</h4>
+                    <p>Scoring an <strong>80+ (Band 5) in English Standard is exceptionally rare</strong> — only <strong>12.9%</strong> of the 33,651 Standard candidates achieve it. In contrast, <strong>65.2% of English Advanced candidates achieve a Band 5 or Band 6</strong>!</p>
+                    <p style="margin-top: 0.5rem;">For an average student sitting at the 50th percentile of their respective cohort, taking English Advanced yields a <strong>+27.4 mark scaled advantage</strong> over English Standard. Unless a student is at serious risk of failing, English Advanced is almost always the safer strategic choice.</p>
+                </div>
+
+                <h2>Busting the 5 Biggest HSC Scaling Myths</h2>
+
+                <!-- Myth Buster 1 -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth #1</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "Picking high-scaling subjects guarantees a 90+ ATAR."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> High-scaling subjects only help if you perform well in them!
+                            <br><br>
+                            If you take Mathematics Extension 2 or Physics and score an HSC mark of 65 (Band 3), your scaled mark is lower than a student scoring 92 in Business Studies or Standard Mathematics. Scaling cannot rescue poor performance; high scaling is a reward for high mastery in a competitive candidature.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth Buster 2 -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth #2</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "UAC scales down subjects like PDHPE, Visual Arts, and Business Studies out of spite."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> Subjects are never "penalised". The scaled distribution simply reflects the median student's performance across the entire 77,000-student statewide pool.
+                            <br><br>
+                            In fact, as shown in 2025 Table A1, students taking <strong>Business Studies, PDHPE, Visual Arts, and Standard Maths all achieved ATARs of 99.80 to 99.95</strong>! If you score in the top 1–5% (Band 6) of any subject, its scaled score is exceptionally strong.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth Buster 3 -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth #3</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "Scaling fluctuates unpredictably every single year."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> For major courses, scaling profiles remain virtually identical year-on-year.
+                            <br><br>
+                            Because the demographic profile and academic ability of students enrolling in Physics, Economics, or Standard Maths does not radically swing between years, the scaled means and percentiles in 2025 match 2024 within fractions of a percent.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth Buster 4 -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth #4</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "I should drop a subject I love for a 'higher-scaling' subject I hate."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> Interest drives study volume, study volume drives mastery, and mastery drives top percentiles.
+                            <br><br>
+                            A student who loves History or Economics and works passionately will easily score a Band 6 (top 10%), yielding a scaled mark of 43+/50. Forcing yourself into 4U Maths when your strengths lie in Humanities usually results in lower percentiles and a lower ATAR.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth Buster 5 -->
+                <div class="myth-buster-box">
+                    <div class="myth-header">
+                        <span>⚠️ HSC Myth #5</span>
+                    </div>
+                    <div class="myth-body">
+                        <div class="myth-text">
+                            <span>❌ Myth:</span> "English Standard doesn't matter because it scales poorly."
+                        </div>
+                        <div class="truth-text">
+                            <strong>✅ The Truth:</strong> <strong>2 units of English MUST count towards your ATAR aggregate</strong> — no matter what!
+                            <br><br>
+                            Because English cannot be dropped from your top 10 units, a weak English mark damages your ATAR aggregate more than any elective subject. Protecting your English marks with consistent essay writing and tutor feedback is non-negotiable.
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Key Takeaways & Strategy for HSC Students</h2>
+                <ul>
+                    <li><strong>Rank Within Your Cohort Drives Scaled Marks:</strong> Aiming for the top 10–15% in your chosen subjects ensures your scaled marks contribute heavily toward a 90+ or 99+ ATAR.</li>
+                    <li><strong>Prioritise English Early:</strong> Since at least 2 units of English are mandatory in every student's 10-unit aggregate, never neglect English in favour of other subjects.</li>
+                    <li><strong>Combine Passion with Realistic Rigour:</strong> Take the highest level of maths or science you can realistically achieve a Band 5/6 in, but do not sacrifice your core strengths.</li>
+                </ul>
+            </div>
+
+            <div class="post-cta-box">
+                <p>Want 1-on-1 mentorship to optimize your HSC subject strategy, exam technique, and target a 98+ ATAR?</p>
+                <a href="https://cal.com/ayush-yajaman-bf5qw6" class="post-cta-btn" target="_blank"
+                    rel="noopener noreferrer">Book a Free Strategy Consultation with Ayush</a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-posts">
+        <h2 class="related-posts-title">Related Articles</h2>
+        <div class="related-grid">
+            <a href="hsc-alignment-explained.html" class="blog-card">
+                <div class="blog-card-image gold-bg">
+                    <span class="blog-card-tag">Exam Strategy</span>
+                    <img src="../images/nesa.png" alt="HSC Alignment" class="blog-card-icon-img">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-card-meta">
+                        <span>6 min read</span><span class="dot"></span><span>HSC Strategy</span>
+                    </div>
+                    <h3 class="blog-card-title">How HSC Alignment Works: Why Your Raw Marks Are Not What You Think</h3>
+                    <p class="blog-card-excerpt">Discover how HSC Judges determine band cutoffs, why raw marks don't equal exam marks, and how alignment protects you on hard exams. Live simulator included!</p>
+                    <div class="blog-card-byline">
+                        <div class="byline-avatar"><img src="../images/ayush-shoulder.png" alt="Ayush Yajaman"></div>
+                        <span class="byline-name">Ayush Yajaman</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="hsc-moderation-explained.html" class="blog-card">
+                <div class="blog-card-image gold-bg">
+                    <span class="blog-card-tag">Exam Strategy</span>
+                    <img src="../images/nesa.png" alt="HSC Moderation" class="blog-card-icon-img">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-card-meta">
+                        <span>5 min read</span><span class="dot"></span><span>HSC Strategy</span>
+                    </div>
+                    <h3 class="blog-card-title">How HSC Moderation Works: Demystifying School Marks & Ranks</h3>
+                    <p class="blog-card-excerpt">Why your raw internal marks don't matter, how ranks assign exam marks, and how your final HSC mark is calculated. Interactive model included!</p>
+                    <div class="blog-card-byline">
+                        <div class="byline-avatar"><img src="../images/ayush-shoulder.png" alt="Ayush Yajaman"></div>
+                        <span class="byline-name">Ayush Yajaman</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">CLARITAS ACADEMICS</div>
+        <div class="footer-tagline">Clarity. Confidence. Results.</div>
+        <div class="footer-contact">
+            <div class="contact-item"><strong>ABN:</strong> 91426380524</div>
+            <div class="contact-item"><strong>Email:</strong> <a
+                    href="mailto:info@claritasacademics.com">info@claritasacademics.com</a></div>
+            <div class="contact-item"><strong>Phone:</strong> <a href="tel:+61406227992">+61 406 227 992</a></div>
+        </div>
+        <div class="copyright">© 2026 Claritas Academics. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/scaling-sim.js" defer></script>
+</body>
+
+</html>

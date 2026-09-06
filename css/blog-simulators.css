@@ -647,3 +647,134 @@
 .source-btn:hover {
     background: #0369a1;
 }
+
+/* ---------------- Scaling Simulator Specifics ---------------- */
+.sim-select-custom {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.sim-select-custom:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(15, 76, 117, 0.12);
+}
+
+.stats-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.stat-mini-card {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.stat-mini-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+}
+
+.stat-mini-val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.comp-split-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+    .comp-split-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+.comp-card-col {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
+}
+
+.comp-card-col:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.comp-col-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.6rem;
+}
+
+.comp-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.comp-score .comp-sub {
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+.comp-detail {
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.comp-cohort {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+}
+
+.atar-badge {
+    display: inline-block;
+    background: rgba(201, 169, 97, 0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+

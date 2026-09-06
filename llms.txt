@@ -30,6 +30,7 @@
 
 ## HSC Guides & Interactive Tools
 
+- [How HSC Scaling Works: UAC Algorithm & 2025 Data Explained](https://claritasacademics.com/blog/hsc-scaling-explained.html): In-depth breakdown of UAC scaled marks, iterative simultaneous equations algorithm, 2025 Preliminary Scaling Report data analysis, myth busting, and an interactive 2025 subject scaling simulator.
 - [How HSC Alignment Works: Raw Marks vs Exam Marks Explained](https://claritasacademics.com/blog/hsc-alignment-explained.html): Comprehensive guide explaining NESA HSC exam alignment, band descriptors, HSC Judges, and rawmarks.info historical data, including an interactive piecewise alignment simulator.
 - [How HSC Moderation Works: Demystifying School Marks & Ranks](https://claritasacademics.com/blog/hsc-moderation-explained.html): Breakdown of NESA internal assessment moderation, rank matching, and final HSC mark calculation with an interactive Alice, Bob & Charlie model calculator.
 - [5 Mistakes That Sink Ext 2 Related Rates Questions](https://claritasacademics.com/blog/ext2-related-rates-mistakes.html): Step-by-step mathematical guide on tackling related rates problems in HSC Mathematics Extension 2 without common setup traps.
