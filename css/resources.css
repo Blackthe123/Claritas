@@ -1,0 +1,372 @@
+/* ============================================================
+   Claritas Academics — Resources Page Styles
+   ============================================================ */
+
+/* ---------------- Page Header ---------------- */
+.page-header {
+    padding: 12rem 5% 4.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 169, 97, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.page-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--light-text);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+/* ---------------- Filter Bar ---------------- */
+.filter-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 5% 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.5s forwards;
+}
+
+.filter-pill {
+    border: 1.5px solid rgba(15, 76, 117, 0.2);
+    background: var(--white);
+    color: var(--accent);
+    padding: 0.65rem 1.4rem;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-pill:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.filter-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(15, 76, 117, 0.25);
+}
+
+/* ---------------- Resources Section & Grid ---------------- */
+.resources-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 5% 7rem;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2.5rem;
+}
+
+/* ---------------- Resource Card ---------------- */
+.resource-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    border-color: rgba(201, 169, 97, 0.3);
+}
+
+.resource-card.is-hidden {
+    display: none;
+}
+
+/* Card Visual Header */
+.resource-card-header {
+    height: 190px;
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f4c75 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    overflow: hidden;
+    color: white;
+}
+
+.resource-card-header.gold-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2a2012 40%, #c9a961 100%);
+}
+
+.resource-card-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(201, 169, 97, 0.25), transparent 70%);
+}
+
+.resource-card-icon {
+    font-size: 3.5rem;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover .resource-card-icon {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+.resource-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    z-index: 3;
+}
+
+.resource-format-tag {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    color: #e2e8f0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    z-index: 3;
+}
+
+/* Card Body */
+.resource-card-body {
+    padding: 2rem 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.resource-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--light-text);
+    font-weight: 500;
+    margin-bottom: 0.85rem;
+}
+
+.resource-meta .dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.resource-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--primary);
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.3px;
+}
+
+.resource-card-excerpt {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--light-text);
+    margin-bottom: 1.25rem;
+}
+
+/* Key Highlights / Features List */
+.resource-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(15, 76, 117, 0.04);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent);
+}
+
+.resource-features li {
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resource-features li:last-child {
+    margin-bottom: 0;
+}
+
+.feature-check {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Author byline */
+.resource-byline {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
+
+.resource-author {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Actions */
+.resource-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-open-pdf {
+    flex: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(15, 76, 117, 0.2);
+}
+
+.btn-open-pdf:hover {
+    background: #0b3756;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 76, 117, 0.3);
+}
+
+.btn-download-pdf {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.85rem 1rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-download-pdf:hover {
+    background: rgba(15, 76, 117, 0.06);
+    transform: translateY(-2px);
+}
+
+/* ---------------- Empty State ---------------- */
+.empty-state {
+    display: none;
+    text-align: center;
+    padding: 5rem 1rem;
+    font-size: 1.1rem;
+    color: var(--light-text);
+}
+
+.empty-state.is-visible {
+    display: block;
+}
+
+/* ---------------- Responsive Styles ---------------- */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 9rem 5% 3.5rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .resource-actions {
+        flex-direction: column;
+    }
+
+    .btn-open-pdf,
+    .btn-download-pdf {
+        width: 100%;
+        flex: none;
+    }
+}

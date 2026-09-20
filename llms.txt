@@ -27,6 +27,7 @@
 - [Home](https://claritasacademics.com/): Main overview of philosophy, tutors, subject categories, pricing plans, and booking.
 - [Meet Our Tutors](https://claritasacademics.com/tutors.html): In-depth tutor profiles, subject specialisations, ATAR credentials, teaching approaches, and booking links.
 - [HSC Study Blog](https://claritasacademics.com/blogs.html): Free HSC guides, subject breakdowns, interactive calculators, and exam strategies.
+- [Academic Resources & Textbooks](https://claritasacademics.com/resources.html): HSC textbooks, syllabus guides, and reference materials including the Claritas Software Engineering Textbook.
 
 ## HSC Guides & Interactive Tools
 
