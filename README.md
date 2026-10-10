@@ -92,13 +92,13 @@ The homepage is a single-page application with smooth scroll navigation. It cont
 - Includes a "View All … Tutors" call-to-action button per category
 
 #### Pricing Section
-- Four pricing plan cards:
-  - **Foundation** — $40/hr (Offline Group Session)
-  - **Excellence** — $60/hr (1:1 Online) — *Recommended badge*
+- Three pricing plan cards:
+  - **Foundation** — $40/hr (Offline Group Session) — *Subject to availability*
+  - **Excellence** — Slashed from $60/hr to $50/hr (1:1 Online) — *Recommended badge & Term 4 Special*
   - **Premium** — $70/hr (1:1 Offline)
-  - **Elite** — $100/hr (Everything in Premium + more) — *Top Bands Guaranteed badge*
 - Hover scale and lift animation
-- Recommended and Elite cards are pre-scaled for visual emphasis
+- Recommended card is pre-scaled for visual emphasis
+- Limited-time Term 4 Price Slash entrance modal with direct navigation and highlight animation
 
 #### Value Proposition Section
 - Gold badge: *Our Competitive Advantage*

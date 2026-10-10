@@ -253,3 +253,85 @@ window.addEventListener('load', () => {
     animateCounters();
     initPhilosophyArrow();
 });
+
+/* ============================================================
+   Term 4 Price Slash Promo Announcement Modal
+   ============================================================ */
+function openPromoModal() {
+    const modal = document.getElementById('promoModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closePromoModal() {
+    const modal = document.getElementById('promoModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    try {
+        sessionStorage.setItem('claritas_term4_promo_seen', 'true');
+    } catch (e) {
+        // sessionStorage may be disabled
+    }
+}
+
+function claimPromoOffer(event) {
+    if (event) event.preventDefault();
+    closePromoModal();
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+        const excellenceCard = document.getElementById('excellence-card') || document.querySelector('.pricing-card.recommended');
+        if (excellenceCard) {
+            excellenceCard.classList.remove('highlight-pulse');
+            void excellenceCard.offsetWidth; // trigger reflow
+            excellenceCard.classList.add('highlight-pulse');
+            setTimeout(() => {
+                excellenceCard.classList.remove('highlight-pulse');
+            }, 3000);
+        }
+    }
+}
+
+// Close with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('promoModal');
+        if (modal && modal.classList.contains('active')) {
+            closePromoModal();
+        }
+    }
+});
+
+// Auto-show modal for visitors
+window.addEventListener('load', () => {
+    let seen = false;
+    try {
+        seen = sessionStorage.getItem('claritas_term4_promo_seen') === 'true';
+    } catch (e) {
+        seen = false;
+    }
+
+    if (!seen) {
+        setTimeout(() => {
+            openPromoModal();
+        }, 700);
+    }
+});
+
+// Allow clicking on Term 4 badges to re-open the promo modal
+document.addEventListener('DOMContentLoaded', () => {
+    const promoBadges = document.querySelectorAll('.slashed-discount-badge, .term4-offer-pill');
+    promoBadges.forEach(badge => {
+        badge.style.cursor = 'pointer';
+        badge.setAttribute('title', 'Click to view Term 4 special details');
+        badge.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openPromoModal();
+        });
+    });
+});
+

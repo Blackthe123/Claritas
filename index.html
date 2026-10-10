@@ -447,19 +447,32 @@
                 <h3 class="plan-name">Foundation</h3>
                 <div class="plan-price">$40<span>/hr</span></div>
                 <div class="plan-duration">Offline Group Session</div>
+                <div class="availability-tag">⚠️ Subject to availability</div>
                 <ul class="plan-features">
                     <li>Technique driven teaching</li>
                     <li>Immediate Marking & Feedback</li>
                     <li>Syllabus aligned content</li>
                     <li>Exam writing tips</li>
+                    <li class="availability-feature-item"><strong>Subject to availability</strong></li>
                 </ul>
                 <a href="#booking" class="cta-button">Get Started</a>
             </div>
-            <div class="pricing-card recommended scroll-reveal" style="transition-delay: 0.1s">
+            <div class="pricing-card recommended scroll-reveal" id="excellence-card" style="transition-delay: 0.1s">
+                <div class="slashed-discount-badge">🔥 TERM 4 SPECIAL: $10/HR OFF</div>
                 <h3 class="plan-name">Excellence</h3>
-                <div class="plan-price">$60<span>/hr</span></div>
+                <div class="plan-price plan-price-slashed">
+                    <span class="price-old-slashed" aria-label="Original price $60 per hour">
+                        <span class="price-strikethrough-num">$60</span>
+                        <span class="price-slash-line" aria-hidden="true"></span>
+                    </span>
+                    <span class="price-arrow-sym" aria-hidden="true">→</span>
+                    <span class="price-new-amount">$50</span>
+                    <span class="price-unit">/hr</span>
+                </div>
                 <div class="plan-duration">1:1 Online Session</div>
+                <div class="term4-offer-pill">Limited Time • Ends 26 October</div>
                 <ul class="plan-features">
+                    <li><strong>Slashed from $60 to $50/hr</strong></li>
                     <li>Personalised teaching</li>
                     <li>Flexible scheduling</li>
                     <li>No Physical Commitment</li>
@@ -479,19 +492,6 @@
                     <li>Progress Reports</li>
                 </ul>
                 <a href="#booking" class="cta-button">Go Premium</a>
-            </div>
-            <div class="pricing-card elite scroll-reveal" style="transition-delay: 0.2s">
-                <h3 class="plan-name">Elite</h3>
-                <div class="plan-price">$100<span>/hr</span></div>
-                <div class="plan-duration">Everything in Premium and more!</div>
-                <ul class="plan-features">
-                    <li>Customised Resources</li>
-                    <li>Multi-subject support</li>
-                    <li>Exam preparation</li>
-                    <li>Priority Feedback & Scheduling</li>
-                    <li>Unlimited support</li>
-                </ul>
-                <a href="#booking" class="cta-button">Become Elite</a>
             </div>
         </div>
     </section>
@@ -626,6 +626,70 @@
             © 2026 Claritas Academics. All rights reserved.
         </div>
     </footer>
+
+    <!-- Term 4 Price Slash Announcement Modal -->
+    <div id="promoModal" class="promo-modal" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle" aria-hidden="true">
+        <div class="promo-modal-overlay" onclick="closePromoModal()"></div>
+        <div class="promo-modal-card">
+            <button class="promo-close-btn" onclick="closePromoModal()" aria-label="Close Announcement">&times;</button>
+            <div class="promo-modal-header">
+                <div class="promo-badge">
+                    <span class="promo-sparkle">✨</span> LIMITED TIME OFFER • TERM 4 SPECIAL
+                </div>
+                <h2 id="promoModalTitle" class="promo-title">We've Slashed Tutoring Prices!</h2>
+                <p class="promo-empathy">
+                    As Term 4 begins and Year 11 students make the transition into Year 12, we understand this can be a high-pressure and anxious time. At Claritas, we believe that <strong>price point should never be a barrier to high-quality education</strong>.
+                </p>
+            </div>
+
+            <div class="promo-slashed-card">
+                <div class="promo-card-tag">🔥 Term 4 Transition Discount</div>
+                <div class="promo-plan-name">Excellence Plan <span class="promo-sub">(1:1 Online Tutoring)</span></div>
+                
+                <div class="promo-price-comparison">
+                    <div class="promo-price-old">
+                        <span class="comp-label">WAS</span>
+                        <div class="slashed-amount-box">
+                            <span class="old-num">$60</span>
+                            <span class="old-unit">/hr</span>
+                            <span class="literal-strike-bar" aria-hidden="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="promo-price-arrow">
+                        <span class="arrow-sym">→</span>
+                        <span class="discount-pill">SAVE $10/HR</span>
+                    </div>
+
+                    <div class="promo-price-new">
+                        <span class="comp-label">NOW ONLY</span>
+                        <div class="new-amount-box">
+                            <span class="new-num">$50</span>
+                            <span class="new-unit">/hr</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="promo-offer-validity">
+                    <span class="timer-icon">⏳</span> Valid for <strong>2 weeks only</strong> (offer ends <strong>26 October</strong>)
+                </div>
+            </div>
+
+            <div class="promo-foundation-mention">
+                Looking for small group classes? <strong>Foundation</strong> sessions are also available at <strong>$40/hr</strong> <em>(subject to availability)</em>.
+            </div>
+
+            <div class="promo-modal-actions">
+                <a href="#pricing" class="promo-cta-primary" onclick="claimPromoOffer(event)">
+                    <span>Claim Slashed Rate ($50/hr)</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <button type="button" class="promo-cta-secondary" onclick="closePromoModal()">
+                    Explore Website
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js" defer></script>
     <script src="js/home.js" defer></script>
