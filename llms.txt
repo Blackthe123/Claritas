@@ -1,6 +1,6 @@
 # Claritas Academics
 
-> Claritas Academics is a premier Australian HSC tutoring service founded and run by 97–99+ ATAR high achievers. We provide personalised 1-on-1 online and in-person tutoring for Year 11 and Year 12 HSC students across New South Wales (NSW), covering Mathematics (Standard, Advanced, Extension 1, Extension 2), Sciences (Physics, Chemistry, Biology), English (Standard, Advanced), and Humanities (Legal Studies, Modern History, Ancient History, Business Studies, Software Engineering).
+> Claritas Academics is a premier Australian HSC tutoring service founded and run by 97–99+ ATAR high achievers. We provide personalised 1-on-1 online and in-person tutoring for Year 10, 11 and 12 HSC students across New South Wales (NSW), covering Mathematics (Standard, Advanced, Extension 1, Extension 2), Sciences (Physics, Chemistry, Biology), English (Standard, Advanced), and Humanities (Legal Studies, Modern History, Ancient History, Business Studies, Software Engineering).
 
 ## About Claritas Academics
 
@@ -17,7 +17,7 @@
 
 ## Tutors
 
-- **Ayush Yajaman (99.30 ATAR):** Arthur Phillip High School Dux, B Advanced Computer Science (Honours) at UNSW, Published AI Researcher. Specialises in Mathematics Advanced, Extension 1, Extension 2, Physics, Chemistry, and Software Engineering.
+- **Ayush Yajaman (99.30 ATAR):** Arthur Phillip High School Dux with the highest ATAR in the school's history, achieved at a non-selective school after moving to Australia in Year 10, B Advanced Computer Science (Honours) at UNSW, Published AI Researcher. Specialises in Mathematics Advanced, Extension 1, Extension 2, Physics, Chemistry, and Software Engineering.
 - **Ned Reside (97.00 ATAR):** All-Rounder (Band 6 in all 6 subjects), B Politics, Philosophy and Economics at USYD, Published author in academic journal Overland. Specialises in English Standard, English Advanced, Legal Studies, Modern History, and Ancient History.
 - **Tarun Vakkalagadda (99.05 ATAR):** Double degree in Actuarial Studies & Computer Science at UNSW, Frank Doyle Shield for Economics, Band 6 in 4U Maths, Chemistry, Physics. Specialises in Mathematics Extension 1, Mathematics Extension 2, and Chemistry.
 - **Aditya Shivakumar (98.35 ATAR):** B Commerce & B Information Systems at UNSW, Band 6 in Maths, Biology, and Business Studies. Specialises in Mathematics Standard, Mathematics Advanced, Biology, and Business Studies.
@@ -40,6 +40,6 @@
 ## Pricing Plans
 
 - **Foundation ($40/hr):** Group Classes, Technique driven teaching, Exam writing tips. Subject to availability.
-- **Excellence (Slashed from $60/hr to $50/hr - Most Popular):** 1-on-1 online tutoring, Flexible scheduling, Greater Availability. Limited time Term 4 Special (valid till 26 October).
+- **Excellence ($60/hr - Most Popular):** 1-on-1 online tutoring, Flexible scheduling, Greater Availability.
 - **Premium ($70/hr):** 1-on-1 face-to-face tutoring, Impactful Feedback & Correction, At home or Library.
 - **Free Trial Session:** Prospective students can book a free initial consultation and sample lesson with any tutor.

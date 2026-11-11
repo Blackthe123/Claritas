@@ -9,10 +9,10 @@ const tutorData = {
         image: 'images/banner.png',
         name: 'Ayush Yajaman',
         subjects: ['Math Advanced', 'Math Extension 1', 'Math Extension 2', 'Physics', 'Chemistry', 'Software Engineering'],
-        bio: 'Ayush Yajaman brings over 4 years of teaching experience and an impressive 99.30 ATAR. He is currently pursuing a Bachelor of Computer Science at UNSW and wants to be a pioneer in building cutting-edge AI solutions.',
-        approach: 'I believe mathematics is a language that describes our world and science enables us to understand it. My approach focuses on building deep conceptual understanding rather than rote memorisation, helping students see the beauty and logic in mathematical and scientific thinking. Through structured problem-solving and personalised guidance, I help students develop confidence and genuine understanding.',
+        bio: 'Ayush moved to Australia in Year 10. Because of his catchment, there was only one school he could go to, a non-selective school, and he thought his chances were low. He couldn\'t change the school, so he researched how the HSC and ATAR actually work: moderation, alignment, scaling, all of it. What he found was that a non-selective school doesn\'t put you behind. Your school mates\' results pull your marks around, so you have to be the one at the top. He had to become the curve. He finished with a 99.30 ATAR, the highest in his school\'s history, and is now studying Advanced Computer Science at UNSW.',
+        approach: 'I put in hours and hours on Maths, Physics, Chemistry and Software Engineering, until I knew exactly which parts of each topic confuse students the most and where the HSC actually assesses them. That means you don\'t have to find out the hard way. I guide you straight to what matters, with deep conceptual understanding underneath so unfamiliar questions don\'t throw you. I also teach you how the system works, so you know why your school rank matters so much and which marks are worth chasing. I tutor Years 10 to 12.',
         credentials: [
-            '99.30 ATAR',
+            '99.30 ATAR, the highest in his school\'s history',
             '4+ years chess tutoring experience',
             'Published AI research in IJHSR journal',
             'Arthur Phillip High School Dux',
