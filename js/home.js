@@ -8,30 +8,32 @@
 
 'use strict';
 
-/* ---- Metrics counter animation ---- */
+/* ---- Metrics counter animation (supports decimals + suffix) ---- */
 function animateCounters() {
     document.querySelectorAll('.metric-number').forEach(counter => {
         if (counter.classList.contains('counted')) return;
-        if (counter.getBoundingClientRect().top >= window.innerHeight - 150) return;
+        if (counter.getBoundingClientRect().top >= window.innerHeight - 80) return;
 
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 1800;
+        const start = performance.now();
+        const fmt = v => v.toFixed(decimals) + suffix;
 
         counter.classList.add('counted');
 
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
+        const tick = now => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 4); // easeOutQuart: fast climb, slow finish
+            counter.textContent = fmt(target * eased);
+            if (t < 1) requestAnimationFrame(tick);
+            else {
+                counter.textContent = fmt(target);
+                counter.classList.add('landed');
             }
         };
-
-        updateCounter();
+        requestAnimationFrame(tick);
     });
 }
 
@@ -87,7 +89,15 @@ function initPhilosophyArrow() {
         const endPoint = windowHeight * 0.2;
         let progress = 0;
 
-        if (rect.top < startPoint && rect.bottom > endPoint) {
+        if (window.innerWidth <= 768) {
+            // Timeline mode: the line's tip tracks a point 60% down the screen
+            const circles = philosophyFlow.querySelectorAll('.stage-circle');
+            const first = circles[0].getBoundingClientRect();
+            const last = circles[circles.length - 1].getBoundingClientRect();
+            const y0 = first.top + first.height / 2;
+            const y1 = last.top + last.height / 2;
+            progress = Math.min(Math.max((windowHeight * 0.6 - y0) / (y1 - y0), 0), 1);
+        } else if (rect.top < startPoint && rect.bottom > endPoint) {
             const scrollRange = sectionHeight + startPoint - endPoint;
             const scrolled = startPoint - rect.top;
             progress = Math.min(Math.max(scrolled / scrollRange, 0), 1);
@@ -114,7 +124,14 @@ function initPhilosophyArrow() {
         }, 100);
     });
 
-    window.addEventListener('scroll', animateArrowOnScroll);
+    // Stages slide in as they reveal and fonts can shift layout, so keep the path in sync while scrolling
+    window.addEventListener('scroll', () => {
+        updateArrowPath();
+        animateArrowOnScroll();
+    }, { passive: true });
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(() => { updateArrowPath(); animateArrowOnScroll(); }).observe(philosophyFlow);
+    }
     animateArrowOnScroll();
 }
 
@@ -237,7 +254,32 @@ function toggleCategory() {
         stage.addEventListener('mouseenter', stopAuto);
         stage.addEventListener('mouseleave', startAuto);
 
+        // Swipe support for touch screens
+        let touchX = null, touchY = null;
+        stage.addEventListener('touchstart', e => {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+            stopAuto();
+        }, { passive: true });
+        stage.addEventListener('touchend', e => {
+            if (touchX === null) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            const dy = e.changedTouches[0].clientY - touchY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo(current + (dx < 0 ? 1 : -1));
+            touchX = null;
+            startAuto();
+        }, { passive: true });
+
+        // On small screens cards are absolutely positioned, so size the stage to the tallest card
+        function syncHeight() {
+            if (window.innerWidth > 768) { stage.style.height = ''; return; }
+            const tallest = Math.max(...cards.map(c => c.offsetHeight));
+            stage.style.height = tallest + 'px';
+        }
+        window.addEventListener('resize', syncHeight);
+
         goTo(0);
+        syncHeight();
         startAuto();
     }
 
@@ -253,85 +295,3 @@ window.addEventListener('load', () => {
     animateCounters();
     initPhilosophyArrow();
 });
-
-/* ============================================================
-   Term 4 Price Slash Promo Announcement Modal
-   ============================================================ */
-function openPromoModal() {
-    const modal = document.getElementById('promoModal');
-    if (!modal) return;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-}
-
-function closePromoModal() {
-    const modal = document.getElementById('promoModal');
-    if (!modal) return;
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-    try {
-        sessionStorage.setItem('claritas_term4_promo_seen', 'true');
-    } catch (e) {
-        // sessionStorage may be disabled
-    }
-}
-
-function claimPromoOffer(event) {
-    if (event) event.preventDefault();
-    closePromoModal();
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
-        const excellenceCard = document.getElementById('excellence-card') || document.querySelector('.pricing-card.recommended');
-        if (excellenceCard) {
-            excellenceCard.classList.remove('highlight-pulse');
-            void excellenceCard.offsetWidth; // trigger reflow
-            excellenceCard.classList.add('highlight-pulse');
-            setTimeout(() => {
-                excellenceCard.classList.remove('highlight-pulse');
-            }, 3000);
-        }
-    }
-}
-
-// Close with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const modal = document.getElementById('promoModal');
-        if (modal && modal.classList.contains('active')) {
-            closePromoModal();
-        }
-    }
-});
-
-// Auto-show modal for visitors
-window.addEventListener('load', () => {
-    let seen = false;
-    try {
-        seen = sessionStorage.getItem('claritas_term4_promo_seen') === 'true';
-    } catch (e) {
-        seen = false;
-    }
-
-    if (!seen) {
-        setTimeout(() => {
-            openPromoModal();
-        }, 700);
-    }
-});
-
-// Allow clicking on Term 4 badges to re-open the promo modal
-document.addEventListener('DOMContentLoaded', () => {
-    const promoBadges = document.querySelectorAll('.slashed-discount-badge, .term4-offer-pill');
-    promoBadges.forEach(badge => {
-        badge.style.cursor = 'pointer';
-        badge.setAttribute('title', 'Click to view Term 4 special details');
-        badge.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openPromoModal();
-        });
-    });
-});
-
