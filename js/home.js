@@ -161,10 +161,10 @@ function toggleCategory() {
             quote: "Tarun's been a great tutor he explained concepts very simply."
         },
         {
-            name: "Leon",
-            subject: "Physics, Math Advanced",
+            name: "Elijah",
+            subject: "Year 12 Physics",
             stars: 5,
-            quote: "I enjoy learning math and physics with Ayush as he gives an in-depth explanation backed up with real world examples. This makes tutoring with Ayush extremely helpful to understand complex concepts."
+            quote: "Ayush was super helpful and explained questions and concepts clearly and thoroughly."
         },
         {
             name: "Vedant",
