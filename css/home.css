@@ -194,7 +194,8 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem;
-    margin-top: 4rem;
+    margin: 4rem auto 0;
+    max-width: 760px;
 }
 
 .metric-card {
@@ -1432,8 +1433,8 @@ a.pillar:hover .pillar-name::after {
     }
 
     .metrics-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.6rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
         margin-top: 0;
     }
 
@@ -1448,7 +1449,7 @@ a.pillar:hover .pillar-name::after {
     }
 
     .metric-label {
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         line-height: 1.4;
         letter-spacing: 0;
     }

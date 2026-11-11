@@ -7,7 +7,7 @@
 
 ## Project Overview
 
-This website serves as the primary online presence for Claritas Academics, offering HSC tutoring services to Year 11 and 12 students. It is built with vanilla HTML, CSS, and JavaScript — no frameworks or build tools required.
+This website serves as the primary online presence for Claritas Academics, offering HSC tutoring services to Year 10 to 12 students. It is built with vanilla HTML, CSS, and JavaScript — no frameworks or build tools required.
 
 ### File Structure
 
@@ -62,10 +62,9 @@ The homepage is a single-page application with smooth scroll navigation. It cont
 - Scroll-reveal fade-in animation
 
 #### Impact Metrics Section
-- Three animated counter cards:
-  - **4** Expert Tutors
-  - **14** Courses Taught
-  - **18** Band 6 Achieved
+- Two animated counter cards:
+  - **30+** Satisfied Clients
+  - **98.4** Average Tutor ATAR
 - Counters animate from 0 to their target value when scrolled into view
 - Hover lift effect on each card
 

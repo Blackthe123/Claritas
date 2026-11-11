@@ -1,6 +1,6 @@
 # Claritas Academics
 
-> Claritas Academics is a premier Australian HSC tutoring service founded and run by 97–99+ ATAR high achievers. We provide personalised 1-on-1 online and in-person tutoring for Year 11 and Year 12 HSC students across New South Wales (NSW), covering Mathematics (Standard, Advanced, Extension 1, Extension 2), Sciences (Physics, Chemistry, Biology), English (Standard, Advanced), and Humanities (Legal Studies, Modern History, Ancient History, Business Studies, Software Engineering).
+> Claritas Academics is a premier Australian HSC tutoring service founded and run by 97–99+ ATAR high achievers. We provide personalised 1-on-1 online and in-person tutoring for Year 10, 11 and 12 HSC students across New South Wales (NSW), covering Mathematics (Standard, Advanced, Extension 1, Extension 2), Sciences (Physics, Chemistry, Biology), English (Standard, Advanced), and Humanities (Legal Studies, Modern History, Ancient History, Business Studies, Software Engineering).
 
 ## About Claritas Academics
 
