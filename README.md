@@ -232,3 +232,13 @@ Tutor bookings are handled externally via [cal.com](https://cal.com). Each tutor
 | Phone | +61 406 227 992 |
 | Instagram | @claritas_academics |
 | Location | Sydney, NSW, Australia |
+
+---
+
+## Cache busting
+
+GitHub Pages serves CSS/JS with a 10-minute browser cache. Every `<link>` and `<script>` for local files carries a `?v=YYYYMMDD` tag. When you change any CSS or JS, bump it across all pages so visitors get the new files immediately:
+
+```bash
+sed -i -E 's/\?v=[0-9]+/?v=NEWDATE/g' *.html blog/*.html
+```
