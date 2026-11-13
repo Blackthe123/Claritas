@@ -34,7 +34,8 @@
         // Keyword-only thresholds (used before the model is ready)
         lexAccept: 0.42,
         lexMaybe: 0.26,
-        waitForModelMs: 2500
+        waitForModelMs: 2500,
+        popupDelayMs: 4000
     };
 
     /* ============================================================
@@ -328,27 +329,98 @@
         return q.replace(/\S+@\S+/g, '[email]').replace(/\+?\d[\d\s-]{6,}\d/g, '[number]').slice(0, 100);
     }
 
-    /* ---------- DOM ---------- */
-    const imgBase = (document.querySelector('link[href*="css/main.css"]') || {}).getAttribute
-        ? document.querySelector('link[href*="css/main.css"]').getAttribute('href').replace(/css\/main\.css.*$/, '')
-        : '';
+    /* ---------- Sounds (synthesised with Web Audio, no files) ---------- */
+    const MUTE_KEY = 'clarity-muted';
+    const Sound = {
+        ctx: null,
+        muted: (() => { try { return localStorage.getItem(MUTE_KEY) === '1'; } catch (_) { return false; } })(),
+        // Browsers only allow audio after the visitor has clicked/tapped/typed on the page
+        allowed() {
+            const ua = navigator.userActivation;
+            return !ua || ua.hasBeenActive;
+        },
+        context() {
+            if (!this.allowed()) return null;
+            const AC = root.AudioContext || root.webkitAudioContext;
+            if (!AC) return null;
+            if (!this.ctx) this.ctx = new AC();
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => { });
+            return this.ctx;
+        },
+        note(c, t, freq, dur, { type = 'sine', vol = 0.06, to = null } = {}) {
+            const o = c.createOscillator();
+            const g = c.createGain();
+            o.type = type;
+            o.frequency.setValueAtTime(freq, t);
+            if (to) o.frequency.exponentialRampToValueAtTime(to, t + dur);
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+            o.connect(g).connect(c.destination);
+            o.start(t);
+            o.stop(t + dur + 0.02);
+        },
+        play(name) {
+            if (this.muted) return;
+            const c = this.context();
+            if (!c) return;
+            const t = c.currentTime + 0.01;
+            switch (name) {
+                case 'popup':   // friendly two-step bubble
+                    this.note(c, t, 520, 0.13, { to: 880, vol: 0.07 });
+                    this.note(c, t + 0.11, 880, 0.18, { to: 1320, vol: 0.06 });
+                    break;
+                case 'open':
+                    this.note(c, t, 440, 0.12, { to: 660, vol: 0.05 });
+                    break;
+                case 'close':
+                    this.note(c, t, 660, 0.12, { to: 420, vol: 0.04 });
+                    break;
+                case 'send':    // quick upward blip
+                    this.note(c, t, 600, 0.09, { type: 'triangle', to: 950, vol: 0.05 });
+                    break;
+                case 'receive': // soft two-note chime
+                    this.note(c, t, 784, 0.16, { vol: 0.05 });
+                    this.note(c, t + 0.09, 1175, 0.24, { vol: 0.045 });
+                    break;
+            }
+        },
+        setMuted(m) {
+            this.muted = m;
+            try { localStorage.setItem(MUTE_KEY, m ? '1' : '0'); } catch (_) { }
+        }
+    };
 
+    /* ---------- DOM ---------- */
     const wrap = document.createElement('div');
     wrap.className = 'clarity';
     wrap.innerHTML = `
         <button class="clarity-launcher" type="button" aria-label="Ask Clarity, the Claritas assistant" aria-expanded="false" aria-controls="clarity-panel">
-            <svg class="clarity-icon-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6c-.5.4-1.3.1-1.3-.6V16A2.5 2.5 0 0 1 4 13.5z" fill="currentColor"/><circle cx="8.5" cy="9.5" r="1.2" fill="#1a1a2e"/><circle cx="12" cy="9.5" r="1.2" fill="#1a1a2e"/><circle cx="15.5" cy="9.5" r="1.2" fill="#1a1a2e"/></svg>
+            <svg class="clarity-bot-icon clarity-icon-chat" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="2.6" r="1.4" fill="currentColor"/><path d="M11.3 3.6h1.4v3h-1.4z" fill="currentColor"/><rect x="3.6" y="6.4" width="16.8" height="13.2" rx="4" fill="currentColor"/><rect x="1.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><rect x="20.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><g class="clarity-eyes"><circle cx="9" cy="12.4" r="1.6" fill="#1a1a2e"/><circle cx="15" cy="12.4" r="1.6" fill="#1a1a2e"/></g><path d="M9.4 16.1q2.6 1.7 5.2 0" fill="none" stroke="#1a1a2e" stroke-width="1.4" stroke-linecap="round"/></svg>
             <svg class="clarity-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
             <span class="clarity-launcher-text">Ask Clarity</span>
         </button>
-        <div class="clarity-nudge" role="status" hidden>Questions about tutors, pricing or the HSC? <b>Ask me.</b><button type="button" class="clarity-nudge-x" aria-label="Dismiss">×</button></div>
+        <div class="clarity-nudge" role="status" hidden>
+            <button type="button" class="clarity-nudge-x" aria-label="Dismiss">×</button>
+            <div class="clarity-nudge-head"><span class="clarity-nudge-avatar"><svg class="clarity-bot-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="2.6" r="1.4" fill="currentColor"/><path d="M11.3 3.6h1.4v3h-1.4z" fill="currentColor"/><rect x="3.6" y="6.4" width="16.8" height="13.2" rx="4" fill="currentColor"/><rect x="1.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><rect x="20.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><g class="clarity-eyes"><circle cx="9" cy="12.4" r="1.6" fill="#1a1a2e"/><circle cx="15" cy="12.4" r="1.6" fill="#1a1a2e"/></g><path d="M9.4 16.1q2.6 1.7 5.2 0" fill="none" stroke="#1a1a2e" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="clarity-nudge-name">Clarity</span></div>
+            <p class="clarity-nudge-text">Hey there 👋 Need any help? I can answer questions about our tutors, pricing or how the HSC works.</p>
+            <div class="clarity-nudge-chips">
+                <button type="button" class="clarity-chip" data-q="How much is it?" data-intent="pricing">Pricing</button>
+                <button type="button" class="clarity-chip" data-q="Book a free session" data-intent="free_trial">Free session</button>
+                <button type="button" class="clarity-chip" data-q="">Ask something else</button>
+            </div>
+        </div>
         <div class="clarity-panel" id="clarity-panel" role="dialog" aria-label="Clarity assistant" hidden>
             <div class="clarity-head">
-                <img class="clarity-avatar" src="${imgBase}images/favicon.png" alt="" width="38" height="38">
+                <span class="clarity-avatar"><svg class="clarity-bot-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="2.6" r="1.4" fill="currentColor"/><path d="M11.3 3.6h1.4v3h-1.4z" fill="currentColor"/><rect x="3.6" y="6.4" width="16.8" height="13.2" rx="4" fill="currentColor"/><rect x="1.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><rect x="20.6" y="10.6" width="1.8" height="4.6" rx=".9" fill="currentColor"/><g class="clarity-eyes"><circle cx="9" cy="12.4" r="1.6" fill="#1a1a2e"/><circle cx="15" cy="12.4" r="1.6" fill="#1a1a2e"/></g><path d="M9.4 16.1q2.6 1.7 5.2 0" fill="none" stroke="#1a1a2e" stroke-width="1.4" stroke-linecap="round"/></svg></span>
                 <div class="clarity-title">
                     <span class="clarity-name">Clarity</span>
-                    <span class="clarity-sub">Claritas assistant · instant answers</span>
+                    <span class="clarity-sub">Claritas assistant</span>
                 </div>
+                <button class="clarity-mute" type="button" aria-pressed="false" aria-label="Mute sounds" title="Sound on">
+                    <svg class="clarity-sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.2 6a8.6 8.6 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <svg class="clarity-sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
                 <button class="clarity-reset" type="button" aria-label="Start a new chat" title="New chat">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -440,6 +512,7 @@
         busy = true;
         clearChips();
         addMsg('u', text);
+        Sound.play('send');
         const typing = showTyping();
         const started = Date.now();
 
@@ -477,6 +550,7 @@
         await sleep(wait);
         typing.remove();
         addMsg('b', reply.html, reply.chips);
+        Sound.play('receive');
         addChips(reply.chips, reply.kind);
         busy = false;
     }
@@ -514,14 +588,30 @@
 
     function hideNudge() {
         nudge.hidden = true;
+        wrap.classList.remove('is-nudging');
         try { sessionStorage.setItem(NUDGE_KEY, '1'); } catch (_) { }
     }
 
     launcher.addEventListener('click', () => {
         if (!state.open) track('clarity_open', { page: location.pathname });
+        Sound.play(state.open ? 'close' : 'open');
         setOpen(!state.open);
     });
-    $('.clarity-close').addEventListener('click', () => setOpen(false));
+    $('.clarity-close').addEventListener('click', () => { Sound.play('close'); setOpen(false); });
+
+    const muteBtn = $('.clarity-mute');
+    function syncMute() {
+        wrap.classList.toggle('is-muted', Sound.muted);
+        muteBtn.setAttribute('aria-pressed', String(Sound.muted));
+        muteBtn.setAttribute('aria-label', Sound.muted ? 'Unmute sounds' : 'Mute sounds');
+        muteBtn.title = Sound.muted ? 'Sound off' : 'Sound on';
+    }
+    muteBtn.addEventListener('click', () => {
+        Sound.setMuted(!Sound.muted);
+        syncMute();
+        Sound.play('open');
+    });
+    syncMute();
     $('.clarity-reset').addEventListener('click', () => {
         state.msgs = [];
         save();
@@ -529,8 +619,26 @@
         renderAll();
         input.focus();
     });
-    $('.clarity-nudge-x').addEventListener('click', e => { e.stopPropagation(); hideNudge(); });
-    nudge.addEventListener('click', () => setOpen(true));
+    $('.clarity-nudge-x').addEventListener('click', e => {
+        e.stopPropagation();
+        track('clarity_popup_dismiss', { page: location.pathname });
+        hideNudge();
+    });
+    nudge.addEventListener('click', e => {
+        const chip = e.target.closest('.clarity-chip');
+        track('clarity_open', { page: location.pathname, from: 'popup' });
+        Sound.play('open');
+        setOpen(true);
+        if (chip && chip.dataset.q) ask(chip.dataset.q, chip.dataset.intent);
+    });
+
+    function showNudge() {
+        if (state.open) return;
+        nudge.hidden = false;
+        wrap.classList.add('is-nudging');
+        Sound.play('popup');
+        track('clarity_popup_shown', { page: location.pathname });
+    }
     form.addEventListener('submit', e => {
         e.preventDefault();
         const q = input.value;
@@ -548,8 +656,9 @@
 
         let nudged = false;
         try { nudged = sessionStorage.getItem(NUDGE_KEY) === '1'; } catch (_) { }
-        if (!nudged && !state.open && !state.msgs.length && !matchMedia('(max-width: 768px)').matches) {
-            setTimeout(() => { if (!state.open) nudge.hidden = false; }, 9000);
+        // Pop up once per visit (session), a few seconds after the page loads
+        if (!nudged && !state.open && state.msgs.length <= 1) {
+            setTimeout(showNudge, CONFIG.popupDelayMs);
         }
     }
 
