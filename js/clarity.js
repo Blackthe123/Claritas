@@ -436,7 +436,7 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" fill="currentColor"/></svg>
                 </button>
             </form>
-            <p class="clarity-foot">Answers written by the Claritas team · <a href="mailto:${KB.EMAIL}">Email a human</a></p>
+            <p class="clarity-foot">Answers written by the Claritas team · <button type="button" class="clarity-human">Contact a human</button></p>
         </div>`;
 
     const $ = sel => wrap.querySelector(sel);
@@ -598,6 +598,7 @@
         setOpen(!state.open);
     });
     $('.clarity-close').addEventListener('click', () => { Sound.play('close'); setOpen(false); });
+    $('.clarity-human').addEventListener('click', () => ask('Contact a human', 'contact'));
 
     const muteBtn = $('.clarity-mute');
     function syncMute() {
