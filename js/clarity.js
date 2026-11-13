@@ -162,7 +162,7 @@
         }
 
         /* ---------- Routing ---------- */
-        const SUBJECTISH = new Set(['subject_tutors', 'subjects_list', 'tutors_overview', 'unsupported_subject', 'how_to_book', 'year_levels']);
+        const SUBJECTISH = new Set(['subject_tutors', 'subjects_list', 'tutors_overview', 'unsupported_subject', 'how_to_book', 'year_levels', 'about']);
         const TUTORISH = new Set(['tutors_overview', 'tutor_profile', 'subject_tutors', 'subjects_list', 'results', 'atar', 'about']);
 
         function route(text, qvec) {
