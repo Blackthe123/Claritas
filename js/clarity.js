@@ -28,6 +28,8 @@
         model: 'Xenova/all-MiniLM-L6-v2',
         // Semantic (embedding) thresholds
         semAccept: 0.62,
+        semAcceptWithGap: 0.55,   // also accept from here if clearly ahead of the runner-up
+        semGap: 0.1,
         semMaybe: 0.48,
         // Keyword-only thresholds (used before the model is ready)
         lexAccept: 0.42,
@@ -179,7 +181,9 @@
             let best = ranked[0];
             let score = combined[best];
             let method = useSem ? 'semantic' : 'keyword';
-            const confident = score >= accept;
+            const gap = score - (combined[ranked[1]] || 0);
+            const confident = score >= accept ||
+                (useSem && score >= CONFIG.semAcceptWithGap && gap >= CONFIG.semGap);
 
             // Entity-driven overrides
             if (ents.unsupported.length && !ents.subjects.length && (!confident || SUBJECTISH.has(best))) {
@@ -193,7 +197,7 @@
                 best = 'year_levels'; method = 'entity';
             }
 
-            const resolved = method === 'entity' || score >= accept;
+            const resolved = method === 'entity' || confident;
             const unsure = !resolved && score >= maybe;
             return {
                 intent: resolved ? best : null,

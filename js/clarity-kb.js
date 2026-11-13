@@ -25,28 +25,28 @@
     const TUTORS = [
         {
             id: 'tutor1', name: 'Ayush Yajaman', first: 'Ayush', atar: '99.30',
-            aliases: ['ayush', 'yajaman', 'founder', 'owner'],
+            aliases: ['ayush', 'yajaman', 'founder', 'owner', '99.30', '99.3'],
             subjects: ['math_adv', 'ext1', 'ext2', 'physics', 'chemistry', 'seng'],
             cal: 'https://cal.com/ayush-yajaman-bf5qw6',
             bio: 'Founder of Claritas. 99.30 ATAR, the highest in his school\'s history, from a non-selective school after moving to Australia in Year 10. Now studying Advanced Computer Science (Honours) at UNSW and a published AI researcher.'
         },
         {
             id: 'tutor2', name: 'Ned Reside', first: 'Ned', atar: '97.00',
-            aliases: ['ned', 'reside'],
+            aliases: ['ned', 'reside', '97.00'],
             subjects: ['eng_std', 'eng_adv', 'legal', 'modern', 'ancient'],
             cal: 'https://cal.com/nedreside',
             bio: 'Band 6 in all six of his HSC subjects. Studies Politics, Philosophy and Economics at USYD and has been published in the academic journal Overland. Big on writing, structure and critical thinking.'
         },
         {
             id: 'tutor3', name: 'Tarun Vakkalagadda', first: 'Tarun', atar: '99.05',
-            aliases: ['tarun', 'vakkalagadda'],
+            aliases: ['tarun', 'vakkalagadda', '99.05'],
             subjects: ['ext1', 'ext2', 'chemistry'],
             cal: 'https://cal.com/tarun-vakkalagadda',
             bio: 'Band 6 in 4U Maths, Chemistry and Physics. Studies Actuarial Studies and Computer Science at UNSW. Breaks hard Maths and Chemistry into manageable chunks instead of rote learning.'
         },
         {
             id: 'tutor4', name: 'Aditya Shivakumar', first: 'Aditya', atar: '98.35',
-            aliases: ['aditya', 'shivakumar', 'adi'],
+            aliases: ['aditya', 'shivakumar', 'adi', '98.35'],
             subjects: ['math_adv', 'math_std', 'biology', 'business'],
             cal: 'https://cal.com/aditya.s1501',
             bio: 'Band 6 in Maths, Biology and Business Studies. Studies Commerce and Information Systems at UNSW. Specialises in structured frameworks and study systems.'
@@ -85,7 +85,7 @@
     const UNSUPPORTED = [
         'english extension 1', 'english extension 2', 'english extension', 'english ext', 'eald', 'eal/d', 'english eal', 'english studies',
         'history extension', 'science extension', 'investigating science', 'earth and environmental science', 'earth and environmental', 'eesc',
-        'engineering studies', 'enterprise computing', 'economics', 'eco', 'geography', 'geo', 'pdhpe', 'studies of religion', 'sor',
+        'engineering studies', 'enterprise computing', 'economics', 'econ', 'eco', 'geography', 'geo', 'pdhpe', 'studies of religion', 'sor',
         'society and culture', 'visual arts', 'music', 'drama', 'dance', 'design and technology', 'food technology', 'cafs',
         'community and family studies', 'aboriginal studies', 'industrial technology', 'textiles', 'agriculture',
         'french', 'japanese', 'chinese', 'mandarin', 'spanish', 'german', 'italian', 'korean', 'hindi', 'latin', 'indonesian', 'arabic',
@@ -163,13 +163,13 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'group_classes',
-            examples: ['do you have group classes', 'group tutoring', 'can i do a group session', 'foundation plan', 'small group lessons', 'can i learn with friends', 'are there classes'],
+            examples: ['do you have group classes', 'group tutoring', 'can i do a group session', 'foundation plan', 'small group lessons', 'can i learn with friends', 'are there classes', 'can i study alongside other students'],
             answer: `Yes. Our <b>Foundation</b> option is an in-person group session at $40/hr, with technique-driven teaching, instant marking and exam writing tips. It depends on availability, so email ${MAIL} or ask in your free session to see what's running.`,
             chips: [['All pricing', 'pricing'], ['Book a free session', 'free_trial']]
         },
         {
             id: 'free_trial',
-            examples: ['is there a free trial', 'do you offer a free session', 'can i try a lesson first', 'first lesson free', 'free consultation', 'trial lesson', 'sample lesson', 'can i test it out before paying', 'what happens in the free session'],
+            examples: ['is there a free trial', 'do you offer a free session', 'can i try a lesson first', 'first lesson free', 'free consultation', 'trial lesson', 'sample lesson', 'can i test it out before paying', 'what happens in the free session', 'can i have a taster lesson'],
             answer: `Yes, your first session is free. You meet a tutor, talk through your goals and availability, and build a plan together. You can also take a short sample lesson to see how we teach.<br><br>Pick a tutor on the <a href="/tutors.html">tutors page</a> and hit <b>Book Now</b>.`,
             chips: [['Which tutor is right for me?', 'tutors_overview'], ['How much after that?', 'pricing']]
         },
@@ -269,13 +269,13 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'contracts',
-            examples: ['is there a contract', 'is there a lock in', 'can i cancel anytime', 'do i have to commit for a term', 'can i stop whenever i want', 'can i pause lessons', 'what is the cancellation policy', 'are there hidden fees', 'do i have to pay upfront for a term'],
+            examples: ['is there a contract', 'is there a lock in', 'can i cancel anytime', 'do i have to commit for a term', 'can i stop whenever i want', 'can i pause lessons', 'what is the cancellation policy', 'are there hidden fees', 'do i have to pay upfront for a term', 'am i locked in for a whole term', 'do i have to sign up for a full term'],
             answer: `No lock-ins and no hidden fees. You can pause or leave any time. We'd rather earn your trust than trap it. For specifics on rescheduling a booked lesson, email ${MAIL}.`,
             chips: [['Pricing', 'pricing'], ['Book a free session', 'free_trial']]
         },
         {
             id: 'payment',
-            examples: ['how do i pay', 'what payment methods do you accept', 'do you take card', 'can i pay by bank transfer', 'when do i pay', 'do you send invoices', 'payment options'],
+            examples: ['how do i pay', 'what payment methods do you accept', 'do you take card', 'can i pay by bank transfer', 'when do i pay', 'do you send invoices', 'payment options', 'do you take afterpay'],
             answer: `Payment is sorted directly with us after your free session. For details, email ${MAIL} or call ${TEL}.`,
             chips: [['Pricing', 'pricing'], ['Contact us', 'contact']]
         },
@@ -287,7 +287,7 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'why_cheaper',
-            examples: ['why are you cheaper', 'why is it so cheap', 'how are your prices so low', 'why choose you over a tutoring centre', 'what makes you different', 'why should i pick claritas', 'what is your competitive advantage', 'why not a big tutoring college'],
+            examples: ['why are you cheaper', 'why is it so cheap', 'how are your prices so low', 'why choose you over a tutoring centre', 'what makes you different', 'why should i pick claritas', 'what is your competitive advantage', 'why not a big tutoring college', 'what makes you better than other tutoring centres', 'why you instead of a coaching college'],
             answer: `We're a student-founded startup with no expensive buildings, big ad budgets or layers of management. So you get tutors who'd typically charge $100 to $150/hr at big centres, for $40 to $70/hr.<br><br>And we teach the system, not just the content: how moderation, alignment and scaling turn your marks into an ATAR.`,
             chips: [['Meet the tutors', 'tutors_overview'], ['Our philosophy', 'philosophy']]
         },
@@ -321,7 +321,7 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'scaling',
-            examples: ['what is scaling', 'how does scaling work', 'explain hsc scaling', 'which subjects scale well', 'does ext 2 scale well', 'what is the best scaling subject', 'should i pick subjects for scaling', 'how does uac scale marks'],
+            examples: ['what is scaling', 'how does scaling work', 'explain hsc scaling', 'which subjects scale well', 'which subjects boost your atar the most', 'does ext 2 scale well', 'what is the best scaling subject', 'should i pick subjects for scaling', 'how does uac scale marks'],
             answer: `Before your ATAR is calculated, UAC <b>scales</b> every subject based on how strong its students are. Strong ranks in strongly scaled subjects compound. But a high rank in a lower-scaling subject can beat a weak rank in a high-scaling one, so pick what you're good at too.<br><br>Test it with 2025 data: <a href="/blog/hsc-scaling-explained.html">HSC Scaling Explained</a>`,
             chips: [['How is the ATAR calculated?', 'atar'], ['Moderation', 'moderation']]
         },
@@ -345,7 +345,7 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'progress_reports',
-            examples: ['do parents get updates', 'do you send progress reports', 'how will i know my child is improving', 'will i get feedback as a parent', 'do you track progress'],
+            examples: ['do parents get updates', 'do you send progress reports', 'how will i know my child is improving', 'will i get feedback as a parent', 'do you track progress', 'will i hear how my child is going', 'do you keep parents in the loop'],
             answer: `Yes. Our 1:1 plans (Excellence and Premium) include progress reports, so parents can see what's been covered and where things are heading.`,
             chips: [['Pricing', 'pricing'], ['Book a free session', 'free_trial']]
         },
