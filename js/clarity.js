@@ -27,7 +27,7 @@
         transformersUrl: 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2',
         model: 'Xenova/all-MiniLM-L6-v2',
         // Semantic (embedding) thresholds
-        semAccept: 0.62,
+        semAccept: 0.6,
         semAcceptWithGap: 0.55,   // also accept from here if clearly ahead of the runner-up
         semGap: 0.1,
         semMaybe: 0.48,
@@ -191,7 +191,8 @@
             } else if (ents.subjects.length && !ents.tutors.length && (!confident || SUBJECTISH.has(best) || best === 'tutor_profile')) {
                 if (best !== 'how_to_book' || !confident) best = 'subject_tutors';
                 method = 'entity';
-            } else if (ents.tutors.length && (!confident || TUTORISH.has(best))) {
+            } else if (ents.tutors.length && (!confident || TUTORISH.has(best) ||
+                       (best === 'founder_story' && !(ents.tutors.length === 1 && ents.tutors[0] === 'tutor1')))) {
                 best = 'tutor_profile'; method = 'entity';
             } else if (ents.year && ents.year < 10 && !confident) {
                 best = 'year_levels'; method = 'entity';

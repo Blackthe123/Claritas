@@ -132,7 +132,7 @@
         },
         {
             id: 'bot_identity',
-            examples: ['who are you', 'what are you', 'are you a bot', 'are you a real person', 'are you ai', 'is this chatgpt', 'am i talking to a human', 'what is clarity'],
+            examples: ['who are you', 'what are you', 'are you a bot', 'are you a real person', 'are you ai', 'is this chatgpt', 'am i talking to a human', 'what is clarity', 'who made you', 'who built this bot'],
             answer: `I'm Clarity, the Claritas site assistant. I match your question to answers written by our team, so I won't make things up. For anything I can't answer, a real human is at ${MAIL}.`
         },
         {
@@ -143,7 +143,7 @@
         },
         {
             id: 'pricing',
-            examples: ['how much does it cost', 'what are your prices', 'how much is tutoring', 'pricing', 'what do you charge', 'how much per hour', 'what is the hourly rate', 'is it expensive', 'how much for a lesson', 'cost of a session', 'fees', 'how much is online tutoring', 'price of in person lessons'],
+            examples: ['how much does it cost', 'what are your prices', 'how much is tutoring', 'pricing', 'what do you charge', 'how much per hour', 'what is the hourly rate', 'is it expensive', 'how much for a lesson', 'cost of a session', 'fees', 'how pricey is it', 'are your rates reasonable', 'how much is online tutoring', 'price of in person lessons'],
             answer: `Three options, all per hour:<br>
 <ul><li><b>Foundation, $40/hr</b>: small group, in person (subject to availability)</li>
 <li><b>Excellence, $60/hr</b>: 1:1 online. Our most popular</li>
@@ -249,7 +249,7 @@ Most students pick Excellence. Not sure? Talk it through in your free session.`,
         },
         {
             id: 'delivery',
-            examples: ['is it online or in person', 'do you do face to face tutoring', 'can you come to my house', 'do you tutor online', 'where are lessons held', 'is tutoring on zoom', 'can we meet at a library', 'do you do home tutoring'],
+            examples: ['is it online or in person', 'do you do face to face tutoring', 'can you come to my house', 'do you tutor online', 'where are lessons held', 'is tutoring on zoom', 'can we meet at a library', 'do you do home tutoring', 'can lessons happen at my place', 'do tutors come to you'],
             answer: `Both:<ul><li><b>Online 1:1</b> (Excellence, $60/hr): flexible scheduling, no travel</li>
 <li><b>In person 1:1</b> (Premium, $70/hr): at your home or a library</li>
 <li><b>In-person groups</b> (Foundation, $40/hr): subject to availability</li></ul>`,
